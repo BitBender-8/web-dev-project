@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stillbrith Report Form</title>
+    </head>
+    <!-- 
+        # FORM VALIDATION
+        - [ ] Universal validations 1 - 4
+        - [ ] At least one condition that contributes to fetal death must be checked.
+    -->
+    <body>
+        <form action="" method="get">
+            <h1>Stillbirth Report Form</h1>
+            <h2>Child Information</h2>
+            <ul>
+                <li>
+                    <p>Enter the full name of the child if known</p>
+                    <label for="child_firstname">First name:</label>
+                    <input
+                        type="text"
+                        id="child_firstname"
+                        name="child_firstname"
+                        maxlength="100"
+                    >
+                    <label for="child_middlename">Middle name:</label>
+                    <input
+                        type="text"
+                        id="child_middlename"
+                        name="child_middlename"
+                        required
+                        maxlength="100"
+                    >
+                    <label for="child_lastname">Last name:</label>
+                    <input
+                        type="text"
+                        id="child_lastname"
+                        name="child_lastname"
+                        required
+                        maxlength="100"
+                    >
+                </li>
+                <li>
+                    <label for="child_sex">Sex:</label>
+                    <select id="child_sex" name="child_sex" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="child_gestational_age_wks">Gestational age (in weeks):</label>
+                    <input
+                        type="number"
+                        id="child_gestational_age_wks"
+                        name="child_gestational_age_wks"
+                        min="0"
+                        required
+                    >
+                </li>
+            </ul>
+            <h2>Parents' Information</h2>
+            <h3>Mother</h3>
+            <ul>
+                <li>
+                    <label for="mother_firstname">First name:</label>
+                    <input
+                        type="text"
+                        id="mother_firstname"
+                        name="mother_firstname"
+                        maxlength="100"
+                    >
+                    <label for="mother_middlename">Middle name:</label>
+                    <input
+                        type="text"
+                        id="mother_middlename"
+                        name="mother_middlename"
+                        required
+                        maxlength="100"
+                    >
+                    <label for="mother_lastname">Last name:</label>
+                    <input
+                        type="text"
+                        id="mother_lastname"
+                        name="mother_lastname"
+                        required
+                        maxlength="100"
+                    >
+                </li>
+                <li>
+                    <label for="mother_dob">Date of birth</label>
+                    <input
+                        type="date"
+                        id="mother_dob"
+                        name="mother_dob"
+                        min="0"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="mother_marital_status">Marital status:</label>
+                    <select id="mother_marital_status" name="mother_marital_status" required>
+                        <option value="married">Married</option>
+                        <option value="single">Single</option>
+                        <option value="widowed">Widowed</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="separated">Legally separated</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="mother_residence">Primary residence:</label>
+                    <input
+                        type="text"
+                        id="mother_residence"
+                        name="mother_residence"
+                        required
+                        maxlength="200"
+                    >
+                </li>
+                <li>
+                    <label for="mother_citizenship">Country of citizenship:</label>
+                    <input
+                        type="text"
+                        id="mother_citizenship"
+                        name="mother_citizenship"
+                        required
+                        maxlength="100"
+                    >
+                </li>
+                <li>
+                    <label for="mother_phone">Phone number:</label>
+                    <input
+                        type="tel"
+                        id="mother_phone"
+                        name="mother_phone"
+                        required
+                    >
+                </li>
+            </ul>
+            <h3>Father</h3>
+            <ul>
+                <li>
+                    <label for="father_firstname">First name:</label>
+                    <input
+                        type="text"
+                        id="father_firstname"
+                        name="father_firstname"
+                        maxlength="100"
+                    >
+                    <label for="father_middlename">Middle name:</label>
+                    <input
+                        type="text"
+                        id="father_middlename"
+                        name="father_middlename"
+                        required
+                        maxlength="100"
+                    >
+                    <label for="father_lastname">Last name:</label>
+                    <input
+                        type="text"
+                        id="father_lastname"
+                        name="father_lastname"
+                        required
+                        maxlength="100"
+                    >
+                </li>
+                <li>
+                    <label for="father_dob">Date of birth</label>
+                    <input
+                        type="date"
+                        id="father_dob"
+                        name="father_dob"
+                        min="0"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="father_marital_status">Marital status:</label>
+                    <select id="father_marital_status" name="father_marital_status" required>
+                        <option value="married">Married</option>
+                        <option value="single">Single</option>
+                        <option value="widowed">Widowed</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="separated">Legally separated</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="father_residence">Primary residence:</label>
+                    <input
+                        type="text"
+                        id="father_residence"
+                        name="father_residence"
+                        required
+                        maxlength="200"
+                    >
+                </li>
+                <li>
+                    <label for="father_citizenship">Country of citizenship:</label>
+                    <input
+                        type="text"
+                        id="father_citizenship"
+                        name="father_citizenship"
+                        required
+                        maxlength="100"
+                    >
+                </li>
+                <li>
+                    <label for="father_phone">Phone number:</label>
+                    <input
+                        type="tel"
+                        id="father_phone"
+                        name="father_phone"
+                        required
+                    >
+                </li>
+            </ul>
+            <h2>Pregnancy Information</h2>
+            <ul>
+                <li>
+                    <label for="delivery_date">Date of Delivery:</label>
+                    <input
+                        type="date"
+                        id="delivery_date"
+                        name="delivery_date"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="delivery_place">Place of Delivery:</label>
+                    <input
+                        type="text"
+                        id="delivery_place"
+                        name="delivery_place"
+                        required
+                        maxlength="200"
+                    >
+                </li>
+                <li>
+                    <label for="pregnancy_plurality">
+                        Pregnancy plurality (1 if Single, 2 if Twins, 3 = if Triplets, etc.):
+                    </label>
+                    <input
+                        type="number"
+                        id="pregnancy_plurality"
+                        name="pregnancy_plurality"
+                        required
+                        min="1"
+                    >
+                </li>
+                <li>
+                    <label for="pregnancy_duration">Duration of Pregnancy (in weeks):</label>
+                    <input
+                        type="number"
+                        id="pregnancy_duration"
+                        name="pregnancy_duration"
+                        min="0"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="birth_order">
+                        If not single birth, specify order (1 if Born First, 2 if Second, 3 if Third, etc.):
+                    </label>
+                    <input
+                        type="number"
+                        id="birth_order"
+                        name="birth_order"
+                        min="1"
+                    >
+                </li>
+            </ul>
+            <h2>Conditions Contributing to Fetal Death (Explain each chosen)</h2>
+            <p>Check all that apply and provide details in the explanation box.</p>
+            <ul>
+                <li>
+                    <input
+                        type="checkbox"
+                        id="fetal_death_maternal"
+                        name="fetal_death[]"
+                        value="maternal_conditions"
+                    >
+                    <label for="fetal_death_maternal">
+                        Maternal conditions/diseases (Explain):
+                    </label>
+                    <textarea
+                        id="fetal_death_maternal_explanation"
+                        name="fetal_death_maternal_explanation"
+                        rows="4"
+                        disabled
+                        maxlength="1000"
+                    ></textarea>
+                </li>
+                <li>
+                    <input
+                        type="checkbox"
+                        id="fetal_death_placenta"
+                        name="fetal_death[]"
+                        value="placenta_complications"
+                    >
+                    <label for="fetal_death_placenta">
+                        Complications of placenta, cord or membranes (Explain):
+                    </label>
+                    <textarea
+                        id="fetal_death_placenta_explanation"
+                        name="fetal_death_placenta_explanation"
+                        rows="4"
+                        disabled
+                        maxlength="1000"
+                    ></textarea>
+                </li>
+                <li>
+                    <input
+                        type="checkbox"
+                        id="fetal_death_other_obstetrical"
+                        name="fetal_death[]"
+                        value="other_obstetrical"
+                    >
+                    <label for="fetal_death_other_obstetrical">
+                        Other obstetrical or pregnancy complications (Explain):
+                    </label>
+                    <textarea
+                        id="fetal_death_other_obstetrical_explanation"
+                        name="fetal_death_other_obstetrical_explanation"
+                        rows="4"
+                        disabled
+                        maxlength="1000"
+                    ></textarea>
+                </li>
+                <li>
+                    <input
+                        type="checkbox"
+                        id="fetal_death_fetal_anomaly"
+                        name="fetal_death[]"
+                        value="fetal_anomaly"
+                    >
+                    <label for="fetal_death_fetal_anomaly">Fetal anomaly (Explain):</label>
+                    <textarea
+                        id="fetal_death_fetal_anomaly_explanation"
+                        name="fetal_death_fetal_anomaly_explanation"
+                        rows="4"
+                        disabled
+                        maxlength="1000"
+                    ></textarea>
+                </li>
+                <li>
+                    <input
+                        type="checkbox"
+                        id="fetal_death_fetal_injury"
+                        name="fetal_death[]"
+                        value="fetal_injury"
+                    >
+                    <label for="fetal_death_fetal_injury">Fetal injury (Explain):</label>
+                    <textarea
+                        id="fetal_death_fetal_injury_explanation"
+                        name="fetal_death_fetal_injury_explanation"
+                        rows="4"
+                        disabled
+                        maxlength="1000"
+                    ></textarea>
+                </li>
+                <li>
+                    <input
+                        type="checkbox"
+                        id="fetal_death_fetal_infection"
+                        name="fetal_death[]"
+                        value="fetal_infection"
+                    >
+                    <label for="fetal_death_fetal_infection">
+                        Fetal infection (Explain):
+                    </label>
+                    <textarea
+                        id="fetal_death_fetal_infection_explanation"
+                        name="fetal_death_fetal_infection_explanation"
+                        rows="4"
+                        disabled
+                        maxlength="1000"
+                    ></textarea>
+                </li>
+                <li>
+                    <input
+                        type="checkbox"
+                        id="fetal_death_other_fetal"
+                        name="fetal_death[]"
+                        value="other_fetal"
+                    >
+                    <label for="fetal_death_other_fetal">
+                        Other fetal conditions/disorders (Explain):
+                    </label>
+                    <textarea
+                        id="fetal_death_other_fetal_explanation"
+                        name="fetal_death_other_fetal_explanation"
+                        rows="4"
+                        disabled
+                        maxlength="1000"
+                    ></textarea>
+                </li>
+            </ul>
+            <h2>Reporting Person Information</h2>
+            <ul>
+                <li>
+                    <label for="reporter_firstname">First name:</label>
+                    <input
+                        type="text"
+                        id="reporter_firstname"
+                        name="reporter_firstname"
+                        maxlength="100"
+                        required
+                    >
+                    <label for="reporter_middlename">Middle name:</label>
+                    <input
+                        type="text"
+                        id="reporter_middlename"
+                        name="reporter_middlename"
+                        required
+                        maxlength="100"
+                    >
+                    <label for="reporter_lastname">Last name:</label>
+                    <input
+                        type="text"
+                        id="reporter_lastname"
+                        name="reporter_lastname"
+                        required
+                        maxlength="100"
+                    >
+                </li>
+                <li>
+                    <label for="reporter_sex">Sex:</label>
+                    <select name="reporter_sex" id="reporter_sex">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="reporter_residence">Primary residence:</label>
+                    <input
+                        type="text"
+                        id="reporter_residence"
+                        name="reporter_residence"
+                        required
+                        maxlength="200"
+                    >
+                </li>
+                <li>
+                    <label for="reporter_phone">Phone number:</label>
+                    <input
+                        type="tel"
+                        id="reporter_phone"
+                        name="reporter_phone"
+                        required
+                    >
+                </li>
+            </ul>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

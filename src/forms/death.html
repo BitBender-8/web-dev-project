@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Death Registration Form</title>
+    </head>
+    <!-- 
+        # FORM VALIDATIONS
+        - [ ] Universal validations 1 - 5
+        - [ ] Enable 'Other' input field in declarant information section if 'I know about the death' is selected. 
+            - [ ] Don't allow text from 'Other' to be submitted if 'I know about the death isn't checked.'
+        - [ ] Age of deceased person must be greater than or equal to one.
+    -->
+    <body>
+        <a href="index.php">Home</a>
+        <h1>Death Registration Form</h1>
+        <h2>Deceased Information</h2>
+        <ul>
+            <li>
+                <label for="deceased_firstname">First name:</label>
+                <input
+                    type="text"
+                    id="deceased_firstname"
+                    name="deceased_firstname"
+                    required
+                    maxlength="100"
+                >
+                <label for="deceased_middlename">Middle name:</label>
+                <input
+                    type="text"
+                    id="deceased_middlename"
+                    name="deceased_middlename"
+                    required
+                    maxlength="100"
+                >
+                <label for="deceased_lastname">Last name:</label>
+                <input
+                    type="text"
+                    id="deceased_lastname"
+                    name="deceased_lastname"
+                    required
+                    maxlength="100"
+                >
+            </li>
+            <li>
+                <!-- Kept the title field because death registrations usually have honorifics attached to them. -->
+                <label for="deceased_title">Title (Mr., Ms., etc.):</label>
+                <input
+                    type="text"
+                    id="deceased_title"
+                    name="deceased_title"
+                    required
+                    maxlength="30"
+                >
+            </li>
+            <li>
+                <label for="deceased_sex">Sex:</label>
+                <select id="deceased_sex" name="deceased_sex" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </li>
+            <li>
+                <label for="deceased_age">Age:</label>
+                <input
+                    type="number"
+                    id="deceased_age"
+                    name="deceased_age"
+                    min="0"
+                    required
+                >
+            </li>
+            <li>
+                <label for="deceased_occupation">
+                    Occupation: (leave empty if unknown, none if none and retired if retired)
+                </label>
+                <input
+                    type="text"
+                    id="deceased_occupation"
+                    name="deceased_occupation"
+                    maxlength="100"
+                >
+            </li>
+            <li>
+                <label for="deceased_residence">Principal Residence (when alive):</label>
+                <input
+                    type="text"
+                    id="deceased_residence"
+                    name="deceased_residence"
+                    required
+                    maxlength="200"
+                >
+            </li>
+            <li>
+                <label for="deceased_citizenship">Country of citizenship:</label>
+                <input
+                    type="text"
+                    id="deceased_citizenship"
+                    name="deceased_citizenship"
+                    required
+                    maxlength="100"
+                >
+            </li>
+        </ul>
+        <h2>Death Information</h2>
+        <ul>
+            <li>
+                <label for="death_date">Date of Death:</label>
+                <input
+                    type="date"
+                    id="death_date"
+                    name="death_date"
+                    required
+                >
+            </li>
+            <li>
+                <label for="death_place">Place of Death:</label>
+                <input
+                    type="text"
+                    id="death_place"
+                    name="death_place"
+                    required
+                >
+            </li>
+            <li>
+                <label for="death_cause">Cause of Death (if known):</label>
+                <input
+                    type="text"
+                    id="death_cause"
+                    name="death_cause"
+                    maxlength="200"
+                >
+            </li>
+            <li>
+                <label for="death_evidence">
+                    Reference to Evidence of Death (e.g., Medical Certificate):
+                </label
+        >
+                <input
+                    type="file"
+                    id="death_evidence"
+                    name="death_evidence"
+                    accept="image/jpeg, image/png, application/pdf"
+                    required
+                >
+            </li>
+        </ul>
+        <h2>Declarant Information</h2>
+        <ul>
+            <li>
+                <label for="declarant_firstname">First name:</label>
+                <input
+                    type="text"
+                    id="declarant_firstname"
+                    name="declarant_firstname"
+                    required
+                    maxlength="100"
+                >
+                <label for="deceased_middlename">Middle name:</label>
+                <input
+                    type="text"
+                    id="declarant_middlename"
+                    name="declarant_middlename"
+                    required
+                    maxlength="100"
+                >
+                <label for="deceased_lastname">Last name:</label>
+                <input
+                    type="text"
+                    id="declarant_lastname"
+                    name="declarant_lastname"
+                    required
+                    maxlength="100"
+                >
+            </li>
+            <li>
+                <label for="declarant_sex">Sex:</label>
+                <select id="declarant_sex" name="declarant_sex" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </li>
+            <li>
+                <label for="declarant_phone">Phone:</label>
+                <input
+                    type="tel"
+                    id="declarant_phone"
+                    name="declarant_phone"
+                    required
+                >
+            </li>
+            <li>
+                <label for="declarant_residence">Principal Residence:</label>
+                <input
+                    type="text"
+                    id="declarant_residence"
+                    name="declarant_residence"
+                    required
+                    maxlength="200"
+                >
+            </li>
+        </ul>
+        <p>Please select your relationship to the deceased:</p>
+        <ul>
+            <li>
+                <input
+                    type="radio"
+                    id="declarant_relation_lived"
+                    name="declarant_relation"
+                    value="lived_together"
+                    required
+                >
+                <label for="declarant_relation_lived">
+                    I used to live with the deceased
+                </label>
+            </li>
+            <li>
+                <input
+                    type="radio"
+                    id="declarant_relation_relative"
+                    name="declarant_relation"
+                    value="relative"
+                    required
+                >
+                <label for="declarant_relation_relative">
+                    I am a relative by blood or marriage
+                </label>
+            </li>
+            <li>
+                <input
+                    type="radio"
+                    id="declarant_relation_neighbor"
+                    name="declarant_relation"
+                    value="neighbor"
+                    required
+                >
+                <label for="declarant_relation_neighbor">I am a close neighbor</label>
+            </li>
+            <li>
+                <input
+                    type="radio"
+                    id="declarant_relation_other"
+                    name="declarant_relation"
+                    value="other"
+                    required
+                >
+                <label for="declarant_relation_other">
+                    I know about the death (Other, please specify):
+                </label>
+                <!-- TODO Refer to form validations text above. -->
+                <input
+                    type="text"
+                    id="declarant_relation_other_text"
+                    name="declarant_relation_other_text"
+                    disabled
+                    required
+                >
+            </li>
+        </ul>
+        <button type="submit">Submit Registration</button>
+    </body>
+</html>

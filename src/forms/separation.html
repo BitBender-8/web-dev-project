@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Legal Separation Registration Form</title>
+    </head>
+    <!-- 
+         # FORM VALIDATIONS
+         - [ ] Universal validations (1 - 5)
+         
+    -->
+    <body>
+        <a href="index.php">Home</a>
+        <form action="" method="get">
+            <h1>Legal Separation Registration Form</h1>
+            <h2>Spouse Information</h2>
+            <h3>Petitioner (First Spouse)</h3>
+            <ul>
+                <li>
+                    <label for="petitioner_firstname">First name:</label>
+                    <input
+                        type="text"
+                        id="petitioner_firstname"
+                        name="petitioner_firstname"
+                        required
+                        maxlength="100"
+                    >
+                    <label for="petitioner_middlename">Middle name:</label>
+                    <input
+                        type="text"
+                        id="petitioner_middlename"
+                        name="petitioner_middlename"
+                        required
+                        maxlength="100"
+                    >
+                    <label for="petitioner_lastname">Last name:</label>
+                    <input
+                        type="text"
+                        id="petitioner_lastname"
+                        name="petitioner_lastname"
+                        required
+                        maxlength="100"
+                    >
+                </li>
+                <li>
+                    <label for="petitioner_sex">Sex</label>
+                    <select id="petitioner_sex" name="petitioner_sex" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="petitioner_dob">Date of Birth:</label>
+                    <input
+                        type="date"
+                        id="petitioner_dob"
+                        name="petitioner_dob"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="petitioner_birthplace">Place of Birth:</label>
+                    <input
+                        type="text"
+                        id="petitioner_birthplace"
+                        name="petitioner_birthplace"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="petitioner_citizenship">Country of citizenship:</label>
+                    <input
+                        type="text"
+                        name="petitioner_citizenship"
+                        id="petitioner_citizenship"
+                        required
+                        maxlength="100"
+                    >
+                </li>
+                <li>
+                    <label for="petitioner_phone">Phone Number:</label>
+                    <input
+                        type="tel"
+                        id="petitioner_phone"
+                        name="petitioner_phone"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="petitioner_residence">Primary residence:</label>
+                    <input
+                        type="text"
+                        id="petitioner_residence"
+                        name="petitioner_residence"
+                        required
+                    >
+                </li>
+            </ul>
+            <h3>Respondent (Second Spouse)</h3>
+            <ul>
+                <li>
+                    <label for="respondent_firstname">First name:</label>
+                    <input
+                        type="text"
+                        id="respondent_firstname"
+                        name="respondent_firstname"
+                        required
+                        maxlength="100"
+                    >
+                    <label for="respondent_middlename">Middle name:</label>
+                    <input
+                        type="text"
+                        id="respondent_middlename"
+                        name="respondent_middlename"
+                        required
+                        maxlength="100"
+                    >
+                    <label for="respondent_lastname">Last name:</label>
+                    <input
+                        type="text"
+                        id="respondent_lastname"
+                        name="respondent_lastname"
+                        required
+                        maxlength="100"
+                    >
+                </li>
+                <li>
+                    <label for="respondent_sex">Sex</label>
+                    <select id="respondent_sex" name="respondent_sex" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="respondent_dob">Date of Birth:</label>
+                    <input
+                        type="date"
+                        id="respondent_dob"
+                        name="respondent_dob"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="respondent_birthplace">Place of Birth:</label>
+                    <input
+                        type="text"
+                        id="respondent_birthplace"
+                        name="respondent_birthplace"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="respondent_citizenship">Country of citizenship:</label>
+                    <input
+                        type="text"
+                        name="respondent_citizenship"
+                        id="respondent_citizenship"
+                        required
+                        maxlength="100"
+                    >
+                </li>
+                <li>
+                    <label for="respondent_phone">Phone Number:</label>
+                    <input
+                        type="tel"
+                        id="respondent_phone"
+                        name="respondent_phone"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="respondent_residence">Primary residence:</label>
+                    <input
+                        type="text"
+                        id="respondent_residence"
+                        name="respondent_residence"
+                        required
+                    >
+                </li>
+            </ul>
+            <h2>Marriage Information</h2>
+            <ul>
+                <li>
+                    <label for="marriage_date">Date of Marriage:</label>
+                    <input
+                        type="date"
+                        id="marriage_date"
+                        name="marriage_date"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="marriage_place">Place of Marriage:</label>
+                    <input
+                        type="text"
+                        id="marriage_place"
+                        name="marriage_place"
+                        required
+                    >
+                </li>
+            </ul>
+            <h2>Separation Information</h2>
+            <ul>
+                <li>
+                    <label for="separation_reference">
+                        Reference to Court Decision:
+                    </label>
+                    <input
+                        type="file"
+                        id="separation_reference"
+                        name="separation_reference"
+                        accept="image/jpeg, image/png, application/pdf"
+                        required
+                    >
+                </li>
+                <li>
+                    <label for="separation_reason">Reason for separation (Optional):</label>
+                    <textarea
+                        id="separation_reason"
+                        name="separation_reason"
+                        rows="2"
+                        maxlength="500"
+                    ></textarea>
+                </li>
+                <li>
+                    <label for="separation_date">Date of Separation:</label>
+                    <input
+                        type="date"
+                        id="separation_date"
+                        name="separation_date"
+                        required
+                    >
+                </li>
+            </ul>
+            <button type="submit">Submit Application</button>
+        </form>
+    </body>
+</html>
