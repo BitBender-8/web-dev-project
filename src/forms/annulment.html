@@ -225,7 +225,7 @@
                     type="file"
                     id="annulment_reference"
                     name="annulment_reference"
-                    accept="image/jpeg, image/png, application/pdf"
+                    accept="<?php echo rtrim(implode(',', ALLOWED_UPLOAD_FILE_TYPES), ',') ?>"
                     required
                 >
             </li>
@@ -239,6 +239,6 @@
                 >
             </li>
         </ul>
-        <button type="submit">Submit Application</button>
+        <button type="submit">Submit Registration</button>
     </body>
 </html>

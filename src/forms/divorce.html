@@ -222,7 +222,7 @@
                         type="file"
                         id="divorce_reference"
                         name="divorce_reference"
-                        accept="image/jpeg, image/png, application/pdf"
+                        accept="<?php echo rtrim(implode(',', ALLOWED_UPLOAD_FILE_TYPES), ',') ?>"
                         required
                     >
                 </li>

@@ -13,7 +13,7 @@ include_once "./death-declarations.php";
 //      - Store file path in database
 //  TODO (Client) Enable 'Other' input field in declarant information section if 'I know about the death' is selected.
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Check whether universally required fields were submitted correctly
     $errors_required_fields = checkFieldPresence(

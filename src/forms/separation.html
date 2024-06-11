@@ -214,7 +214,7 @@
                         type="file"
                         id="separation_reference"
                         name="separation_reference"
-                        accept="image/jpeg, image/png, application/pdf"
+                        accept="<?php echo rtrim(implode(',', ALLOWED_UPLOAD_FILE_TYPES), ',') ?>"
                         required
                     >
                 </li>
@@ -237,7 +237,7 @@
                     >
                 </li>
             </ul>
-            <button type="submit">Submit Application</button>
+            <button type="submit">Submit Registration</button>
         </form>
     </body>
 </html>

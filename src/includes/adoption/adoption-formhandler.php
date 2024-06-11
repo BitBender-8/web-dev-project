@@ -12,7 +12,7 @@ include_once "./adoption-declarations.php";
 //      - NOTE The only checks you need to make before entering into the database is to make sure that
 //        the fields are not empty and that there are no errors.
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
     // Check whether universally required fields were submitted correctly
     $errors_required_fields = checkFieldPresence(
         array_merge(
