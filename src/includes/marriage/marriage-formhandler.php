@@ -9,7 +9,7 @@ include_once "./marriage-declarations.php";
 
 //  TODO Enter the data into the database
 //      - NOTE The only check you need to make before entering into the database is to make sure that
-//        the fields are not empty.
+//        the fields are not empty and that there are no errors.
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

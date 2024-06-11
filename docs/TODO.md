@@ -29,7 +29,6 @@
     - recognition.php
     - marriage.php
     - still-birth.php
-birth.php, death.php, recognition.php, marriage.php, still-birth.php
 
 # Task queue
 

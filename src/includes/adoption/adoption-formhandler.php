@@ -9,8 +9,8 @@ include_once "./adoption-declarations.php";
 //  TODO (Client-Js) In category of adopters, enable disabled radios when info for both adopters is entered.
 //  CONSIDER Either remove the field 'relationship_to_adopter_x' or add validation to make sure the adopter is present.
 //  TODO Enter the data into the database
-//      - NOTE The only check you need to make before entering into the database is to make sure that
-//        the fields are not empty.
+//      - NOTE The only checks you need to make before entering into the database is to make sure that
+//        the fields are not empty and that there are no errors.
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Check whether universally required fields were submitted correctly

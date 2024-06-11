@@ -19,7 +19,8 @@
 - CLIENT-SIDE VALIDATION (Optional)
 - [ ] Add client-side form checks for the maximum file size.
 
-- [ ] 6. (Ignore for now) Date fields data is submitted in teh appropriate format.
+- CONSIDER (Ignore for now) Date fields data is submi
+tted in teh appropriate format.
 
 # Other stringent validations (won't be implemented but documents ways things can go wrong - may address this if we have time)
 

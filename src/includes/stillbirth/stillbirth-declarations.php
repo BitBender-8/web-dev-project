@@ -202,3 +202,13 @@ $condition_key_to_explanation_key = [
     'fetal_infection' => 'explanation_fetal_infection',
     'other_fetal_conditions' => 'explanation_other_fetal_conditions',
 ];
+
+/**
+ * @var array A list of all non-phone number number fields.
+ */
+$number_fields = [
+    'child_gestational_age_wks',
+    'pregnancy_plurality',
+    'pregnancy_duration',
+    'birth_order',
+];

@@ -56,7 +56,8 @@ include_once "../includes/declarations.php";
                         type="number"
                         id="child_gestational_age_wks"
                         name="child_gestational_age_wks"
-                        min="0"
+                        min="1"
+                        max="999"
                         required
                     >
                 </li>
@@ -246,6 +247,7 @@ include_once "../includes/declarations.php";
                         name="pregnancy_plurality"
                         required
                         min="1"
+                        max="999"
                     >
                 </li>
                 <li>
@@ -254,7 +256,8 @@ include_once "../includes/declarations.php";
                         type="number"
                         id="pregnancy_duration"
                         name="pregnancy_duration"
-                        min="0"
+                        min="1"
+                        max="999"
                         required
                     >
                 </li>
@@ -267,6 +270,7 @@ include_once "../includes/declarations.php";
                         id="birth_order"
                         name="birth_order"
                         min="1"
+                        max="999"
                     >
                 </li>
             </ul>

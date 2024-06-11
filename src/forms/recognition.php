@@ -12,7 +12,7 @@ include_once "../includes/declarations.php";
     <!--
          # UI enhancement
          CONSIDER A way to hide/disable the second parent until the user presses some button to make it appear.
-        - [ ] Making sure that 'Are both parents are married?' is asked only if the all required fields for both parents are submitted. (CLIENT-JS)
+        - [ ] (CLIENT-JS) Making sure that 'Are both parents are married?' is asked only if the all required fields for both parents are submitted.
     -->
     <body>
         <a href="index.php">Home</a>

@@ -9,7 +9,7 @@ include_once "./death-declarations.php";
 
 //  TODO Enter the data into the database
 //      - NOTE The only check you need to make before entering into the database is to make sure that
-//        the fields are not empty.
+//        the fields are not empty and that there are no errors.
 //      - Store file path in database
 //  TODO (Client) Enable 'Other' input field in declarant information section if 'I know about the death' is selected.
 

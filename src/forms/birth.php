@@ -101,7 +101,7 @@ include_once "../includes/declarations.php";
         </fieldset>
         <h2>Declarant Information (if applicable)</h2>
 
-        <!-- TODO (JS & PHP) Add form validation to either require all fields in this section or none of them at all. -->
+        <!-- TODO (JS) Add form validation to either require all fields in this section or none of them at all. -->
         <p>
             **Complete this section only if you are registering the birth and are not a parent of the child.**
         </p>

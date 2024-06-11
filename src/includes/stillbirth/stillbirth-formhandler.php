@@ -66,6 +66,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     handleErrors($errors_phone_fields, 'Invalid phone format');
 
+    // Checking number fields
+    $errors_number_fields = [];
+    foreach ($number_fields as $field_name) {
+        checkNumberFormat(
+            $field_name,
+            $stillbirth_labels[$field_name],
+            '/^[1-9][0-9]?[0-9]?$/',
+            'Field must be a number between 1 and 999'
+        );
+    }
+
     // Father is optional so this makes sure that either all fields of father are submitted or none of them are
     $errors_father_required_fields = checkFieldPresence($required_fields['father'], $stillbirth_labels);
     if (count($errors_father_required_fields) !== count($required_fields['father'])) {
