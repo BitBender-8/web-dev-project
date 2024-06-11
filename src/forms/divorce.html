@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
         <title>Divorce Registration Form</title>
     </head>
     <!--  
@@ -12,33 +13,34 @@
     <body>
         <a href="index.php">Home</a>
         <form>
+            <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_UPLOAD_FILE_SIZE; ?>" />
             <h1>Divorce Registration Form</h1>
             <h2>First spouse</h2>
             <ul>
                 <li>
-                    <label for="spouse1_firstname">First name:</label>
+                    <label for="spouse1_first_name">First name:</label>
                     <input
                         type="text"
-                        id="spouse1_firstname"
-                        name="spouse1_firstname"
+                        id="spouse1_first_name"
+                        name="spouse1_first_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
-                    <label for="spouse1_middlename">Middle name:</label>
+                    <label for="spouse1_middle_name">Middle name:</label>
                     <input
                         type="text"
-                        id="spouse1_middlename"
-                        name="spouse1_middlename"
+                        id="spouse1_middle_name"
+                        name="spouse1_middle_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
-                    <label for="spouse1_lastname">Last name:</label>
+                    <label for="spouse1_last_name">Last name:</label>
                     <input
                         type="text"
-                        id="spouse1_lastname"
-                        name="spouse1_lastname"
+                        id="spouse1_last_name"
+                        name="spouse1_last_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                 </li>
                 <li>
@@ -53,8 +55,8 @@
                 <li>
                     <label for="spouse1_sex">Sex:</label>
                     <select id="spouse1_sex" name="spouse1_sex" required>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
                     </select>
                 </li>
                 <li>
@@ -64,7 +66,7 @@
                         id="spouse1_pob"
                         name="spouse1_pob"
                         required
-                        maxlength="200"
+                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                     >
                 </li>
                 <li>
@@ -74,7 +76,7 @@
                         id="spouse1_residence"
                         name="spouse1_residence"
                         required
-                        maxlength="200"
+                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                     >
                 </li>
                 <li>
@@ -84,6 +86,7 @@
                         id="spouse1_phone"
                         name="spouse1_phone"
                         required
+                        pattern="<?php echo PHONE_REGEX; ?>"
                     >
                 </li>
                 <li>
@@ -93,36 +96,36 @@
                         id="spouse1_citizenship"
                         name="spouse1_citizenship"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                 </li>
             </ul>
             <h2>Second spouse</h2>
             <ul>
                 <li>
-                    <label for="spouse2_firstname">First name:</label>
+                    <label for="spouse2_first_name">First name:</label>
                     <input
                         type="text"
-                        id="spouse2_firstname"
-                        name="spouse2_firstname"
+                        id="spouse2_first_name"
+                        name="spouse2_first_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
-                    <label for="spouse2_middlename">Middle name:</label>
+                    <label for="spouse2_middle_name">Middle name:</label>
                     <input
                         type="text"
-                        id="spouse2_middlename"
-                        name="spouse2_middlename"
+                        id="spouse2_middle_name"
+                        name="spouse2_middle_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
-                    <label for="spouse2_lastname">Last name:</label>
+                    <label for="spouse2_last_name">Last name:</label>
                     <input
                         type="text"
-                        id="spouse2_lastname"
-                        name="spouse2_lastname"
+                        id="spouse2_last_name"
+                        name="spouse2_last_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                 </li>
                 <li>
@@ -137,8 +140,8 @@
                 <li>
                     <label for="spouse2_sex">Sex:</label>
                     <select id="spouse2_sex" name="spouse2_sex" required>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
                     </select>
                 </li>
                 <li>
@@ -157,7 +160,7 @@
                         id="spouse2_residence"
                         name="spouse2_residence"
                         required
-                        maxlength="200"
+                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                     >
                 </li>
                 <li>
@@ -167,6 +170,7 @@
                         id="spouse2_phone"
                         name="spouse2_phone"
                         required
+                        pattern="<?php echo PHONE_REGEX; ?>"
                     >
                 </li>
                 <li>
@@ -176,7 +180,7 @@
                         id="spouse2_citizenship"
                         name="spouse2_citizenship"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                 </li>
             </ul>
@@ -198,7 +202,7 @@
                         id="marriage_place"
                         name="marriage_place"
                         required
-                        maxlength="200"
+                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                     >
                 </li>
                 <li>
@@ -228,7 +232,7 @@
                         id="divorce_reason"
                         name="divorce_reason"
                         rows="2"
-                        maxlength="500"
+                        maxlength="<?php echo TEXTAREA_MAXLENGTH_SMALL; ?>"
                     ></textarea>
                 </li>
             </ul>

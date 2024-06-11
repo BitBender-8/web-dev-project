@@ -1,21 +1,23 @@
+<?php
+include_once "../includes/declarations.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
         <title>Recognition of Paternity Application Form</title>
     </head>
-    <!-- 
+    <!--
          # UI enhancement
-         CONSIDER A way to hide the second parent until the user presses some button to make it appear.
-         
-         # FORM VALIDATION
-         - [ ] Even if the second parent is optional, we have to make sure that all the required fields are submitted for both parents.
-         - [ ] Making sure that 'Are both parents are married?' is asked only if the all required fields for both parents are submitted. (CLIENT-JS)
+         CONSIDER A way to hide/disable the second parent until the user presses some button to make it appear.
+        - [ ] Making sure that 'Are both parents are married?' is asked only if the all required fields for both parents are submitted. (CLIENT-JS)
     -->
     <body>
         <a href="index.php">Home</a>
-        <form>
+        <!-- REMOVE Remove novalidate when done with debugging -->
+        <form action="../includes/recognition/recgn-formhandler.php" method="post" novalidate>
             <h1>Recognition of Paternity Registration Form</h1>
             <h2>Child Information</h2>
             <ul>
@@ -26,7 +28,7 @@
                         name="child_first_name"
                         id="child_first_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                     <label for="child_middle_name">Middle Name</label>
                     <input
@@ -34,7 +36,7 @@
                         name="child_middle_name"
                         id="child_middle_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                     <label for="child_last_name">Last Name:</label>
                     <input
@@ -42,7 +44,7 @@
                         name="child_last_name"
                         id="child_last_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                 </li>
                 <li>
@@ -61,14 +63,15 @@
                         id="child_birthplace"
                         name="child_birthplace"
                         required
-                        maxlength="200"
+                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                     >
                 </li>
                 <li>
                     <label for="child_sex">Sex:</label>
                     <select id="child_sex" name="child_sex" required>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="" selected>Select</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
                     </select>
                 </li>
             </ul>
@@ -82,7 +85,7 @@
                         name="parent1_first_name"
                         id="parent1_first_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                     <label for="parent1_middle_name">Middle Name</label>
                     <input
@@ -90,7 +93,7 @@
                         name="parent1_middle_name"
                         id="parent1_middle_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                     <label for="parent1_last_name">Last Name:</label>
                     <input
@@ -98,7 +101,7 @@
                         name="parent1_last_name"
                         id="parent1_last_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                 </li>
                 <li>
@@ -113,8 +116,9 @@
                 <li>
                     <label for="parent1_sex">Sex:</label>
                     <select id="parent1_sex" name="parent1_sex" required>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                    <option value="" selected>Select</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
                     </select>
                 </li>
                 <li>
@@ -124,7 +128,7 @@
                         id="parent1_birthplace"
                         name="parent1_birthplace"
                         required
-                        maxlength="200"
+                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                     >
                 </li>
                 <li>
@@ -134,7 +138,7 @@
                         name="parent1_citizenship"
                         id="parent1_citizenship"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                 </li>
                 <li>
@@ -144,7 +148,7 @@
                         id="parent1_occupation"
                         name="parent1_occupation"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                 </li>
                 <li>
@@ -154,7 +158,7 @@
                         id="parent1_residence"
                         name="parent1_residence"
                         required
-                        maxlength="200"
+                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                     >
                 </li>
                 <li>
@@ -164,6 +168,7 @@
                         id="parent1_phone"
                         name="parent1_phone"
                         required
+                        pattern="<?php echo PHONE_REGEX; ?>"
                     >
                 </li>
             </ul>
@@ -176,7 +181,7 @@
                         name="parent2_first_name"
                         id="parent2_first_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                     <label for="parent2_middle_name">Middle Name</label>
                     <input
@@ -184,7 +189,7 @@
                         name="parent2_middle_name"
                         id="parent2_middle_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                     <label for="parent2_last_name">Last Name:</label>
                     <input
@@ -192,7 +197,7 @@
                         name="parent2_last_name"
                         id="parent2_last_name"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                 </li>
                 <li>
@@ -207,8 +212,9 @@
                 <li>
                     <label for="parent2_sex">Sex:</label>
                     <select id="parent2_sex" name="parent2_sex" required>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="" selected>Select</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
                     </select>
                 </li>
                 <li>
@@ -218,7 +224,7 @@
                         id="parent2_birthplace"
                         name="parent2_birthplace"
                         required
-                        maxlength="200"
+                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                     >
                 </li>
                 <li>
@@ -228,7 +234,7 @@
                         name="parent2_citizenship"
                         id="parent2_citizenship"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                 </li>
                 <li>
@@ -238,7 +244,7 @@
                         id="parent2_occupation"
                         name="parent2_occupation"
                         required
-                        maxlength="100"
+                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                     >
                 </li>
                 <li>
@@ -248,7 +254,7 @@
                         id="parent2_residence"
                         name="parent2_residence"
                         required
-                        maxlength="200"
+                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                     >
                 </li>
                 <li>
@@ -258,11 +264,13 @@
                         id="parent2_phone"
                         name="parent2_phone"
                         required
+                        pattern="<?php echo PHONE_REGEX; ?>"
                     >
                 </li>
                 <li>
                     <label for="parent2_married">Was the Second parent married to First parent at the <em>time of birth</em> of the child? (Yes/No):</label>
                     <select id="parent2_married" name="parent2_married" required>
+                        <option value="" selected>Select</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
@@ -273,6 +281,7 @@
                 <li>
                     <label for="prnts_married">Current martial status of parents to each other</label>
                     <select id="prnts_married" name="prnts_married" required>
+                        <option value="" selected>Select</option>
                         <option value="single">Single</option>
                         <option value="married">Married</option>
                         <option value="separated">Legally separated</option>

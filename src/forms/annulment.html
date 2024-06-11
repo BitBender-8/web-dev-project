@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
         <title>Annulment Registration Form</title>
     </head>
     <!-- 
@@ -13,14 +14,15 @@
         <a href="index.php">Home</a>
         <h1>Annulment Registration Form</h1>
         <h2>Spouse Information</h2>
+        <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_UPLOAD_FILE_SIZE; ?>" />
         <h3>Petitioner (First Spouse)</h3>
         <ul>
             <li>
                 <label for="petitioner_name">First name:</label>
                 <input
                     type="text"
-                    id="petitioner_firstname"
-                    name="petitioner_firstname"
+                    id="petitioner_first_name"
+                    name="petitioner_first_name"
                     required
                 >
             </li>
@@ -28,8 +30,8 @@
                 <label for="petitioner_name">Middle name:</label>
                 <input
                     type="text"
-                    id="petitioner_middlename"
-                    name="petitioner_middlename"
+                    id="petitioner_middle_name"
+                    name="petitioner_middle_name"
                     required
                 >
             </li>
@@ -37,8 +39,8 @@
                 <label for="petitioner_name">Last name:</label>
                 <input
                     type="text"
-                    id="petitioner_lastname"
-                    name="petitioner_lastname"
+                    id="petitioner_last_name"
+                    name="petitioner_last_name"
                     required
                 >
             </li>
@@ -54,8 +56,8 @@
             <li>
                 <label for="petitioner_sex">Sex:</label>
                 <select id="petitioner_sex" name="petitioner_sex">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
                 </select>
             </li>
             <li>
@@ -83,6 +85,7 @@
                     id="petitioner_phone"
                     name="petitioner_phone"
                     required
+                    pattern="<?php echo PHONE_REGEX; ?>"
                 >
             </li>
             <li>
@@ -101,30 +104,30 @@
                 <label for="respondent_name">First name:</label>
                 <input
                     type="text"
-                    id="respondent_firstname"
-                    name="respondent_firstname"
+                    id="respondent_first_name"
+                    name="respondent_first_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
             </li>
             <li>
                 <label for="respondent_name">Middle name:</label>
                 <input
                     type="text"
-                    id="respondent_middlename"
-                    name="respondent_middlename"
+                    id="respondent_middle_name"
+                    name="respondent_middle_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
             </li>
             <li>
                 <label for="respondent_name">Last name:</label>
                 <input
                     type="text"
-                    id="respondent_lastname"
-                    name="respondent_lastname"
+                    id="respondent_last_name"
+                    name="respondent_last_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
             </li>
             <li>
@@ -139,8 +142,8 @@
             <li>
                 <label for="respondent_sex">Sex:</label>
                 <select id="respondent_sex" name="respondent_sex">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
                 </select>
             </li>
             <li>
@@ -150,7 +153,7 @@
                     id="respondent_residence"
                     name="respondent_residence"
                     required
-                    maxlength="200"
+                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                 >
             </li>
             <li>
@@ -160,7 +163,7 @@
                     id="respondent_citizenship"
                     name="respondent_citizenship"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
             </li>
             <li>
@@ -170,6 +173,7 @@
                     id="respondent_phone"
                     name="respondent_phone"
                     required
+                    pattern="<?php echo PHONE_REGEX; ?>"
                 >
             </li>
             <li>
@@ -179,7 +183,7 @@
                     id="respondent_birthplace"
                     name="respondent_birthplace"
                     required
-                    maxlength="200"
+                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                 >
             </li>
         </ul>
@@ -212,7 +216,7 @@
                     id="annulment_reasons"
                     name="annulment_reasons"
                     rows="5"
-                    maxlength="1000"
+                    maxlength="<?php echo TEXTAREA_MAXLENGTH_DEFAULT; ?>"
                 ></textarea>
             </li>
             <li>

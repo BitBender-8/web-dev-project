@@ -1,11 +1,35 @@
 # Active tasks
 
 - Do the more difficult pages first then move onto client side validation. Finish remaining tasks, clear space for next time.
-- [ ] Continue implementing validations for difficult forms. Use what you did for adoption.php as reference
+
+- [ ] Continue implementing serverside validations for difficult forms. Use what you did for adoption.php as reference
   - Questions to consider: What validation do you NEED to do server-side? Which ones COULD you do client-side? Which ones should you consider for both?
+  - Completed for
+    - adoption.php
+    - birth.php
+    - death.php
+    - recognition.php
+    - marriage.php
+    - still-birth.php
+
 - [ ] For all dropdowns, checkboxes and radio buttons add an empty option and make it selected by default.
   - Completed for
     - adoption.php
+    - birth.php
+    - death.php
+    - recognition.php
+    - marriage.php
+    - still-birth.php
+
+- [ ] Make all sex fields a dropdown
+  - Completed for
+    - adoption.php
+    - birth.php
+    - death.php
+    - recognition.php
+    - marriage.php
+    - still-birth.php
+birth.php, death.php, recognition.php, marriage.php, still-birth.php
 
 # Task queue
 
@@ -13,6 +37,7 @@
 
 - [ ] This is a registration website, not an application one. Replace all mentions of 'Application' with 'Registration'
 - [ ] For all occupation field add instructions that tell users to 'write unknown if unknown, none if none, and retired if retired'.
+- [ ] Make sure that all fields which are optional have a label that tells that they are optional
 
 ## Misc
 

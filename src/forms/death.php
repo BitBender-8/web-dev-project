@@ -1,46 +1,46 @@
+<?php
+include_once "../includes/declarations.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
         <title>Death Registration Form</title>
     </head>
-    <!-- 
-        # FORM VALIDATIONS
-        - [ ] Universal validations 1 - 5
-        - [ ] Enable 'Other' input field in declarant information section if 'I know about the death' is selected. 
-            - [ ] Don't allow text from 'Other' to be submitted if 'I know about the death isn't checked.'
-        - [ ] Age of deceased person must be greater than or equal to one.
-    -->
     <body>
         <a href="index.php">Home</a>
         <h1>Death Registration Form</h1>
+        <!-- REMOVE Remove novalidate when done with debugging -->
+        <form action="../includes/death/death-formhandler.php" method="post" enctype='multipart/form-data'>
+        <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_UPLOAD_FILE_SIZE; ?>" />
         <h2>Deceased Information</h2>
         <ul>
             <li>
-                <label for="deceased_firstname">First name:</label>
+                <label for="deceased_first_name">First name:</label>
                 <input
                     type="text"
-                    id="deceased_firstname"
-                    name="deceased_firstname"
+                    id="deceased_first_name"
+                    name="deceased_first_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="deceased_middlename">Middle name:</label>
+                <label for="deceased_middle_name">Middle name:</label>
                 <input
                     type="text"
-                    id="deceased_middlename"
-                    name="deceased_middlename"
+                    id="deceased_middle_name"
+                    name="deceased_middle_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="deceased_lastname">Last name:</label>
+                <label for="deceased_last_name">Last name:</label>
                 <input
                     type="text"
-                    id="deceased_lastname"
-                    name="deceased_lastname"
+                    id="deceased_last_name"
+                    name="deceased_last_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
             </li>
             <li>
@@ -51,14 +51,15 @@
                     id="deceased_title"
                     name="deceased_title"
                     required
-                    maxlength="30"
+                    maxlength="<?php echo INPUT_MAXLENGTH_SHORT ?>"
                 >
             </li>
             <li>
                 <label for="deceased_sex">Sex:</label>
                 <select id="deceased_sex" name="deceased_sex" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="" selected>Select</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
                 </select>
             </li>
             <li>
@@ -72,34 +73,13 @@
                 >
             </li>
             <li>
-                <label for="deceased_occupation">
-                    Occupation: (leave empty if unknown, none if none and retired if retired)
-                </label>
-                <input
-                    type="text"
-                    id="deceased_occupation"
-                    name="deceased_occupation"
-                    maxlength="100"
-                >
-            </li>
-            <li>
-                <label for="deceased_residence">Principal Residence (when alive):</label>
-                <input
-                    type="text"
-                    id="deceased_residence"
-                    name="deceased_residence"
-                    required
-                    maxlength="200"
-                >
-            </li>
-            <li>
                 <label for="deceased_citizenship">Country of citizenship:</label>
                 <input
                     type="text"
                     id="deceased_citizenship"
                     name="deceased_citizenship"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
             </li>
         </ul>
@@ -121,6 +101,7 @@
                     id="death_place"
                     name="death_place"
                     required
+                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                 >
             </li>
             <li>
@@ -129,7 +110,7 @@
                     type="text"
                     id="death_cause"
                     name="death_cause"
-                    maxlength="200"
+                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                 >
             </li>
             <li>
@@ -141,7 +122,7 @@
                     type="file"
                     id="death_evidence"
                     name="death_evidence"
-                    accept="image/jpeg, image/png, application/pdf"
+                    accept="<?php echo rtrim(implode(',', ALLOWED_UPLOAD_FILE_TYPES), ',') ?>"
                     required
                 >
             </li>
@@ -149,36 +130,37 @@
         <h2>Declarant Information</h2>
         <ul>
             <li>
-                <label for="declarant_firstname">First name:</label>
+                <label for="declarant_first_name">First name:</label>
                 <input
                     type="text"
-                    id="declarant_firstname"
-                    name="declarant_firstname"
+                    id="declarant_first_name"
+                    name="declarant_first_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="deceased_middlename">Middle name:</label>
+                <label for="declarant_middle_name">Middle name:</label>
                 <input
                     type="text"
-                    id="declarant_middlename"
-                    name="declarant_middlename"
+                    id="declarant_middle_name"
+                    name="declarant_middle_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="deceased_lastname">Last name:</label>
+                <label for="declarant_last_name">Last name:</label>
                 <input
                     type="text"
-                    id="declarant_lastname"
-                    name="declarant_lastname"
+                    id="declarant_last_name"
+                    name="declarant_last_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
             </li>
             <li>
                 <label for="declarant_sex">Sex:</label>
                 <select id="declarant_sex" name="declarant_sex" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="" selected>Select</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
                 </select>
             </li>
             <li>
@@ -188,6 +170,7 @@
                     id="declarant_phone"
                     name="declarant_phone"
                     required
+                    pattern="<?php echo PHONE_REGEX; ?>"
                 >
             </li>
             <li>
@@ -197,13 +180,23 @@
                     id="declarant_residence"
                     name="declarant_residence"
                     required
-                    maxlength="200"
+                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                 >
             </li>
         </ul>
         <p>Please select your relationship to the deceased:</p>
         <ul>
             <li>
+                <!-- An empty radio button that ensures that a default value is submitted to the server. -->
+                <input
+                    type="radio"
+                    id="declarant_relation_default"
+                    name="declarant_relation"
+                    value=""
+                    required
+                    checked
+                    style="display: none;"
+                >
                 <input
                     type="radio"
                     id="declarant_relation_lived"
@@ -248,16 +241,18 @@
                 <label for="declarant_relation_other">
                     I know about the death (Other, please specify):
                 </label>
-                <!-- TODO Refer to form validations text above. -->
-                <input
-                    type="text"
+                <!-- TODO Make this required in client if other is selected above. -->
+                <textarea
                     id="declarant_relation_other_text"
                     name="declarant_relation_other_text"
                     disabled
-                    required
+                    maxlength="<?php echo TEXTAREA_MAXLENGTH_DEFAULT ?>"
+                    value=""
                 >
+                </textarea>
             </li>
         </ul>
         <button type="submit">Submit Registration</button>
+        </form>
     </body>
 </html>

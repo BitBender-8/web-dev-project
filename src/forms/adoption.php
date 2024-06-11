@@ -3,9 +3,9 @@ include_once "../includes/declarations.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<!--.  
+<!--.
     TODO Add js that enables disabled fields in category of adopters when adopter 2's information is filled.
-    CONSIDER Getting your form labels and your allowed options for multiple-choice fields from '../includes/adoption/adoption-declarations.php'; 
+    CONSIDER Getting your form labels and your allowed options for multiple-choice fields from '../includes/adoption/adoption-declarations.php';
 -->
 
 <head>
@@ -25,16 +25,16 @@ include_once "../includes/declarations.php";
         <h3>Adopter 1</h3>
         <ul>
             <li>
-                <label for="adopter1_firstname">First name:</label>
-                <input type="text" id="adopter1_firstname" name="adopter1_firstname" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
+                <label for="adopter1_first_name">First name:</label>
+                <input type="text" id="adopter1_first_name" name="adopter1_first_name" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
             </li>
             <li>
-                <label for="adopter1_middlename">Middle name:</label>
-                <input type="text" id="adopter1_middlename" name="adopter1_middlename" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
+                <label for="adopter1_middle_name">Middle name:</label>
+                <input type="text" id="adopter1_middle_name" name="adopter1_middle_name" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
             </li>
             <li>
-                <label for="adopter1_lastname">Last name:</label>
-                <input type="text" id="adopter1_lastname" name="adopter1_lastname" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
+                <label for="adopter1_last_name">Last name:</label>
+                <input type="text" id="adopter1_last_name" name="adopter1_last_name" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
             </li>
             <li>
                 <label for="adopter1_dob">Date of Birth:</label>
@@ -85,15 +85,15 @@ include_once "../includes/declarations.php";
         <ul>
             <li>
                 <label for="adopter_name">First name:</label>
-                <input type="text" id="adopter2_firstname" name="adopter2_firstname" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
+                <input type="text" id="adopter2_first_name" name="adopter2_first_name" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
             </li>
             <li>
-                <label for="adopter2_middlename">Middle name:</label>
-                <input type="text" id="adopter2_middlename" name="adopter2_middlename" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
+                <label for="adopter2_middle_name">Middle name:</label>
+                <input type="text" id="adopter2_middle_name" name="adopter2_middle_name" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
             </li>
             <li>
-                <label for="adopter2_lastname">Last name:</label>
-                <input type="text" id="adopter2_lastname" name="adopter2_lastname" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
+                <label for="adopter2_last_name">Last name:</label>
+                <input type="text" id="adopter2_last_name" name="adopter2_last_name" required maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>">
             </li>
             <li>
                 <label for="adopter2_dob">Date of Birth:</label>

@@ -1,57 +1,59 @@
+<?php
+include_once "../includes/declarations.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
         <title>Marriage Registration Form</title>
     </head>
     <body>
-        <!-- 
-             # FORM VALIDATIONS
-             - [ ] Universal validations 1 - 4.
-             - [ ] Age of both spouses must be above 18. (SERVER & CLIENT-HTML)
-        -->
         <a href="index.php">Home</a>
         <h1>Marriage Registration Form</h1>
-        <form action="/submit_marriage_registration" method="post">
+        <!-- REMOVE Remove novalidate when done with debugging -->
+        <form action="../includes/marriage/marriage-formhandler.php" method="post" novalidate>
             <h2>Couple Information</h2>
             <h3>First spouse information</h3>
             <fieldset>
                 <legend>First spouse information</legend>
-                <label for="spouse1_firstname">First name:</label>
+                <label for="spouse1_first_name">First name:</label>
                 <input
                     type="text"
-                    id="spouse1_firstname"
-                    name="spouse1_firstname"
+                    id="spouse1_first_name"
+                    name="spouse1_first_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="spouse1_middlename">Middle name:</label>
+                <label for="spouse1_middle_name">Middle name:</label>
                 <input
                     type="text"
-                    id="spouse1_middlename"
-                    name="spouse1_middlename"
+                    id="spouse1_middle_name"
+                    name="spouse1_middle_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="spouse1_lastname">Last name:</label>
+                <label for="spouse1_last_name">Last name:</label>
                 <input
                     type="text"
-                    id="spouse1_lastname"
-                    name="spouse1_lastname"
+                    id="spouse1_last_name"
+                    name="spouse1_last_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
                 <label for="spouse1_sex">Sex</label>
                 <select id="spouse1_sex" name="spouse1_sex" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="" selected>Select</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
                 </select>
-                <label for="spouse1_date_of_birth">Date of Birth:</label>
+                <label for="spouse1_dob">Date of Birth:</label>
                 <input
                     type="date"
-                    name="spouse1_date_of_birth"
-                    id="spouse1_date_of_birth"
+                    name="spouse1_dob"
+                    id="spouse1_dob"
                     required
                 >
                 <label for="spouse1_place_of_birth">Place of Birth:</label>
@@ -60,7 +62,7 @@
                     name="spouse1_place_of_birth"
                     id="spouse1_place_of_birth"
                     required
-                    maxlength="200"
+                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                 >
                 <label for="spouse1_citizenship">Country of citizenship:</label>
                 <input
@@ -68,11 +70,12 @@
                     name="spouse1_citizenship"
                     id="spouse1_citizenship"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
                 <!-- Legally separated is not an option because legally separated couple cannot get married. -->
                 <label for="spouse1_previous_martial">Previous martial status:</label>
                 <select id="spouse1_previous_martial" name="spouse1_previous_martial" required>
+                    <option value="" selected>Select</option>
                     <option value="single">Single</option>
                     <option value="divorced">Divorced</option>
                     <option value="widowed">Widowed</option>
@@ -83,6 +86,7 @@
                     id="spouse1_phone"
                     name="spouse1_phone"
                     required
+                    pattern="<?php echo PHONE_REGEX; ?>"
                 >
                 <label for="spouse1_residence">Principal Residence:</label>
                 <input
@@ -90,7 +94,7 @@
                     name="spouse1_residence"
                     id="spouse1_residence"
                     required
-                    maxlength="200"
+                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                 >
             </fieldset>
             <h3>Second spouse Information</h3>
@@ -102,34 +106,35 @@
                     id="spouse2"
                     name="spouse2"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="spouse2_middlename">Middle name:</label>
+                <label for="spouse2_middle_name">Middle name:</label>
                 <input
                     type="text"
-                    id="spouse2_middlename"
-                    name="spouse2_middlename"
+                    id="spouse2_middle_name"
+                    name="spouse2_middle_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="spouse2_lastname">Last name:</label>
+                <label for="spouse2_last_name">Last name:</label>
                 <input
                     type="text"
-                    id="spouse2_lastname"
-                    name="spouse2_lastname"
+                    id="spouse2_last_name"
+                    name="spouse2_last_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
                 <label for="spouse2_sex">Sex</label>
                 <select id="spouse2_sex" name="spouse2_sex" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="" selected>Select</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
                 </select>
-                <label for="spouse2_date_of_birth">Date of Birth:</label>
+                <label for="spouse2_dob">Date of Birth:</label>
                 <input
                     type="date"
-                    name="spouse2_date_of_birth"
-                    id="spouse2_date_of_birth"
+                    name="spouse2_dob"
+                    id="spouse2_dob"
                     required
                 >
                 <label for="spouse2_place_of_birth">Place of Birth:</label>
@@ -138,7 +143,7 @@
                     name="spouse2_place_of_birth"
                     id="spouse2_place_of_birth"
                     required
-                    maxlength="200"
+                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                 >
                 <label for="spouse2_citizenship">Country of citizenship:</label>
                 <input
@@ -146,11 +151,12 @@
                     name="spouse2_citizenship"
                     id="spouse2_citizenship"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
                 <!-- Legally separated is not an option because legally separated couple cannot get married. -->
                 <label for="spouse2_previous_martial">Previous martial status:</label>
                 <select id="spouse2_previous_martial" name="spouse2_previous_martial" required>
+                    <option value="" selected>Select</option>
                     <option value="single">Single</option>
                     <option value="divorced">Divorced</option>
                     <option value="widowed">Widowed</option>
@@ -161,6 +167,7 @@
                     id="spouse2_phone"
                     name="spouse2_phone"
                     required
+                    pattern="<?php echo PHONE_REGEX; ?>"
                 >
                 <label for="spouse2_residence">Principal Residence:</label>
                 <input
@@ -168,46 +175,47 @@
                     name="spouse2_residence"
                     id="spouse2_residence"
                     required
-                    maxlength="200"
+                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                 >
             </fieldset>
             <h2>Witnesses</h2>
             <fieldset>
                 <legend>Witness 1</legend>
-                <label for="witness1">First name:</label>
+                <label for="witness1_first_name">First name:</label>
                 <input
                     type="text"
-                    id="witness1"
-                    name="witness1"
+                    id="witness1_first_name"
+                    name="witness1_first_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="witness1_middlename">Middle name:</label>
+                <label for="witness1_middle_name">Middle name:</label>
                 <input
                     type="text"
-                    id="witness1_middlename"
-                    name="witness1_middlename"
+                    id="witness1_middle_name"
+                    name="witness1_middle_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="witness1_lastname">Last name:</label>
+                <label for="witness1_last_name">Last name:</label>
                 <input
                     type="text"
-                    id="witness1_lastname"
-                    name="witness1_lastname"
+                    id="witness1_last_name"
+                    name="witness1_last_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
                 <label for="witness1_sex">Sex</label>
                 <select id="witness1_sex" name="witness1_sex" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="" selected>Select</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
                 </select>
-                <label for="witness1_date_of_birth">Date of Birth:</label>
+                <label for="witness1_dob">Date of Birth:</label>
                 <input
                     type="date"
-                    name="witness1_date_of_birth"
-                    id="witness1_date_of_birth"
+                    name="witness1_dob"
+                    id="witness1_dob"
                     required
                 >
                 <label for="witness1_citizenship">Country of citizenship:</label>
@@ -216,7 +224,7 @@
                     name="witness1_citizenship"
                     id="witness1_citizenship"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
                 <label for="witness1_phone">Phone:</label>
                 <input
@@ -224,6 +232,7 @@
                     id="witness1_phone"
                     name="witness1_phone"
                     required
+                    pattern="<?php echo PHONE_REGEX; ?>"
                 >
                 <label for="witness1_residence">Principal Residence:</label>
                 <input
@@ -231,45 +240,46 @@
                     name="witness1_residence"
                     id="witness1_residence"
                     required
-                    maxlength="200"
+                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                 >
             </fieldset>
             <fieldset>
                 <legend>Witness 2</legend>
-                <label for="witness2">First name:</label>
+                <label for="witness2_first_name">First name:</label>
                 <input
                     type="text"
-                    id="witness2"
-                    name="witness2"
+                    id="witness2_first_name"
+                    name="witness2_first_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="witness2_middlename">Middle name:</label>
+                <label for="witness2_middle_name">Middle name:</label>
                 <input
                     type="text"
-                    id="witness2_middlename"
-                    name="witness2_middlename"
+                    id="witness2_middle_name"
+                    name="witness2_middle_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
-                <label for="witness2_lastname">Last name:</label>
+                <label for="witness2_last_name">Last name:</label>
                 <input
                     type="text"
-                    id="witness2_lastname"
-                    name="witness2_lastname"
+                    id="witness2_last_name"
+                    name="witness2_last_name"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
                 <label for="witness2_sex">Sex</label>
                 <select id="witness2_sex" name="witness2_sex" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="" selected>Select</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
                 </select>
-                <label for="witness2_date_of_birth">Date of Birth:</label>
+                <label for="witness2_dob">Date of Birth:</label>
                 <input
                     type="date"
-                    name="witness2_date_of_birth"
-                    id="witness2_date_of_birth"
+                    name="witness2_dob"
+                    id="witness2_dob"
                     required
                 >
                 <label for="witness2_citizenship">Country of citizenship:</label>
@@ -278,7 +288,7 @@
                     name="witness2_citizenship"
                     id="witness2_citizenship"
                     required
-                    maxlength="100"
+                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
                 >
                 <label for="witness2_phone">Phone:</label>
                 <input
@@ -286,6 +296,7 @@
                     id="witness2_phone"
                     name="witness2_phone"
                     required
+                    pattern="<?php echo PHONE_REGEX; ?>"
                 >
                 <label for="witness2_residence">Principal Residence:</label>
                 <input
@@ -293,7 +304,7 @@
                     name="witness2_residence"
                     id="witness2_residence"
                     required
-                    maxlength="200"
+                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
                 >
             </fieldset>
             <h2>Marriage Details</h2>
@@ -310,29 +321,7 @@
                 name="marriage_place"
                 id="marriage_place"
                 required
-                maxlength="200"
-            >
-            <h3>Couple's Signatures</h3>
-            <!-- 
-                CONSIDER Check that the full name matches the one that was given above. Show an error message if it doesn't 
-            -->
-            <p>Write your full name in block letters for your signature</p>
-            <label for="spouse1_signature">First spouse's signature:</label>
-            <input
-                type="text"
-                id="spouse1_signature"
-                name="spouse1_signature"
-                required
-                maxlength="100"
-            >
-            <br>
-            <label for="spouse2_signature">Second spouse's signature:</label>
-            <input
-                type="text"
-                id="spouse2_signature"
-                name="spouse2_signature"
-                required
-                maxlength="100"
+                maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
             >
             <button type="submit">Submit Registration</button>
         </form>
