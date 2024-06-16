@@ -1,3 +1,10 @@
+# Reminders
+
+- Assign tasks to members
+- exit script after all redirections
+- Consider implementing the post redirect get pattern for all your forms possiblly asking the user for confirmation on the data they submitted.
+- Checkout the docs linked to by Dave Hollingworth for a login system.
+
 # Active tasks
 
 - [ ] Work on the styling of the website.
