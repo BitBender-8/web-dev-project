@@ -1,0 +1,127 @@
+/* Styles for the nav-bar custom component */
+:host {
+    --navbar-color-foreground: white;
+    --navbar-color-background: #141313;
+}
+
+svg {
+    display: inline-block;
+    vertical-align: middle
+}
+
+h2 {
+    margin: 0px;
+}
+
+.navbar {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    background-color: var(--navbar-color-background);
+    color: var(--navbar-color-foreground);
+    padding: 12px;
+    height: 36px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hamburger {
+    background-color: transparent;
+    color: var(--navbar-color-foreground);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.hamburger:hover {
+    border: 1px solid var(--navbar-color-foreground);
+    border-radius: 4px;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: -258px;
+    width: 250px;
+    margin: 8px;
+    border-radius: 4px;
+    background-color: var(--navbar-color-background);
+    color: var(--navbar-color-foreground);
+    padding-top: 60px;
+    transition: left 0.3s ease;
+    z-index: 100;
+}
+
+.navitem {
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid var(--navbar-color-foreground);
+}
+
+.home {
+    position: absolute;
+    top: 24px;
+    left: 32px;
+    height: 30px;
+    font-size: 18pt;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--navbar-color-foreground);
+}
+
+.home:hover {
+    border-bottom: 2px solid var(--navbar-color-foreground);
+    transition: border-bottom 0.3s ease;
+}
+
+.navitem-container {
+    font-size: 14pt;
+    margin: 0;
+    padding: 24px 8px 0px 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.navitem-container ::slotted(a) {
+    color: var(--navbar-color-foreground);
+    border-radius: 4px;
+    margin: 8px 12px;
+    padding: 8px 12px;
+}
+
+.navitem-container ::slotted(a:hover) {
+    background: var(--navbar-color-foreground);
+    color: var(--navbar-color-background);
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+.menu-container {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+    margin: 8px 0px 10px 0px;
+    padding: 0px 0px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.report-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    color: var(--navbar-color-foreground)
+}
+
+svg {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 4px;
+}

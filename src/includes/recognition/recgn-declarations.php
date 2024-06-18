@@ -34,8 +34,8 @@ $recgn_labels = [
     "parent2_occupation" => "Second Parent - Occupation",
     "parent2_residence" => "Second Parent - Primary Residence",
     "parent2_phone" => "Second Parent - Phone Number",
-    "parent2_married" => "Was the Second Parent married to the First Parent at the time of birth of the child?",
-    "prnts_married" => "Current marital status of parents to each other",
+    "parents_married_at_birth" => "Was the Second Parent married to the First Parent at the time of birth of the child?",
+    "parents_rlnshp_at_rgstrn" => "Current marital status of parents to each other",
 ];
 
 /**
@@ -73,10 +73,10 @@ $required_fields = [
         "parent2_occupation",
         "parent2_residence",
         "parent2_phone",
-        "parent2_married",
+        "parents_married_at_birth", // Included here and not under marriage info cause field is only required when parent 2 is registered.
     ],
     "marriage_info" => [
-        "prnts_married",
+        "parents_rlnshp_at_rgstrn",
     ],
 ];
 
@@ -87,8 +87,8 @@ $selection_controls = [
     'child_sex' => ['Male', 'Female'],
     'parent1_sex' => ['Male', 'Female'],
     'parent2_sex' => ['Male', 'Female'],
-    'parent2_married' => ['Yes', 'No'],
-    'prnts_married' => ['Single', 'Married', 'Legally separated', 'Divorced'],
+    'parents_married_at_birth' => ['Yes', 'No'],
+    'parents_rlnshp_at_rgstrn' => ['Single', 'Married', 'Legally separated', 'Divorced'],
 ];
 
 /**

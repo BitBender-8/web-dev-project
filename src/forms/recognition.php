@@ -268,8 +268,8 @@ include_once "../includes/declarations.php";
                     >
                 </li>
                 <li>
-                    <label for="parent2_married">Was the Second parent married to First parent at the <em>time of birth</em> of the child? (Yes/No):</label>
-                    <select id="parent2_married" name="parent2_married" required>
+                    <label for="parents_married_at_birth">Was the Second parent married to First parent at the <em>time of birth</em> of the child? (Yes/No):</label>
+                    <select id="parents_married_at_birth" name="parents_married_at_birth" required>
                         <option value="" selected>Select</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -279,8 +279,8 @@ include_once "../includes/declarations.php";
             <h2>Other</h2>
             <ul>
                 <li>
-                    <label for="prnts_married">Current martial status of parents to each other</label>
-                    <select id="prnts_married" name="prnts_married" required>
+                    <label for="parents_rlnshp_at_rgstrn">Current martial status of parents to each other</label>
+                    <select id="parents_rlnshp_at_rgstrn" name="parents_rlnshp_at_rgstrn" required>
                         <option value="" selected>Select</option>
                         <option value="single">Single</option>
                         <option value="married">Married</option>

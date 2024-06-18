@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-left: 8px;
+    color: rgb(197, 193, 255);
+}
+
+.icon {
+    margin: 4px;
+}
+
+svg {
+    display: inline-block;
+    vertical-align: middle
+}

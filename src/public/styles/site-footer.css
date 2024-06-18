@@ -1,0 +1,50 @@
+:host {
+    --color-foreground: white;
+    --color-background: #141313;
+}
+
+footer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.info-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 12px 64px 12px 64px;
+}
+
+.contact-info {
+    float: left;
+}
+
+.other-info {
+    margin: 0px 0px 32px 0px;
+}
+
+.help-info {
+    float: right;
+}
+
+.legal-info {
+    display: flex;
+    justify-content: center;
+}
+
+.legal-info>* {
+    margin: 0px 50px 0px 50px;
+}
+
+i {
+    margin: 2px 16px 2px 16px;
+}

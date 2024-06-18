@@ -8,11 +8,27 @@ include_once "../includes/declarations.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script defer src="../public/js/webComponents.js"></script>
     <title>Birth Registration Form</title>
 </head>
 
 <body>
     <a href="index.php">Home</a>
+    <nav-bar page-title="Vital Event Registration">
+        <a href="./forms/adoption.php" rel="noopener noreferrer">Adoption</a>
+        <a href="./forms/birth.php" rel="noopener noreferrer">Live birth</a>
+        <a href="./forms/marriage.php" rel="noopener noreferrer">Marriage</a>
+        <a href="./forms/separation.php" rel="noopener noreferrer">Legal separation</a>
+        <a href="./forms/annulment.php" rel="noopener noreferrer">Annulment</a>
+        <a href="./forms/death.php" rel="noopener noreferrer">Death</a>
+        <a href="./forms/recognition.php" rel="noopener noreferrer">Parental recognition</a>
+        <a href="./forms/stillbirth.php" rel="noopener noreferrer">Stillbirth</a>
+        <a href="./forms/divorce.php" rel="noopener noreferrer">Divorce</a>
+        <a href="./report.php" rel="noopener noreferrer">Report</a>
+    </nav-bar>
     <h1>Birth Registration Form</h1>
     <form action="../includes/birth/birth-formhandler.php" method="post">
         <h2>Child's Information</h2>
