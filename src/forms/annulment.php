@@ -1,3 +1,7 @@
+<?php
+include_once "../includes/declarations.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,6 +16,7 @@
     -->
     <body>
         <a href="index.php">Home</a>
+        <form action="../includes/annulment/annulment-formhandler.php" method="post">
         <h1>Annulment Registration Form</h1>
         <h2>Spouse Information</h2>
         <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_UPLOAD_FILE_SIZE; ?>" />
@@ -240,5 +245,6 @@
             </li>
         </ul>
         <button type="submit">Submit Registration</button>
+    </form>
     </body>
 </html>

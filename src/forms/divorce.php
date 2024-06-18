@@ -1,3 +1,6 @@
+<?php
+include_once "../includes/declarations.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,7 +15,7 @@
      -->
     <body>
         <a href="index.php">Home</a>
-        <form>
+        <form action="../includes/divorce/divorce-formhandler.php" method="post">
             <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_UPLOAD_FILE_SIZE; ?>" />
             <h1>Divorce Registration Form</h1>
             <h2>First spouse</h2>
