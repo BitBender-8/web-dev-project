@@ -1,17 +1,31 @@
+:host {
+    --navbar-color-foreground: white;
+    --navbar-color-background: #141313;
+}
+
 .container {
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    padding-left: 8px;
-    color: rgb(197, 193, 255);
+    color: inherit;
+    text-decoration: none;
+}
+
+login-avatar :hover {
+    background-color: var(--navbar-color-foreground);
+    color: var(--navbar-color-background)
 }
 
 .icon {
-    margin: 4px;
+    margin-right: 4px;
 }
 
 svg {
     display: inline-block;
     vertical-align: middle
+}
+
+.login-text {
+    font-size: 2pt;
 }

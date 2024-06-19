@@ -22,21 +22,21 @@ $annulment_labels = [
     'marriage_place' => 'Place of Marriage',
     'annulment_reasons' => 'Reasons for Annulment',
     'annulment_reference' => 'Judicial Reference File',
-    'annulment_date' => 'Date of Annulment'
+    'annulment_date' => 'Date of Annulment',
 ];
 
 $annulment_required_fields = [
     'spouse1' => [
         'petitioner_first_name', 'petitioner_middle_name', 'petitioner_last_name', 'petitioner_dob', 'petitioner_sex',
-        'petitioner_residence', 'petitioner_citizenship', 'petitioner_phone', 'petitioner_birthplace'
+        'petitioner_residence', 'petitioner_citizenship', 'petitioner_phone', 'petitioner_birthplace',
     ],
     'spouse2' => [
         'respondent_first_name', 'respondent_middle_name', 'respondent_last_name', 'respondent_dob', 'respondent_sex',
-        'respondent_residence', 'respondent_citizenship', 'respondent_phone', 'respondent_birthplace'
+        'respondent_residence', 'respondent_citizenship', 'respondent_phone', 'respondent_birthplace',
     ],
     'marriage_annulment_details' => [
-        'marriage_date', 'marriage_place', 'annulment_reference', 'annulment_date'
-    ]
+        'marriage_date', 'marriage_place', 'annulment_reference', 'annulment_date',
+    ],
 ];
 
 $annulment_text_maxlengths = [
@@ -55,16 +55,15 @@ $annulment_text_maxlengths = [
     'respondent_phone' => INPUT_MAXLENGTH_DEFAULT,
     'respondent_birthplace' => INPUT_MAXLENGTH_DEFAULT,
     'marriage_place' => INPUT_MAXLENGTH_DEFAULT,
-    'annulment_reasons' => TEXTAREA_MAXLENGTH_DEFAULT
+    'annulment_reasons' => TEXTAREA_MAXLENGTH_DEFAULT,
 ];
 
 $annulment_selection_controls = [
     'petitioner_sex' => ['M', 'F'],
-    'respondent_sex' => ['M', 'F']
+    'respondent_sex' => ['M', 'F'],
 ];
 
 $annulment_phone_fields = [
     'petitioner_phone',
-    'respondent_phone'
+    'respondent_phone',
 ];
-?>

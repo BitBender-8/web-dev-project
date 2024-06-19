@@ -1,5 +1,5 @@
 <?php
-include_once "../includes/declarations.php";
+require_once "../includes/declarations.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@ include_once "../includes/declarations.php";
         <h1>Death Registration Form</h1>
         <!-- REMOVE Remove novalidate when done with debugging -->
         <form action="../includes/death/death-formhandler.php" method="post" enctype='multipart/form-data'>
-        <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_UPLOAD_FILE_SIZE; ?>" />
+        <input type="hidden" name="MAX_FILE_SIZE" value="<?=MAX_UPLOAD_FILE_SIZE;?>" />
         <h2>Deceased Information</h2>
         <ul>
             <li>
@@ -24,7 +24,7 @@ include_once "../includes/declarations.php";
                     id="deceased_first_name"
                     name="deceased_first_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="deceased_middle_name">Middle name:</label>
                 <input
@@ -32,7 +32,7 @@ include_once "../includes/declarations.php";
                     id="deceased_middle_name"
                     name="deceased_middle_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="deceased_last_name">Last name:</label>
                 <input
@@ -40,7 +40,7 @@ include_once "../includes/declarations.php";
                     id="deceased_last_name"
                     name="deceased_last_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
             </li>
             <li>
@@ -51,7 +51,7 @@ include_once "../includes/declarations.php";
                     id="deceased_title"
                     name="deceased_title"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_SHORT ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_SHORT?>"
                 >
             </li>
             <li>
@@ -79,7 +79,7 @@ include_once "../includes/declarations.php";
                     id="deceased_citizenship"
                     name="deceased_citizenship"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
             </li>
         </ul>
@@ -101,7 +101,7 @@ include_once "../includes/declarations.php";
                     id="death_place"
                     name="death_place"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                 >
             </li>
             <li>
@@ -110,7 +110,7 @@ include_once "../includes/declarations.php";
                     type="text"
                     id="death_cause"
                     name="death_cause"
-                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                 >
             </li>
             <li>
@@ -122,7 +122,7 @@ include_once "../includes/declarations.php";
                     type="file"
                     id="death_evidence"
                     name="death_evidence"
-                    accept="<?php echo rtrim(implode(',', ALLOWED_UPLOAD_FILE_TYPES), ',') ?>"
+                    accept="<?=rtrim(implode(',', ALLOWED_UPLOAD_FILE_TYPES), ',')?>"
                     required
                 >
             </li>
@@ -136,7 +136,7 @@ include_once "../includes/declarations.php";
                     id="declarant_first_name"
                     name="declarant_first_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="declarant_middle_name">Middle name:</label>
                 <input
@@ -144,7 +144,7 @@ include_once "../includes/declarations.php";
                     id="declarant_middle_name"
                     name="declarant_middle_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="declarant_last_name">Last name:</label>
                 <input
@@ -152,7 +152,7 @@ include_once "../includes/declarations.php";
                     id="declarant_last_name"
                     name="declarant_last_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
             </li>
             <li>
@@ -170,7 +170,7 @@ include_once "../includes/declarations.php";
                     id="declarant_phone"
                     name="declarant_phone"
                     required
-                    pattern="<?php echo PHONE_REGEX; ?>"
+                    pattern="<?=PHONE_REGEX;?>"
                 >
             </li>
             <li>
@@ -180,7 +180,7 @@ include_once "../includes/declarations.php";
                     id="declarant_residence"
                     name="declarant_residence"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                 >
             </li>
         </ul>
@@ -246,7 +246,7 @@ include_once "../includes/declarations.php";
                     id="declarant_relation_other_text"
                     name="declarant_relation_other_text"
                     disabled
-                    maxlength="<?php echo TEXTAREA_MAXLENGTH_DEFAULT ?>"
+                    maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT?>"
                     value=""
                 >
                 </textarea>

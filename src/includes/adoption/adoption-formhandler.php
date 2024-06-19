@@ -2,9 +2,9 @@
 // Include all files in includes folder
 $includes = glob("../*.php");
 foreach ($includes as $file) {
-    include_once $file;
+    require_once $file;
 }
-include_once "./adoption-declarations.php";
+require_once "./adoption-declarations.php";
 
 //  TODO (Client-Js) In category of adopters, enable disabled radios when info for both adopters is entered.
 //  CONSIDER Either remove the field 'relationship_to_adopter_x' or add validation to make sure the adopter is present.

@@ -3,7 +3,7 @@ const avatarHtml = `
     <link rel="stylesheet" href="/src/public/styles/avatar.css">
     <a class="container" href="#" rel="noopener noreferrer">
         <span id="logged-in" class="icon">
-            <svg width="32px" height="32px" viewBox="0 0 1024 1024"
+            <svg width="24px" height="24px" viewBox="0 0 1024 1024"
                 fill="currentColor" role="img"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill="currentColor"
@@ -11,7 +11,7 @@ const avatarHtml = `
             </svg>
         </span>
         <span id="logged-out" class="icon">
-            <svg width="32px" height="32px" viewBox="0 0 32 32"
+            <svg width="24px" height="24px" viewBox="0 0 32 32"
                 fill="currentColor" role="img"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill="currentColor"
@@ -20,7 +20,7 @@ const avatarHtml = `
                     d="M16 2a14 14 0 1 0 14 14A14.016 14.016 0 0 0 16 2Zm-6 24.377V25a3.003 3.003 0 0 1 3-3h6a3.003 3.003 0 0 1 3 3v1.377a11.899 11.899 0 0 1-12 0Zm13.992-1.451A5.002 5.002 0 0 0 19 20h-6a5.002 5.002 0 0 0-4.992 4.926a12 12 0 1 1 15.985 0Z" />
             </svg>
         </span>
-        <span id="login-text">Log in</span>
+        <span id="login-text"></span>
     </a>
 </div>`;
 
@@ -63,18 +63,34 @@ window.customElements.define('login-avatar', class LoginAvatar extends HTMLEleme
                 svg.setAttribute('viewBox', viewBox);
             }
         });
+    }
 
+    connectedCallback() {
+        this.updateLoginState();
+    }
 
-        // Defining logged-in attribute
+    static get observedAttributes() {
+        return ['logged-in']; // Define which attributes to observe changes for
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'logged-in') {
+            this.updateLoginState(); // Handle attribute change
+        }
+    }
+
+    updateLoginState() {
         const isLoggedIn = this.hasAttribute('logged-in');
         if (isLoggedIn) {
             this.shadowRoot.querySelector('#logged-in').style.display = 'block';
             this.shadowRoot.querySelector('#logged-out').style.display = 'none';
             this.shadowRoot.querySelector('#login-text').textContent = 'Log out';
+            this.shadowRoot.querySelector('.container').setAttribute('href', '/src/auth/logout.php');
         } else {
             this.shadowRoot.querySelector('#logged-in').style.display = 'none';
             this.shadowRoot.querySelector('#logged-out').style.display = 'block';
-            this.shadowRoot.querySelector('#login-text').textContent = 'Log in';
+            this.shadowRoot.querySelector('#login-text').textContent = 'Log in | Sign up';
+            this.shadowRoot.querySelector('.container').setAttribute('href', '/src/auth/signup.php');
         }
     }
 });
@@ -103,7 +119,7 @@ const navBarHtml = `
     <div class="menu-container">
         <login-avatar></login-avatar>
         <a class="report-icon" href="/src/report.php">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px"
+            <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
             viewBox="0 0 48 48"><defs><mask id="ipSTableReport0"><g fill="none"
                         stroke-linejoin="round" stroke-width="4"><path
                             fill="#fff" stroke="#fff"
@@ -114,7 +130,7 @@ const navBarHtml = `
                             d="M11 12h8m-8 7h12" /></g></mask></defs><path
                 fill="currentColor" d="M0 0h48v48H0z"
                 mask="url(#ipSTableReport0)" /></svg>
-                Report
+                Reports
         </a>
     </div>
 </div>
@@ -131,6 +147,13 @@ window.customElements.define('nav-bar', class NavBar extends HTMLElement {
 
         this.sideBarVisible = false;
         this.shadowRoot.querySelector('.page-title').innerText = this.getAttribute('title');
+
+        // Login state for avatar
+        if (this.hasAttribute('logged-in')) {
+            this.shadowRoot.querySelector('login-avatar').setAttribute('logged-in', '');
+        } else {
+            this.shadowRoot.querySelector('login-avatar').removeAttribute('logged-in');
+        }
 
         // Bind event handlers
         this.toggleSidebar = this.toggleSidebar.bind(this);
@@ -155,7 +178,7 @@ window.customElements.define('nav-bar', class NavBar extends HTMLElement {
         if (this.sideBarVisible) {
             sideBar.style.left = "0px";
         } else {
-            sideBar.style.left = "-258px";
+            sideBar.style.left = "-314px";
         }
     }
 

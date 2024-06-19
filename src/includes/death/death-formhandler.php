@@ -3,9 +3,9 @@
 // Include all files in includes folder
 $includes = glob("../*.php");
 foreach ($includes as $file) {
-    include_once $file;
+    require_once $file;
 }
-include_once "./death-declarations.php";
+require_once "./death-declarations.php";
 
 //  TODO Enter the data into the database
 //      - NOTE The only check you need to make before entering into the database is to make sure that

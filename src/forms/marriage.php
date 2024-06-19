@@ -1,5 +1,5 @@
 <?php
-include_once "../includes/declarations.php";
+require_once "../includes/declarations.php";
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ include_once "../includes/declarations.php";
                     id="spouse1_first_name"
                     name="spouse1_first_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="spouse1_middle_name">Middle name:</label>
                 <input
@@ -33,7 +33,7 @@ include_once "../includes/declarations.php";
                     id="spouse1_middle_name"
                     name="spouse1_middle_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="spouse1_last_name">Last name:</label>
                 <input
@@ -41,7 +41,7 @@ include_once "../includes/declarations.php";
                     id="spouse1_last_name"
                     name="spouse1_last_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="spouse1_sex">Sex</label>
                 <select id="spouse1_sex" name="spouse1_sex" required>
@@ -62,7 +62,7 @@ include_once "../includes/declarations.php";
                     name="spouse1_place_of_birth"
                     id="spouse1_place_of_birth"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                 >
                 <label for="spouse1_citizenship">Country of citizenship:</label>
                 <input
@@ -70,7 +70,7 @@ include_once "../includes/declarations.php";
                     name="spouse1_citizenship"
                     id="spouse1_citizenship"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <!-- Legally separated is not an option because legally separated couple cannot get married. -->
                 <label for="spouse1_previous_martial">Previous martial status:</label>
@@ -86,7 +86,7 @@ include_once "../includes/declarations.php";
                     id="spouse1_phone"
                     name="spouse1_phone"
                     required
-                    pattern="<?php echo PHONE_REGEX; ?>"
+                    pattern="<?=PHONE_REGEX;?>"
                 >
                 <label for="spouse1_residence">Principal Residence:</label>
                 <input
@@ -94,7 +94,7 @@ include_once "../includes/declarations.php";
                     name="spouse1_residence"
                     id="spouse1_residence"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                 >
             </fieldset>
             <h3>Second spouse Information</h3>
@@ -106,7 +106,7 @@ include_once "../includes/declarations.php";
                     id="spouse2"
                     name="spouse2"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="spouse2_middle_name">Middle name:</label>
                 <input
@@ -114,7 +114,7 @@ include_once "../includes/declarations.php";
                     id="spouse2_middle_name"
                     name="spouse2_middle_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="spouse2_last_name">Last name:</label>
                 <input
@@ -122,7 +122,7 @@ include_once "../includes/declarations.php";
                     id="spouse2_last_name"
                     name="spouse2_last_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="spouse2_sex">Sex</label>
                 <select id="spouse2_sex" name="spouse2_sex" required>
@@ -143,7 +143,7 @@ include_once "../includes/declarations.php";
                     name="spouse2_place_of_birth"
                     id="spouse2_place_of_birth"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                 >
                 <label for="spouse2_citizenship">Country of citizenship:</label>
                 <input
@@ -151,7 +151,7 @@ include_once "../includes/declarations.php";
                     name="spouse2_citizenship"
                     id="spouse2_citizenship"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <!-- Legally separated is not an option because legally separated couple cannot get married. -->
                 <label for="spouse2_previous_martial">Previous martial status:</label>
@@ -167,7 +167,7 @@ include_once "../includes/declarations.php";
                     id="spouse2_phone"
                     name="spouse2_phone"
                     required
-                    pattern="<?php echo PHONE_REGEX; ?>"
+                    pattern="<?=PHONE_REGEX;?>"
                 >
                 <label for="spouse2_residence">Principal Residence:</label>
                 <input
@@ -175,7 +175,7 @@ include_once "../includes/declarations.php";
                     name="spouse2_residence"
                     id="spouse2_residence"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                 >
             </fieldset>
             <h2>Witnesses</h2>
@@ -187,7 +187,7 @@ include_once "../includes/declarations.php";
                     id="witness1_first_name"
                     name="witness1_first_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="witness1_middle_name">Middle name:</label>
                 <input
@@ -195,7 +195,7 @@ include_once "../includes/declarations.php";
                     id="witness1_middle_name"
                     name="witness1_middle_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="witness1_last_name">Last name:</label>
                 <input
@@ -203,7 +203,7 @@ include_once "../includes/declarations.php";
                     id="witness1_last_name"
                     name="witness1_last_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="witness1_sex">Sex</label>
                 <select id="witness1_sex" name="witness1_sex" required>
@@ -224,7 +224,7 @@ include_once "../includes/declarations.php";
                     name="witness1_citizenship"
                     id="witness1_citizenship"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="witness1_phone">Phone:</label>
                 <input
@@ -232,7 +232,7 @@ include_once "../includes/declarations.php";
                     id="witness1_phone"
                     name="witness1_phone"
                     required
-                    pattern="<?php echo PHONE_REGEX; ?>"
+                    pattern="<?=PHONE_REGEX;?>"
                 >
                 <label for="witness1_residence">Principal Residence:</label>
                 <input
@@ -240,7 +240,7 @@ include_once "../includes/declarations.php";
                     name="witness1_residence"
                     id="witness1_residence"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                 >
             </fieldset>
             <fieldset>
@@ -251,7 +251,7 @@ include_once "../includes/declarations.php";
                     id="witness2_first_name"
                     name="witness2_first_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="witness2_middle_name">Middle name:</label>
                 <input
@@ -259,7 +259,7 @@ include_once "../includes/declarations.php";
                     id="witness2_middle_name"
                     name="witness2_middle_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="witness2_last_name">Last name:</label>
                 <input
@@ -267,7 +267,7 @@ include_once "../includes/declarations.php";
                     id="witness2_last_name"
                     name="witness2_last_name"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="witness2_sex">Sex</label>
                 <select id="witness2_sex" name="witness2_sex" required>
@@ -288,7 +288,7 @@ include_once "../includes/declarations.php";
                     name="witness2_citizenship"
                     id="witness2_citizenship"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                 >
                 <label for="witness2_phone">Phone:</label>
                 <input
@@ -296,7 +296,7 @@ include_once "../includes/declarations.php";
                     id="witness2_phone"
                     name="witness2_phone"
                     required
-                    pattern="<?php echo PHONE_REGEX; ?>"
+                    pattern="<?=PHONE_REGEX;?>"
                 >
                 <label for="witness2_residence">Principal Residence:</label>
                 <input
@@ -304,7 +304,7 @@ include_once "../includes/declarations.php";
                     name="witness2_residence"
                     id="witness2_residence"
                     required
-                    maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                    maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                 >
             </fieldset>
             <h2>Marriage Details</h2>
@@ -321,7 +321,7 @@ include_once "../includes/declarations.php";
                 name="marriage_place"
                 id="marriage_place"
                 required
-                maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
             >
             <button type="submit">Submit Registration</button>
         </form>

@@ -2,7 +2,8 @@
     overscroll-behavior: none;
 }
 
-body {
+body,
+body>div {
     margin: 0;
     font-family: "Poppins", sans-serif;
     font-weight: normal;
@@ -15,6 +16,7 @@ body {
 .content {
     max-width: 1200px;
     margin: 72px auto 8px auto;
+    min-height: 85vh;
     padding: 20px;
     background-color: #fff;
     border-radius: 4px;
@@ -48,8 +50,7 @@ a {
     color: #666;
 }
 
-.btn-sign-in,
-.btn-register {
+.content button {
     display: inline-block;
     padding: 10px 20px;
     margin-right: 10px;
@@ -60,8 +61,7 @@ a {
     transition: background-color 0.3s ease;
 }
 
-.btn-sign-in:hover,
-.btn-register:hover {
+.content button:hover {
     background-color: #0056b3;
 }
 

@@ -1,0 +1,115 @@
+/* main.css */
+
+/* Centering the sign-up-form */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Ensures the form is centered vertically */
+    background-color: #f0f0f0;
+    /* Optional: Background color for the content area */
+}
+
+.sign-up-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.sign-up-form h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333333;
+}
+
+.sign-up-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center align form items */
+}
+
+.sign-up-form form div {
+    width: 100%;
+    max-width: 300px;
+    /* Adjust max-width as needed */
+    margin-bottom: 15px;
+    text-align: left;
+    /* Align text inside divs to the left */
+}
+
+.sign-up-form form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555555;
+}
+
+.sign-up-form form input[type="text"],
+.sign-up-form form input[type="email"],
+.sign-up-form form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+    box-sizing: border-box;
+    /* Ensures padding and border are included in width */
+}
+
+.sign-up-form form div input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+    box-sizing: border-box;
+    /* Ensure padding and border are included in width */
+}
+
+.sign-up-form form div input[type="date"]:focus {
+    border-color: #007bff;
+}
+
+.sign-up-form form input:focus {
+    border-color: #007bff;
+}
+
+.sign-up-form form button[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.sign-up-form form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.sign-up-form form p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #777777;
+}
+
+.sign-up-form form p a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sign-up-form form p a:hover {
+    text-decoration: underline;
+}

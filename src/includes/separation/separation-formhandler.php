@@ -2,9 +2,9 @@
 // Include all files in includes folder
 $includes = glob("../*.php");
 foreach ($includes as $file) {
-    include_once $file;
+    require_once $file;
 }
-include_once "./separation-declarations.php";
+require_once "./separation-declarations.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -71,5 +71,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     header("Location: ../../forms/separation.php");
     exit();
 }
-
-?>

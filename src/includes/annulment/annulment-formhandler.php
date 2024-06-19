@@ -3,9 +3,9 @@
 // Include all necessary files
 $includes = glob("../*.php");
 foreach ($includes as $file) {
-    include_once $file;
+    require_once $file;
 }
-include_once "./annulment-declarations.php";
+require_once "./annulment-declarations.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 

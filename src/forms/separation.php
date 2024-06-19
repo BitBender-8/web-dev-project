@@ -1,5 +1,5 @@
 <?php
-include_once "../includes/declarations.php";
+require_once "../includes/declarations.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,14 +10,14 @@ include_once "../includes/declarations.php";
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
         <title>Legal Separation Registration Form</title>
     </head>
-    <!-- 
+    <!--
          # FORM VALIDATIONS
-         - [ ] Universal validations (1 - 5)   
+         - [ ] Universal validations (1 - 5)
     -->
     <body>
         <a href="index.php">Home</a>
         <form action="../includes/separation/separation-formhandler.php" method="post">
-            <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_UPLOAD_FILE_SIZE; ?>" />
+            <input type="hidden" name="MAX_FILE_SIZE" value="<?=MAX_UPLOAD_FILE_SIZE;?>" />
             <h1>Legal Separation Registration Form</h1>
             <h2>Spouse Information</h2>
             <h3>Petitioner (First Spouse)</h3>
@@ -29,7 +29,7 @@ include_once "../includes/declarations.php";
                         id="petitioner_first_name"
                         name="petitioner_first_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="petitioner_middle_name">Middle name:</label>
                     <input
@@ -37,7 +37,7 @@ include_once "../includes/declarations.php";
                         id="petitioner_middle_name"
                         name="petitioner_middle_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="petitioner_last_name">Last name:</label>
                     <input
@@ -45,7 +45,7 @@ include_once "../includes/declarations.php";
                         id="petitioner_last_name"
                         name="petitioner_last_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -80,7 +80,7 @@ include_once "../includes/declarations.php";
                         name="petitioner_citizenship"
                         id="petitioner_citizenship"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -90,7 +90,7 @@ include_once "../includes/declarations.php";
                         id="petitioner_phone"
                         name="petitioner_phone"
                         required
-                        pattern="<?php echo PHONE_REGEX; ?>"
+                        pattern="<?=PHONE_REGEX;?>"
                     >
                 </li>
                 <li>
@@ -112,7 +112,7 @@ include_once "../includes/declarations.php";
                         id="respondent_first_name"
                         name="respondent_first_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="respondent_middle_name">Middle name:</label>
                     <input
@@ -120,7 +120,7 @@ include_once "../includes/declarations.php";
                         id="respondent_middle_name"
                         name="respondent_middle_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="respondent_last_name">Last name:</label>
                     <input
@@ -128,7 +128,7 @@ include_once "../includes/declarations.php";
                         id="respondent_last_name"
                         name="respondent_last_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -163,7 +163,7 @@ include_once "../includes/declarations.php";
                         name="respondent_citizenship"
                         id="respondent_citizenship"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -173,7 +173,7 @@ include_once "../includes/declarations.php";
                         id="respondent_phone"
                         name="respondent_phone"
                         required
-                        pattern="<?php echo PHONE_REGEX; ?>"
+                        pattern="<?=PHONE_REGEX;?>"
                     >
                 </li>
                 <li>
@@ -217,7 +217,7 @@ include_once "../includes/declarations.php";
                         type="file"
                         id="separation_reference"
                         name="separation_reference"
-                        accept="<?php echo rtrim(implode(',', ALLOWED_UPLOAD_FILE_TYPES), ',') ?>"
+                        accept="<?=rtrim(implode(',', ALLOWED_UPLOAD_FILE_TYPES), ',')?>"
                         required
                     >
                 </li>
@@ -227,7 +227,7 @@ include_once "../includes/declarations.php";
                         id="separation_reason"
                         name="separation_reason"
                         rows="2"
-                        maxlength="<?php echo TEXTAREA_MAXLENGTH_SMALL; ?>"
+                        maxlength="<?=TEXTAREA_MAXLENGTH_SMALL;?>"
                     ></textarea>
                 </li>
                 <li>

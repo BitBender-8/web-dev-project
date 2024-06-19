@@ -3,7 +3,7 @@
 // Like a Person's title
 define("INPUT_MAXLENGTH_SHORT", 10);
 // For most inputs like name fields
-define("INPUT_MAXLENGTH_DEFAULT", 100);
+define("INPUT_MAXLENGTH_DEFAULT", 85);
 // For addresses and long inputs
 define("INPUT_MAXLENGTH_LONG", 200);
 
@@ -28,6 +28,11 @@ define("ALLOWED_UPLOAD_FILE_TYPES", ['image/jpeg', 'image/png', 'image/pjpeg', '
 define("BYTES_IN_KB", 1024);
 // Directory to save uploads in
 define("UPLOAD_DIRECTORY", "{$_SERVER['DOCUMENT_ROOT']}/Uploads/");
+
+/**
+ * @var bool Global state variable that stores sign in status
+ */
+$LOGGED_IN = false;
 
 /**
  * Represents an error message. Its fields are immutable once created.

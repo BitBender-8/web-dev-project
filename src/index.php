@@ -1,3 +1,6 @@
+<?php
+require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php"
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +17,7 @@
 </head>
 
 <body>
-    <nav-bar title="Vital Event Registration System">
+    <nav-bar title="Vital Event Registration System" <?=($LOGGED_IN) ? 'logged-in' : ''?>>
         <a href="./forms/adoption.php" rel="noopener noreferrer">Adoption</a>
         <a href="./forms/birth.php" rel="noopener noreferrer">Live
             birth</a>
@@ -26,11 +29,10 @@
         <a href="./forms/recognition.php" rel="noopener noreferrer">Parental recognition</a>
         <a href="./forms/stillbirth.php" rel="noopener noreferrer">Stillbirth</a>
         <a href="./forms/divorce.php" rel="noopener noreferrer">Divorce</a>
-        <a href="./report.php" rel="noopener noreferrer">Report</a>
     </nav-bar>
     <div class="content">
         <div class="banner">
-            <h1>Welcome to Our Registration Service</h1>
+            <h1>Welcome to Our Service</h1>
             <p>Our platform provides a secure and straightforward way to
                 register vital events. Whether it's the birth of a
                 child, marriage, divorce, or recognition, we ensure

@@ -1,5 +1,5 @@
 <?php
-include_once "../includes/declarations.php";
+require_once "../includes/declarations.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,14 +9,14 @@ include_once "../includes/declarations.php";
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
         <title>Divorce Registration Form</title>
     </head>
-    <!--  
+    <!--
         # FORM VALIDATION
         - [ ] Universal validation 1 - 5
      -->
     <body>
         <a href="index.php">Home</a>
         <form action="../includes/divorce/divorce-formhandler.php" method="post">
-            <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_UPLOAD_FILE_SIZE; ?>" />
+            <input type="hidden" name="MAX_FILE_SIZE" value="<?=MAX_UPLOAD_FILE_SIZE;?>" />
             <h1>Divorce Registration Form</h1>
             <h2>First spouse</h2>
             <ul>
@@ -27,7 +27,7 @@ include_once "../includes/declarations.php";
                         id="spouse1_first_name"
                         name="spouse1_first_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="spouse1_middle_name">Middle name:</label>
                     <input
@@ -35,7 +35,7 @@ include_once "../includes/declarations.php";
                         id="spouse1_middle_name"
                         name="spouse1_middle_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="spouse1_last_name">Last name:</label>
                     <input
@@ -43,7 +43,7 @@ include_once "../includes/declarations.php";
                         id="spouse1_last_name"
                         name="spouse1_last_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -69,7 +69,7 @@ include_once "../includes/declarations.php";
                         id="spouse1_pob"
                         name="spouse1_pob"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                     >
                 </li>
                 <li>
@@ -79,7 +79,7 @@ include_once "../includes/declarations.php";
                         id="spouse1_residence"
                         name="spouse1_residence"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                     >
                 </li>
                 <li>
@@ -89,7 +89,7 @@ include_once "../includes/declarations.php";
                         id="spouse1_phone"
                         name="spouse1_phone"
                         required
-                        pattern="<?php echo PHONE_REGEX; ?>"
+                        pattern="<?=PHONE_REGEX;?>"
                     >
                 </li>
                 <li>
@@ -99,7 +99,7 @@ include_once "../includes/declarations.php";
                         id="spouse1_citizenship"
                         name="spouse1_citizenship"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
             </ul>
@@ -112,7 +112,7 @@ include_once "../includes/declarations.php";
                         id="spouse2_first_name"
                         name="spouse2_first_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="spouse2_middle_name">Middle name:</label>
                     <input
@@ -120,7 +120,7 @@ include_once "../includes/declarations.php";
                         id="spouse2_middle_name"
                         name="spouse2_middle_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="spouse2_last_name">Last name:</label>
                     <input
@@ -128,7 +128,7 @@ include_once "../includes/declarations.php";
                         id="spouse2_last_name"
                         name="spouse2_last_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -163,7 +163,7 @@ include_once "../includes/declarations.php";
                         id="spouse2_residence"
                         name="spouse2_residence"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                     >
                 </li>
                 <li>
@@ -173,7 +173,7 @@ include_once "../includes/declarations.php";
                         id="spouse2_phone"
                         name="spouse2_phone"
                         required
-                        pattern="<?php echo PHONE_REGEX; ?>"
+                        pattern="<?=PHONE_REGEX;?>"
                     >
                 </li>
                 <li>
@@ -183,7 +183,7 @@ include_once "../includes/declarations.php";
                         id="spouse2_citizenship"
                         name="spouse2_citizenship"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
             </ul>
@@ -205,7 +205,7 @@ include_once "../includes/declarations.php";
                         id="marriage_place"
                         name="marriage_place"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                     >
                 </li>
                 <li>
@@ -225,7 +225,7 @@ include_once "../includes/declarations.php";
                         type="file"
                         id="divorce_reference"
                         name="divorce_reference"
-                        accept="<?php echo rtrim(implode(',', ALLOWED_UPLOAD_FILE_TYPES), ',') ?>"
+                        accept="<?=rtrim(implode(',', ALLOWED_UPLOAD_FILE_TYPES), ',')?>"
                         required
                     >
                 </li>
@@ -235,7 +235,7 @@ include_once "../includes/declarations.php";
                         id="divorce_reason"
                         name="divorce_reason"
                         rows="2"
-                        maxlength="<?php echo TEXTAREA_MAXLENGTH_SMALL; ?>"
+                        maxlength="<?=TEXTAREA_MAXLENGTH_SMALL;?>"
                     ></textarea>
                 </li>
             </ul>

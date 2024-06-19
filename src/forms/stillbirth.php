@@ -1,5 +1,5 @@
 <?php
-include_once "../includes/declarations.php";
+require_once "../includes/declarations.php";
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ include_once "../includes/declarations.php";
                         type="text"
                         id="child_first_name"
                         name="child_first_name"
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="child_middle_name">Middle name:</label>
                     <input
@@ -31,7 +31,7 @@ include_once "../includes/declarations.php";
                         id="child_middle_name"
                         name="child_middle_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="child_last_name">Last name:</label>
                     <input
@@ -39,7 +39,7 @@ include_once "../includes/declarations.php";
                         id="child_last_name"
                         name="child_last_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -71,7 +71,7 @@ include_once "../includes/declarations.php";
                         type="text"
                         id="mother_first_name"
                         name="mother_first_name"
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="mother_middle_name">Middle name:</label>
                     <input
@@ -79,7 +79,7 @@ include_once "../includes/declarations.php";
                         id="mother_middle_name"
                         name="mother_middle_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="mother_last_name">Last name:</label>
                     <input
@@ -87,7 +87,7 @@ include_once "../includes/declarations.php";
                         id="mother_last_name"
                         name="mother_last_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -118,7 +118,7 @@ include_once "../includes/declarations.php";
                         id="mother_residence"
                         name="mother_residence"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                     >
                 </li>
                 <li>
@@ -128,7 +128,7 @@ include_once "../includes/declarations.php";
                         id="mother_citizenship"
                         name="mother_citizenship"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -138,7 +138,7 @@ include_once "../includes/declarations.php";
                         id="mother_phone"
                         name="mother_phone"
                         required
-                        pattern="<?php echo PHONE_REGEX; ?>"
+                        pattern="<?=PHONE_REGEX;?>"
                     >
                 </li>
             </ul>
@@ -151,21 +151,21 @@ include_once "../includes/declarations.php";
                         type="text"
                         id="father_first_name"
                         name="father_first_name"
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="father_middle_name">Middle name:</label>
                     <input
                         type="text"
                         id="father_middle_name"
                         name="father_middle_name"
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="father_last_name">Last name:</label>
                     <input
                         type="text"
                         id="father_last_name"
                         name="father_last_name"
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -194,7 +194,7 @@ include_once "../includes/declarations.php";
                         type="text"
                         id="father_residence"
                         name="father_residence"
-                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                     >
                 </li>
                 <li>
@@ -203,7 +203,7 @@ include_once "../includes/declarations.php";
                         type="text"
                         id="father_citizenship"
                         name="father_citizenship"
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -212,7 +212,7 @@ include_once "../includes/declarations.php";
                         type="tel"
                         id="father_phone"
                         name="father_phone"
-                        pattern="<?php echo PHONE_REGEX; ?>"
+                        pattern="<?=PHONE_REGEX;?>"
                     >
                 </li>
             </ul>
@@ -234,7 +234,7 @@ include_once "../includes/declarations.php";
                         id="delivery_place"
                         name="delivery_place"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                     >
                 </li>
                 <li>
@@ -292,7 +292,7 @@ include_once "../includes/declarations.php";
                         name="explanation_maternal_conditions"
                         rows="4"
                         disabled
-                        maxlength="<?php echo TEXTAREA_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"
                     ></textarea>
                 </li>
                 <li>
@@ -310,7 +310,7 @@ include_once "../includes/declarations.php";
                         name="explanation_placenta_complications"
                         rows="4"
                         disabled
-                        maxlength="<?php echo TEXTAREA_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"
                     ></textarea>
                 </li>
                 <li>
@@ -328,7 +328,7 @@ include_once "../includes/declarations.php";
                         name="explanation_other_obstetrical_complications"
                         rows="4"
                         disabled
-                        maxlength="<?php echo TEXTAREA_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"
                     ></textarea>
                 </li>
                 <li>
@@ -344,7 +344,7 @@ include_once "../includes/declarations.php";
                         name="explanation_fetal_anomaly"
                         rows="4"
                         disabled
-                        maxlength="<?php echo TEXTAREA_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"
                     ></textarea>
                 </li>
                 <li>
@@ -360,7 +360,7 @@ include_once "../includes/declarations.php";
                         name="explanation_fetal_injury"
                         rows="4"
                         disabled
-                        maxlength="<?php echo TEXTAREA_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"
                     ></textarea>
                 </li>
                 <li>
@@ -378,7 +378,7 @@ include_once "../includes/declarations.php";
                         name="explanation_fetal_infection"
                         rows="4"
                         disabled
-                        maxlength="<?php echo TEXTAREA_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"
                     ></textarea>
                 </li>
                 <li>
@@ -396,7 +396,7 @@ include_once "../includes/declarations.php";
                         name="explanation_other_fetal_conditions"
                         rows="4"
                         disabled
-                        maxlength="<?php echo TEXTAREA_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"
                     ></textarea>
                 </li>
             </ul>
@@ -408,7 +408,7 @@ include_once "../includes/declarations.php";
                         type="text"
                         id="reporter_first_name"
                         name="reporter_first_name"
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                         required
                     >
                     <label for="reporter_middle_name">Middle name:</label>
@@ -417,7 +417,7 @@ include_once "../includes/declarations.php";
                         id="reporter_middle_name"
                         name="reporter_middle_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                     <label for="reporter_last_name">Last name:</label>
                     <input
@@ -425,7 +425,7 @@ include_once "../includes/declarations.php";
                         id="reporter_last_name"
                         name="reporter_last_name"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_DEFAULT; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>"
                     >
                 </li>
                 <li>
@@ -443,7 +443,7 @@ include_once "../includes/declarations.php";
                         id="reporter_residence"
                         name="reporter_residence"
                         required
-                        maxlength="<?php echo INPUT_MAXLENGTH_LONG; ?>"
+                        maxlength="<?=INPUT_MAXLENGTH_LONG;?>"
                     >
                 </li>
                 <li>
@@ -453,7 +453,7 @@ include_once "../includes/declarations.php";
                         id="reporter_phone"
                         name="reporter_phone"
                         required
-                        pattern="<?php echo PHONE_REGEX; ?>"
+                        pattern="<?=PHONE_REGEX;?>"
                     >
                 </li>
             </ul>

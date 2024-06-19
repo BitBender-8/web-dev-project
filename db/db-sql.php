@@ -4,16 +4,18 @@
 -- Users table acts as a central reference for individuals -->
 <?php
 
-include_once "../src/includes/declarations.php";
+require_once "../src/includes/declarations.php";
 // The names of people have been combined into a single field that will be delimited by a semicolor
-
+// Use MariaDB for your database since MYSQL needs to be configured to allow our large columns
 $db_sql =
     "CREATE DATABASE vital_event_registration;
 USE vital_event_registration;
 
 CREATE TABLE Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
-    full_name VARCHAR(300) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    full_name VARCHAR(255) NOT NULL,
     dob DATE NOT NULL,
     principal_residence VARCHAR(255),
     citizenship VARCHAR(255)
@@ -21,28 +23,28 @@ CREATE TABLE Users (
 
 CREATE TABLE LiveBirthRegistrations (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    child_name VARCHAR(300) NOT NULL,
+    child_name VARCHAR(255) NOT NULL,
     child_sex ENUM('M', 'F') NOT NULL,
     child_dob DATE NOT NULL,
     child_place_of_birth VARCHAR(255) NOT NULL,
     child_birth_plurality INT NOT NULL,
     child_weight_at_birth FLOAT NOT NULL,
     child_aid_rendered TEXT,
-    mother_name VARCHAR(300) NOT NULL,
+    mother_name VARCHAR(255) NOT NULL,
     mother_dob DATE NOT NULL,
     mother_place_of_birth VARCHAR(255) NOT NULL,
     mother_residence VARCHAR(255) NOT NULL,
     mother_phone VARCHAR(20) NOT NULL,
     mother_marital_status ENUM('married', 'single', 'widowed', 'divorced') NOT NULL,
     mother_citizenship VARCHAR(100) NOT NULL,
-    father_name VARCHAR(300) NOT NULL,
+    father_name VARCHAR(255) NOT NULL,
     father_dob DATE NOT NULL,
     father_place_of_birth VARCHAR(255) NOT NULL,
     father_residence VARCHAR(255) NOT NULL,
     father_phone VARCHAR(20) NOT NULL,
     father_marital_status ENUM('married', 'single', 'widowed', 'divorced') NOT NULL,
     father_citizenship VARCHAR(100) NOT NULL,
-    declarant_name VARCHAR(300),
+    declarant_name VARCHAR(255),
     declarant_relation_to_child VARCHAR(100),
     declarant_sex ENUM('M', 'F'),
     declarant_dob DATE,
@@ -56,7 +58,7 @@ CREATE TABLE LiveBirthRegistrations (
 
 CREATE TABLE MarriageRegistrations (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    spouse1_full_name VARCHAR(300) NOT NULL,
+    spouse1_full_name VARCHAR(255) NOT NULL,
     spouse1_sex ENUM('M', 'F') NOT NULL,
     spouse1_dob DATE NOT NULL,
     spouse1_place_of_birth VARCHAR(255) NOT NULL,
@@ -64,7 +66,7 @@ CREATE TABLE MarriageRegistrations (
     spouse1_previous_marital ENUM('single', 'divorced', 'widowed') NOT NULL,
     spouse1_phone VARCHAR(20) NOT NULL,
     spouse1_residence VARCHAR(255) NOT NULL,
-    spouse2_full_name VARCHAR(300) NOT NULL,
+    spouse2_full_name VARCHAR(255) NOT NULL,
     spouse2_sex ENUM('M', 'F') NOT NULL,
     spouse2_dob DATE NOT NULL,
     spouse2_place_of_birth VARCHAR(255) NOT NULL,
@@ -72,13 +74,13 @@ CREATE TABLE MarriageRegistrations (
     spouse2_previous_marital ENUM('single', 'divorced', 'widowed') NOT NULL,
     spouse2_phone VARCHAR(20) NOT NULL,
     spouse2_residence VARCHAR(255) NOT NULL,
-    witness1_full_name VARCHAR(300) NOT NULL,
+    witness1_full_name VARCHAR(255) NOT NULL,
     witness1_sex ENUM('M', 'F') NOT NULL,
     witness1_dob DATE NOT NULL,
     witness1_citizenship VARCHAR(100) NOT NULL,
     witness1_phone VARCHAR(20) NOT NULL,
     witness1_residence VARCHAR(255) NOT NULL,
-    witness2_full_name VARCHAR(300) NOT NULL,
+    witness2_full_name VARCHAR(255) NOT NULL,
     witness2_sex ENUM('M', 'F') NOT NULL,
     witness2_dob DATE NOT NULL,
     witness2_citizenship VARCHAR(100) NOT NULL,
@@ -144,16 +146,16 @@ CREATE TABLE DeathRegistrations (
 
 CREATE TABLE StillbirthRegistrations (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    child_full_name VARCHAR(300) NOT NULL,
+    child_full_name VARCHAR(255) NOT NULL,
     child_sex ENUM('M', 'F') NOT NULL,
     child_gestational_age_wks INT NOT NULL,
-    mother_full_name VARCHAR(300) NOT NULL,
+    mother_full_name VARCHAR(255) NOT NULL,
     mother_dob DATE NOT NULL,
     mother_marital_status ENUM('married', 'single', 'widowed', 'divorced', 'separated') NOT NULL,
     mother_residence VARCHAR(255) NOT NULL,
     mother_citizenship VARCHAR(100) NOT NULL,
     mother_phone VARCHAR(20) NOT NULL,
-    father_full_name VARCHAR(300),
+    father_full_name VARCHAR(255),
     father_dob DATE,
     father_marital_status ENUM('married', 'single', 'widowed', 'divorced', 'separated'),
     father_residence VARCHAR(255),
@@ -169,7 +171,7 @@ CREATE TABLE StillbirthRegistrations (
         'fetal_anomaly', 'fetal_injury', 'fetal_infection', 'other_fetal_conditions'
     ) NOT NULL,
     fetal_death_explanation TEXT DEFAULT NULL,
-    reporter_full_name VARCHAR(300) NOT NULL,
+    reporter_full_name VARCHAR(255) NOT NULL,
     reporter_sex ENUM('M', 'F') NOT NULL,
     reporter_residence VARCHAR(255) NOT NULL,
     reporter_phone VARCHAR(20) NOT NULL,
@@ -183,7 +185,7 @@ CREATE TABLE AdoptionRegistrations (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 
     -- Adopter 1 Information
-    adopter1_full_name VARCHAR(300) NOT NULL,
+    adopter1_full_name VARCHAR(255) NOT NULL,
     adopter1_dob DATE NOT NULL,
     adopter1_sex ENUM('M', 'F') NOT NULL,
     adopter1_birthplace VARCHAR(255) NOT NULL,
@@ -196,7 +198,7 @@ CREATE TABLE AdoptionRegistrations (
     adopter1_relationship_chlds_parent VARCHAR(255) DEFAULT NULL,
 
     -- Adopter 2 Information (nullable)
-    adopter2_full_name VARCHAR(300) DEFAULT NULL,
+    adopter2_full_name VARCHAR(255) DEFAULT NULL,
     adopter2_dob DATE DEFAULT NULL,
     adopter2_sex ENUM('M', 'F') DEFAULT NULL,
     adopter2_birthplace VARCHAR(255) DEFAULT NULL,
@@ -212,7 +214,7 @@ CREATE TABLE AdoptionRegistrations (
     category_of_adopters ENUM('stepparent', 'sole', 'couple', 'cohabitants') NOT NULL,
 
     -- Child Information
-    child_full_name VARCHAR(300) NOT NULL,
+    child_full_name VARCHAR(255) NOT NULL,
     child_dob DATE NOT NULL,
     child_birthplace VARCHAR(255) NOT NULL,
     child_sex ENUM('M', 'F') NOT NULL,
