@@ -81,5 +81,5 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         handleErrors($errors_declarant_required_fields, 'Missing fields for Declarant: Submit either no fields or all required fields');
     }
 } else {
-    header("Location: ../../forms/birth.php");
+    header("Location: .././src/forms/birth.php");
 }

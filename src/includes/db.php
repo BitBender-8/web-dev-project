@@ -28,5 +28,5 @@ $pdo = null;
 try {
     $pdo = new PDO($dsn, $db_user, $db_passwd, $options);
 } catch (PDOException $e) {
-    echo $e->getMessage();
+    echo "<p>{$e->getMessage()}</p>";
 }

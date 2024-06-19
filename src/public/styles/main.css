@@ -50,7 +50,9 @@ a {
     color: #666;
 }
 
-.content button {
+.content button,
+.content .btn-log-in,
+.content .btn-register {
     display: inline-block;
     padding: 10px 20px;
     margin-right: 10px;
@@ -61,7 +63,9 @@ a {
     transition: background-color 0.3s ease;
 }
 
-.content button:hover {
+.content button:hover,
+.content .btn-log-in:hover,
+.content .btn-register:hover {
     background-color: #0056b3;
 }
 

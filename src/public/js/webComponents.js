@@ -89,8 +89,8 @@ window.customElements.define('login-avatar', class LoginAvatar extends HTMLEleme
         } else {
             this.shadowRoot.querySelector('#logged-in').style.display = 'none';
             this.shadowRoot.querySelector('#logged-out').style.display = 'block';
-            this.shadowRoot.querySelector('#login-text').textContent = 'Log in | Sign up';
-            this.shadowRoot.querySelector('.container').setAttribute('href', '/src/auth/signup.php');
+            this.shadowRoot.querySelector('#login-text').innerHTML = 'Log in | Sign up';
+            this.shadowRoot.querySelector('.container').setAttribute('href', '/src/auth/login.php');
         }
     }
 });

@@ -1,5 +1,6 @@
 <?php
-$separation_required_fields = [
+
+$required_fields = [
     'spouse1' => [
         'petitioner_first_name',
         'petitioner_middle_name',
@@ -27,12 +28,12 @@ $separation_required_fields = [
         'marriage_place',
     ],
     'separation_details' => [
-        'separation_reference',
+        // 'separation_reference', This is handled separately
         'separation_date',
     ],
 ];
 
-$separation_text_maxlengths = [
+$text_maxlengths = [
     'petitioner_first_name' => INPUT_MAXLENGTH_DEFAULT,
     'petitioner_middle_name' => INPUT_MAXLENGTH_DEFAULT,
     'petitioner_last_name' => INPUT_MAXLENGTH_DEFAULT,
@@ -48,12 +49,12 @@ $separation_text_maxlengths = [
     'separation_reason' => TEXTAREA_MAXLENGTH_SMALL,
 ];
 
-$separation_selection_controls = [
+$selection_controls = [
     'petitioner_sex' => ['M', 'F'],
     'respondent_sex' => ['M', 'F'],
 ];
 
-$separation_phone_fields = [
+$phone_fields = [
     'petitioner_phone',
     'respondent_phone',
 ];
@@ -87,6 +88,3 @@ $separation_labels = [
 $file_fields = [
     'separation_reference',
 ];
-
-
-?>

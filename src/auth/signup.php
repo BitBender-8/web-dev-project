@@ -7,7 +7,7 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vital Event Registration</title>
+    <title>Vital Event Registration - Signup</title>
     <script defer src="/src/public/js/webComponents.js"></script>
     <link href="/src/public/styles/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="/src/public/styles/fontawesome/css/all.min.css" rel="stylesheet">
@@ -18,24 +18,25 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php"
 </head>
 
 <body>
-    <nav-bar title="Vital Event Registration System" <?=($LOGGED_IN) ? 'logged-in' : ''?>>
-        <a href="./forms/adoption.php" rel="noopener noreferrer">Adoption</a>
-        <a href="./forms/birth.php" rel="noopener noreferrer">Live
+    <nav-bar title="Vital Event Registration System" <?=empty($_SESSION['user_id']) ? '' : 'logged-in'?>>
+        <a href="/src/forms/adoption.php" rel="noopener noreferrer">Adoption</a>
+        <a href="/src/forms/birth.php" rel="noopener noreferrer">Live
             birth</a>
-        <a href="./forms/marriage.php" rel="noopener noreferrer">Marriage</a>
-        <a href="./forms/separation.php" rel="noopener noreferrer">Legal
+        <a href="/src/forms/marriage.php" rel="noopener noreferrer">Marriage</a>
+        <a href="/src/forms/separation.php" rel="noopener noreferrer">Legal
             separation</a>
-        <a href="./forms/annulment.php" rel="noopener noreferrer">Annulment</a>
-        <a href="./forms/death.php" rel="noopener noreferrer">Death</a>
-        <a href="./forms/recognition.php" rel="noopener noreferrer">Parental
+        <a href="/src/forms/annulment.php" rel="noopener noreferrer">Annulment</a>
+        <a href="/src/forms/death.php" rel="noopener noreferrer">Death</a>
+        <a href="/src/forms/recognition.php" rel="noopener noreferrer">Parental
             recognition</a>
-        <a href="./forms/stillbirth.php" rel="noopener noreferrer">Stillbirth</a>
-        <a href="./forms/divorce.php" rel="noopener noreferrer">Divorce</a>
+        <a href="/src/forms/stillbirth.php" rel="noopener noreferrer">Stillbirth</a>
+        <a href="/src/forms/divorce.php" rel="noopener noreferrer">Divorce</a>
     </nav-bar>
     <div class="content">
         <div class="sign-up-form">
             <h1>Sign up</h1>
-            <form action="process-signup.php" method="post">
+            <!-- REMOVE remove novalidate when done with debugging -->
+            <form action="process-signup.php" method="post" novalidate>
                 <div>
                     <label for="first_name">First Name</label>
                     <input type="text" id="email" name="first_name" required maxlength="<?=INPUT_MAXLENGTH_DEFAULT?>">

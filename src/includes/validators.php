@@ -51,12 +51,23 @@ function checkFileUpload(string $file_field, string $field_label): array
     $errors = [];
     $finfo = new finfo(FILEINFO_MIME_TYPE);
 
+    if (empty($_FILES[$file_field])) {
+        $errors[] = new FormError(
+            $file_field,
+            $field_label,
+            "No file was uploaded."
+        );
+
+        return $errors;
+    }
+
     $file = $_FILES[$file_field];
+
     if (!is_string($file['name'])) {
         $errors[] = new FormError(
             $file_field,
             $field_label,
-            "Multiple files uploaded."
+            "Multiple files uploaded. Only one file is allowed."
         );
 
         return $errors;
@@ -146,9 +157,9 @@ function checkFileUpload(string $file_field, string $field_label): array
  * @param string $field_name The field name of the file input
  * @param string $human_readable_name A human readable name for $field_name
  * @param string $upload_directory The directory to save the file in
- * @return FormError|null Returns a FormError if an error occurred when saving the file or null otherwise.
+ * @return FormError | string[] Returns a FormError if an error occurred when saving the file or an array containing the field_name and destionation directory otherwise.
  */
-function saveFileUpload(string $field_name, string $human_readable_name, string $upload_directory): FormError | null
+function saveFileUpload(string $field_name, string $human_readable_name, string $upload_directory): FormError | array
 {
     $error = null;
 
@@ -177,7 +188,11 @@ function saveFileUpload(string $field_name, string $human_readable_name, string 
         );
     }
 
-    return $error;
+    if (!empty($error)) {
+        return $error;
+    }
+
+    return [$field_name, $destination_filename];
 }
 
 /**

@@ -1,38 +1,30 @@
 <?php
 // Input field lengths
-// Like a Person's title
-define("INPUT_MAXLENGTH_SHORT", 10);
-// For most inputs like name fields
-define("INPUT_MAXLENGTH_DEFAULT", 85);
-// For addresses and long inputs
-define("INPUT_MAXLENGTH_LONG", 200);
+const INPUT_MAXLENGTH_SHORT = 10;
+const INPUT_MAXLENGTH_DEFAULT = 85;
+const INPUT_MAXLENGTH_LONG = 200;
 
 // Textarea lengths
-define("TEXTAREA_MAXLENGTH_DEFAULT", 1000);
-define("TEXTAREA_MAXLENGTH_SMALL", 500);
+const TEXTAREA_MAXLENGTH_DEFAULT = 1000;
+const TEXTAREA_MAXLENGTH_SMALL = 500;
 
 // The maximum filesize allowed in bytes.
-define("MAX_UPLOAD_FILE_SIZE", 1048576);
+const MAX_UPLOAD_FILE_SIZE = 1048576;
 
 // Regex to check phone number
-define("PHONE_REGEX", '/^[0][0-9]{9}$/');
-// Error message to display if phone regex doesn't match
-define("PHONE_ERR_MSG", 'Phone number must be a 10-digit number that starts from 0. Eg. 0928329871');
+const PHONE_REGEX = '{^[0][0-9]{9}$}';
+const PHONE_ERR_MSG = 'Phone number must be a 10-digit number that starts from 0. Eg. 0928329871';
 // Regex to check generic numbers
-define("NUMBER_REGEX", '/^[1-9][0-9]+/');
-
-// List of allowed file types)
-define("ALLOWED_UPLOAD_FILE_TYPES", ['image/jpeg', 'image/png', 'image/pjpeg', 'image/apng', 'application/pdf']);
+const NUMBER_REGEX = '{^[1-9][0-9]+}';
+// Minimum length of passwords
+const MIN_PASSWORD_LENGTH = 8;
+// List of allowed file types
+const ALLOWED_UPLOAD_FILE_TYPES = ['image/jpeg', 'image/png', 'image/pjpeg', 'image/apng', 'application/pdf'];
 
 // Number of bytes in a Kilobyte
-define("BYTES_IN_KB", 1024);
+const BYTES_IN_KB = 1024;
 // Directory to save uploads in
-define("UPLOAD_DIRECTORY", "{$_SERVER['DOCUMENT_ROOT']}/Uploads/");
-
-/**
- * @var bool Global state variable that stores sign in status
- */
-$LOGGED_IN = false;
+define('UPLOAD_DIRECTORY', "{$_SERVER['DOCUMENT_ROOT']}/Uploads/");
 
 /**
  * Represents an error message. Its fields are immutable once created.

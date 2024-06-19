@@ -11,10 +11,9 @@ $divorce_labels = [
     'spouse1_sex' => 'First spouse - Sex',
     'spouse1_dob' => 'First spouse - Date of Birth',
     'spouse1_place_of_birth' => 'First spouse - Place of Birth',
-    'spouse1_citizenship' => 'First spouse - Country of citizenship',
-    'spouse1_previous_marital' => 'First spouse - Previous marital status',
-    'spouse1_phone' => 'First spouse - Phone',
     'spouse1_residence' => 'First spouse - Principal Residence',
+    'spouse1_phone' => 'First spouse - Phone',
+    'spouse1_citizenship' => 'First spouse - Country of citizenship',
 
     // Spouse 2 information fields
     'spouse2_first_name' => 'Second spouse - First name',
@@ -23,10 +22,9 @@ $divorce_labels = [
     'spouse2_sex' => 'Second spouse - Sex',
     'spouse2_dob' => 'Second spouse - Date of Birth',
     'spouse2_place_of_birth' => 'Second spouse - Place of Birth',
-    'spouse2_citizenship' => 'Second spouse - Country of citizenship',
-    'spouse2_previous_marital' => 'Second spouse - Previous marital status',
-    'spouse2_phone' => 'Second spouse - Phone',
     'spouse2_residence' => 'Second spouse - Principal Residence',
+    'spouse2_phone' => 'Second spouse - Phone',
+    'spouse2_citizenship' => 'Second spouse - Country of citizenship',
 
     // Marriage and Divorce information fields
     'marriage_date' => 'Date of Conclusion of Marriage',
@@ -39,7 +37,7 @@ $divorce_labels = [
 /**
  * @var array Uses an associative array to group fields in divorce form by heading then lists fields required under each heading
  */
-$divorce_required_fields = [
+$required_fields = [
     'spouse1' => [
         'spouse1_first_name',
         'spouse1_middle_name',
@@ -66,24 +64,22 @@ $divorce_required_fields = [
         'marriage_date',
         'marriage_place',
         'divorce_date',
-        'divorce_reference',
+        // 'divorce_reference', This is handled separately
     ],
 ];
 
 /**
  * @var array Uses an associative array to relate each dropdown, radio button or checkbox of divorce form to a list of its allowed values.
  */
-$divorce_selection_controls = [
-    'spouse1_sex' => ['Male', 'Female'],
-    'spouse1_previous_marital' => ['single', 'divorced', 'widowed'],
-    'spouse2_sex' => ['Male', 'Female'],
-    'spouse2_previous_marital' => ['single', 'divorced', 'widowed'],
+$selection_controls = [
+    'spouse1_sex' => ['M', 'F'],
+    'spouse2_sex' => ['M', 'F'],
 ];
 
 /**
  * @var array Uses an associative array to relate each text field of divorce form to its maximum character length
  */
-$divorce_text_maxlengths = [
+$text_maxlengths = [
     // Spouse 1 information
     'spouse1_first_name' => INPUT_MAXLENGTH_DEFAULT,
     'spouse1_middle_name' => INPUT_MAXLENGTH_DEFAULT,
@@ -112,9 +108,14 @@ $divorce_text_maxlengths = [
 /**
  * @var array Provides a list of all phone number fields for divorce form
  */
-$divorce_phone_fields = [
+$phone_fields = [
     'spouse1_phone',
     'spouse2_phone',
 ];
 
-?>
+/**
+ * @var array Provides a list of all file fields for divorce form
+ */
+$file_fields = [
+    'divorce_reference',
+];

@@ -3,7 +3,7 @@
  * Associative array that maps all fields of the death form to a human-readable name.
  * @var array
  */
-$dth_labels = [
+$death_labels = [
     // Deceased information fields
     'deceased_first_name' => 'Deceased information - First name',
     'deceased_middle_name' => 'Deceased information - Middle name',

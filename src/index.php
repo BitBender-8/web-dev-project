@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php"
 ?>
 <!DOCTYPE html>
@@ -17,18 +18,18 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php"
 </head>
 
 <body>
-    <nav-bar title="Vital Event Registration System" <?=($LOGGED_IN) ? 'logged-in' : ''?>>
-        <a href="./forms/adoption.php" rel="noopener noreferrer">Adoption</a>
-        <a href="./forms/birth.php" rel="noopener noreferrer">Live
+    <nav-bar title="Vital Event Registration System" <?=empty($_SESSION['user_id']) ? '' : 'logged-in'?>>
+        <a href="/src/forms/adoption.php" rel="noopener noreferrer">Adoption</a>
+        <a href="/src/forms/birth.php" rel="noopener noreferrer">Live
             birth</a>
-        <a href="./forms/marriage.php" rel="noopener noreferrer">Marriage</a>
-        <a href="./forms/separation.php" rel="noopener noreferrer">Legal
+        <a href="/src/forms/marriage.php" rel="noopener noreferrer">Marriage</a>
+        <a href="/src/forms/separation.php" rel="noopener noreferrer">Legal
             separation</a>
-        <a href="./forms/annulment.php" rel="noopener noreferrer">Annulment</a>
-        <a href="./forms/death.php" rel="noopener noreferrer">Death</a>
-        <a href="./forms/recognition.php" rel="noopener noreferrer">Parental recognition</a>
-        <a href="./forms/stillbirth.php" rel="noopener noreferrer">Stillbirth</a>
-        <a href="./forms/divorce.php" rel="noopener noreferrer">Divorce</a>
+        <a href="/src/forms/annulment.php" rel="noopener noreferrer">Annulment</a>
+        <a href="/src/forms/death.php" rel="noopener noreferrer">Death</a>
+        <a href="/src/forms/recognition.php" rel="noopener noreferrer">Parental recognition</a>
+        <a href="/src/forms/stillbirth.php" rel="noopener noreferrer">Stillbirth</a>
+        <a href="/src/forms/divorce.php" rel="noopener noreferrer">Divorce</a>
     </nav-bar>
     <div class="content">
         <div class="banner">
@@ -37,10 +38,10 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php"
                 register vital events. Whether it's the birth of a
                 child, marriage, divorce, or recognition, we ensure
                 accurate and reliable records.</p>
-            <div>
-                <a href="#" class="btn-sign-in">Sign In</a>
-                <a href="#" class="btn-register">Register</a>
-            </div>
+            <?php if (empty($_SESSION['user_id'])) {?>
+            <a href="/src/auth/login.php" class="btn-log-in">Login</a>
+            <a href="/src/auth/signup.php" class="btn-register">Register</a>
+            <?php }?>
         </div>
 
         <h2>About Us</h2>

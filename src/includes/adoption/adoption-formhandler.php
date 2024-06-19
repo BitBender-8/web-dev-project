@@ -83,5 +83,5 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     handleErrors($errors_adopter_category, 'Adopter 2 data missing');
 
 } else {
-    header("Location: ../../forms/adoption.php");
+    header("Location: .././src/forms/adoption.php");
 }
