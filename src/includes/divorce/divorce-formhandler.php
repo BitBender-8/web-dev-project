@@ -156,6 +156,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
 } else {
-    header("Location: /src/forms/divorce.php");
+    header("Location: /web-dev-project/src/forms/divorce.php");
     exit;
 }

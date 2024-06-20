@@ -155,6 +155,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
 } else {
-    header("Location: /src/forms/death.php");
+    header("Location: /web-dev-project/src/forms/death.php");
     exit;
 }

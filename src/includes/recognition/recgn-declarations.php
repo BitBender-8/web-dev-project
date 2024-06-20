@@ -84,11 +84,11 @@ $required_fields = [
  * @var array Uses an associative array to relate each dropdown, radio button or checkbox of recognition form to a list of its allowed values.
  */
 $selection_controls = [
-    'child_sex' => ['Male', 'Female'],
-    'parent1_sex' => ['Male', 'Female'],
-    'parent2_sex' => ['Male', 'Female'],
+    'child_sex' => ['M', 'F'],
+    'parent1_sex' => ['M', 'F'],
+    'parent2_sex' => ['M', 'F'],
     'parents_married_at_birth' => ['Yes', 'No'],
-    'parents_rlnshp_at_rgstrn' => ['Single', 'Married', 'Legally separated', 'Divorced'],
+    'parents_rlnshp_at_rgstrn' => ['single', 'married', 'legally separated', 'divorced'],
 ];
 
 /**
