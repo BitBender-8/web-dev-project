@@ -173,7 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die($e->getMessage());
         }
     } else {
-        die('Something went wrong with the database connection.');
+        die('<div class="err-box">Something went wrong with the database connection.</div>');
     }
 
 } else {

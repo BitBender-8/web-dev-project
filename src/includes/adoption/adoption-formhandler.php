@@ -71,16 +71,17 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     // Making sure that fields which require both adopters in 'Category of adopters' are not
     // submitted without having both adopters.
     $errors_adopter_category = [];
-    // adopter2's required fields have not all been filled and adopter_category is not empty
-    if (!empty($errors_parent2_required_fields) && !empty($_POST['adopter_category'])) {
-        $field_name = 'adopter_category';
-        $errors_adopter_category[] = new FormError(
-            $field_name,
-            $adoption_labels[$field_name],
-            "Adopter 2 data is required to select option '" . $_POST[$field_name] . "'"
-        );
-    }
-    handleErrors($errors_adopter_category, 'Adopter 2 data missing');
+    // FIXME
+    // // adopter2's required fields have not all been filled and adopter_category is not empty
+    // if (!empty($errors_parent2_required_fields) && !empty($_POST['adopter_category'])) {
+    //     $field_name = 'adopter_category';
+    //     $errors_adopter_category[] = new FormError(
+    //         $field_name,
+    //         $adoption_labels[$field_name],
+    //         "Adopter 2 data is required to select option '" . $_POST[$field_name] . "'"
+    //     );
+    // }
+    // handleErrors($errors_adopter_category, 'Adopter 2 data missing');
 
 } else {
     header("Location: .././src/forms/adoption.php");

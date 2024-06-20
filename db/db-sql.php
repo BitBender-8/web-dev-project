@@ -1,11 +1,6 @@
-<!-- -- Relationships
--- Users table has a one-to-many relationship with most event tables (e.g., LiveBirths, Marriages, Divorces) as users can be involved in multiple events.
--- Marriages and Divorces are related through a foreign key.
--- Users table acts as a central reference for individuals -->
 <?php
 
-require_once "../src/includes/declarations.php";
-// The names of people have been combined into a single field that will be delimited by a semicolor
+// The names of people have been combined into a single field that will be delimited by a semicolon
 // Use MariaDB for your database since MYSQL needs to be configured to allow our large columns
 $db_sql =
     "CREATE DATABASE vital_event_registration;

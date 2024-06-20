@@ -169,25 +169,32 @@ Once data is submitted, no corrections are allowed. The same goes for annulement
 
 This section would display a list of generated reports based on event type and date range ~~or other filters (TBD)~~. Users can either view or download these reports in a printable format (e.g., PDF). Here are some basic reports you could generate:
 
-- For all
-  - Total count by year, month, or week
+- For each event
+  - Total count in time period
 - Live births
   - Number of live births by sex (male/female)
   - "Live births by mother's age group" include this if you want to dedicate the time and effort [created:: 2024-05-16]
 - Stillbirths
   - Count by gestational age
 - Marriages
+  - Count of couples married by age group
   - Average age of couples at marriage
   - Number of marriages by previous martial status (single, divorced, widowed)
 - Divorces
   - Average duration of marriages ending in divorce
+  - Count of divorces by age group
 - Adoptions
+  - Number of children adopted by age group
+  - Number of adopters by age group
   - Average age of children adopted
   - Average age of adoptive parents
 - Recognitions,
   - Average age of children recognized
+  - Number of children recognized by age group
+  - Number of recognizers by age group
+  - Average age of recognizers
 - Annulments and judicial separations
-  - Average duration of marriages.
+  - Average duration of marriages ending in separations.
 
 - Additional considerations when designing reports.
   - Reports that combine data from different events. For example, you could compare live births and fetal deaths over time.
