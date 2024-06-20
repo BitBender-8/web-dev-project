@@ -171,7 +171,7 @@ session_start();
                 <label for="reason_maternal_conditions">
                     Maternal conditions/diseases (Explain):
                 </label>
-                <textarea id="explanation_maternal_conditions" name="explanation_maternal_conditions" rows="4" disabled
+                <textarea id="explanation_maternal_conditions" name="explanation_maternal_conditions" rows="4"
                     maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"></textarea>
             </li>
             <li>
@@ -181,7 +181,7 @@ session_start();
                     Complications of placenta, cord or membranes (Explain):
                 </label>
                 <textarea id="explanation_placenta_complications" name="explanation_placenta_complications" rows="4"
-                    disabled maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"></textarea>
+                    maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"></textarea>
             </li>
             <li>
                 <input type="checkbox" id="reason_other_obstetrical_complications" name="fetal_death_conditions[]"
@@ -190,19 +190,19 @@ session_start();
                     Other obstetrical or pregnancy complications (Explain):
                 </label>
                 <textarea id="explanation_other_obstetrical_complications"
-                    name="explanation_other_obstetrical_complications" rows="4" disabled
+                    name="explanation_other_obstetrical_complications" rows="4"
                     maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"></textarea>
             </li>
             <li>
                 <input type="checkbox" id="reason_fetal_anomaly" name="fetal_death_conditions[]" value="fetal_anomaly">
                 <label for="reason_fetal_anomaly">Fetal anomaly (Explain):</label>
-                <textarea id="explanation_fetal_anomaly" name="explanation_fetal_anomaly" rows="4" disabled
+                <textarea id="explanation_fetal_anomaly" name="explanation_fetal_anomaly" rows="4" 
                     maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"></textarea>
             </li>
             <li>
                 <input type="checkbox" id="reason_fetal_injury" name="fetal_death_conditions[]" value="fetal_injury">
                 <label for="reason_fetal_injury">Fetal injury (Explain):</label>
-                <textarea id="explanation_fetal_injury" name="explanation_fetal_injury" rows="4" disabled
+                <textarea id="explanation_fetal_injury" name="explanation_fetal_injury" rows="4" 
                     maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"></textarea>
             </li>
             <li>
@@ -211,7 +211,7 @@ session_start();
                 <label for="reason_fetal_infection">
                     Fetal infection (Explain):
                 </label>
-                <textarea id="explanation_fetal_infection" name="explanation_fetal_infection" rows="4" disabled
+                <textarea id="explanation_fetal_infection" name="explanation_fetal_infection" rows="4" 
                     maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"></textarea>
             </li>
             <li>
@@ -221,7 +221,7 @@ session_start();
                     Other fetal conditions/disorders (Explain):
                 </label>
                 <textarea id="explanation_other_fetal_conditions" name="explanation_other_fetal_conditions" rows="4"
-                    disabled maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"></textarea>
+                     maxlength="<?=TEXTAREA_MAXLENGTH_DEFAULT;?>"></textarea>
             </li>
         </ul>
         <h2>Reporting Person Information</h2>

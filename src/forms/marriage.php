@@ -46,8 +46,8 @@ session_start();
             <input type="text" name="spouse1_citizenship" id="spouse1_citizenship" required
                 maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>">
             <!-- Legally separated is not an option because legally separated couple cannot get married. -->
-            <label for="spouse1_previous_martial">Previous martial status:</label>
-            <select id="spouse1_previous_martial" name="spouse1_previous_martial" required>
+            <label for="spouse1_previous_marital">Previous marital status:</label>
+            <select id="spouse1_previous_marital" name="spouse1_previous_marital" required>
                 <option value="" selected>Select</option>
                 <option value="single">Single</option>
                 <option value="divorced">Divorced</option>
@@ -63,7 +63,7 @@ session_start();
         <fieldset>
             <legend>Second spouse information</legend>
             <label for="spouse2">First name:</label>
-            <input type="text" id="spouse2" name="spouse2" required maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>">
+            <input type="text" id="spouse2_first_name" name="spouse2_first_name" required maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>">
             <label for="spouse2_middle_name">Middle name:</label>
             <input type="text" id="spouse2_middle_name" name="spouse2_middle_name" required
                 maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>">
@@ -85,8 +85,8 @@ session_start();
             <input type="text" name="spouse2_citizenship" id="spouse2_citizenship" required
                 maxlength="<?=INPUT_MAXLENGTH_DEFAULT;?>">
             <!-- Legally separated is not an option because legally separated couple cannot get married. -->
-            <label for="spouse2_previous_martial">Previous martial status:</label>
-            <select id="spouse2_previous_martial" name="spouse2_previous_martial" required>
+            <label for="spouse2_previous_marital">Previous marital status:</label>
+            <select id="spouse2_previous_marital" name="spouse2_previous_marital" required>
                 <option value="" selected>Select</option>
                 <option value="single">Single</option>
                 <option value="divorced">Divorced</option>

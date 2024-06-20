@@ -2,9 +2,9 @@
 
 // You can use function from validators.php to validate required fields
 
-require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/db.php";
-require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/validators.php";
-require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}/web-dev-project/src/includes/db.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}/web-dev-project/src/includes/validators.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}/web-dev-project/src/includes/declarations.php";
 
 /**
  * @var array Names of required fields for the signup form

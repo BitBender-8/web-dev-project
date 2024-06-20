@@ -166,7 +166,7 @@ session_start();
         <h2>Other</h2>
         <ul>
             <li>
-                <label for="parents_rlnshp_at_rgstrn">Current martial status of parents to each other</label>
+                <label for="parents_rlnshp_at_rgstrn">Current marital status of parents to each other</label>
                 <select id="parents_rlnshp_at_rgstrn" name="parents_rlnshp_at_rgstrn" required>
                     <option value="" selected>Select</option>
                     <option value="single">Single</option>

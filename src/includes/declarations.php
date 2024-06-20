@@ -24,7 +24,7 @@ const ALLOWED_UPLOAD_FILE_TYPES = ['image/jpeg', 'image/png', 'image/pjpeg', 'im
 // Number of bytes in a Kilobyte
 const BYTES_IN_KB = 1024;
 // Directory to save uploads in
-define('UPLOAD_DIRECTORY', "{$_SERVER['DOCUMENT_ROOT']}/Uploads/");
+define('UPLOAD_DIRECTORY', "{$_SERVER['DOCUMENT_ROOT']}/web-dev-project/Uploads/");
 
 /**
  * Represents an error message. Its fields are immutable once created.

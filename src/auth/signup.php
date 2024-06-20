@@ -1,5 +1,5 @@
 <?php
-require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php"
+require_once "{$_SERVER['DOCUMENT_ROOT']}/web-dev-project/src/includes/declarations.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,29 +8,29 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vital Event Registration - Signup</title>
-    <script defer src="/src/public/js/webComponents.js"></script>
-    <link href="/src/public/styles/fontawesome/css/fontawesome.min.css" rel="stylesheet">
-    <link href="/src/public/styles/fontawesome/css/all.min.css" rel="stylesheet">
-    <link href="/src/public/styles/main.css" rel="stylesheet">
-    <link href="/src/public/styles/signup.css" rel="stylesheet">
+    <script defer src="/web-dev-project/src/public/js/webComponents.js"></script>
+    <link href="/web-dev-project/src/public/styles/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="/web-dev-project/src/public/styles/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="/web-dev-project/src/public/styles/main.css" rel="stylesheet">
+    <link href="/web-dev-project/src/public/styles/signup.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <nav-bar title="Vital Event Registration System" <?=empty($_SESSION['user_id']) ? '' : 'logged-in'?>>
-        <a href="/src/forms/adoption.php" rel="noopener noreferrer">Adoption</a>
-        <a href="/src/forms/birth.php" rel="noopener noreferrer">Live
+        <a href="/web-dev-project/src/forms/adoption.php" rel="noopener noreferrer">Adoption</a>
+        <a href="/web-dev-project/src/forms/birth.php" rel="noopener noreferrer">Live
             birth</a>
-        <a href="/src/forms/marriage.php" rel="noopener noreferrer">Marriage</a>
-        <a href="/src/forms/separation.php" rel="noopener noreferrer">Legal
+        <a href="/web-dev-project/src/forms/marriage.php" rel="noopener noreferrer">Marriage</a>
+        <a href="/web-dev-project/src/forms/separation.php" rel="noopener noreferrer">Legal
             separation</a>
-        <a href="/src/forms/annulment.php" rel="noopener noreferrer">Annulment</a>
-        <a href="/src/forms/death.php" rel="noopener noreferrer">Death</a>
-        <a href="/src/forms/recognition.php" rel="noopener noreferrer">Parental
+        <a href="/web-dev-project/src/forms/annulment.php" rel="noopener noreferrer">Annulment</a>
+        <a href="/web-dev-project/src/forms/death.php" rel="noopener noreferrer">Death</a>
+        <a href="/web-dev-project/src/forms/recognition.php" rel="noopener noreferrer">Parental
             recognition</a>
-        <a href="/src/forms/stillbirth.php" rel="noopener noreferrer">Stillbirth</a>
-        <a href="/src/forms/divorce.php" rel="noopener noreferrer">Divorce</a>
+        <a href="/web-dev-project/src/forms/stillbirth.php" rel="noopener noreferrer">Stillbirth</a>
+        <a href="/web-dev-project/src/forms/divorce.php" rel="noopener noreferrer">Divorce</a>
     </nav-bar>
     <div class="content">
         <div class="sign-up-form">

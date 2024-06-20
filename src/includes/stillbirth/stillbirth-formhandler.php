@@ -1,5 +1,5 @@
 <?php
-
+session_start(); // Ensure the session is started
 // Include all files in includes folder
 $includes = glob("../*.php");
 foreach ($includes as $file) {
@@ -23,9 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ),
         $stillbirth_labels
     );
-
-    // Making sure that textareas corresponding to checkboxes checked for 'fetal_death_conditions' are not
-    // empty
     handleErrors($errors_required_fields, 'Required fields missing');
 
     // Check string lengths: make sure that text fields don't have more than their corresponding maximum number of allowed characters.
@@ -40,42 +37,47 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             );
         }
     }
-    handleErrors($errors_maxlength, 'Maxium allowed length for text field(s) exceeded');
+    handleErrors($errors_maxlength, 'Maximum allowed length for text field(s) exceeded');
 
-    // Check whether all dropdowns, radio buttons, checkboxes and multiple
-    // option fields are submitting data that is allowed.
+    // Check whether all dropdowns, radio buttons, checkboxes, and multiple option fields are submitting data that is allowed.
     $errors_selection_fields = [];
     foreach ($selection_controls as $field_name => $allowed_values) {
-        $errors_selection_fields[] = checkAllowedValues(
-            $field_name,
-            $stillbirth_labels[$field_name],
-            $selection_controls[$field_name]
-        );
+        $error = checkAllowedValues($field_name, $stillbirth_labels[$field_name], $allowed_values);
+        if ($error !== null) {
+            $errors_selection_fields[] = $error;
+        }
     }
     handleErrors($errors_selection_fields, 'Invalid option submitted');
 
     // Checking phone number(s)
     $errors_phone_fields = [];
     foreach ($phone_fields as $field_name) {
-        $errors_phone_fields[] = checkNumberFormat(
+        $error = checkNumberFormat(
             $field_name,
             $stillbirth_labels[$field_name],
             PHONE_REGEX,
             PHONE_ERR_MSG
         );
+        if ($error !== null) {
+            $errors_phone_fields[] = $error;
+        }
     }
     handleErrors($errors_phone_fields, 'Invalid phone format');
 
     // Checking number fields
     $errors_number_fields = [];
     foreach ($number_fields as $field_name) {
-        checkNumberFormat(
+        $error = checkNumberFormat(
             $field_name,
             $stillbirth_labels[$field_name],
             '/^[1-9][0-9]?[0-9]?$/',
             'Field must be a number between 1 and 999'
         );
+        if ($error !== null) {
+            $errors_number_fields[] = $error;
+        }
     }
+    handleErrors($errors_number_fields, 'Invalid number format');
 
     // Father is optional so this makes sure that either all fields of father are submitted or none of them are
     $errors_father_required_fields = checkFieldPresence($required_fields['father'], $stillbirth_labels);
@@ -86,25 +88,104 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         );
     }
 
-    // In 'fetal death conditions' section this check makes sure that if checkbox is checked
-    // then the corresponding explanation is submitted. This check is only performed if the values
-    // of 'fetal_death_conditions' submitted exist
+    // In 'fetal death conditions' section this check makes sure that if checkbox is checked then the corresponding explanation is submitted.
     $errors_empty_explanation = [];
+    $fetal_death_explanations = [];
+
     if (empty($errors_selection_fields)) {
         foreach ($_POST['fetal_death_conditions'] ?? [] as $fetal_death_condition) {
             // Get the key of the explanation
             $explanation_key = $condition_key_to_explanation_key[$fetal_death_condition] ?? '';
             $fetal_death_explanation = $_POST[$explanation_key] ?? '';
 
-            if (!empty($fetal_death_condition) && empty($_POST[$fetal_death_explanation])) {
+            // Check if the condition is checked but explanation is missing
+            if (!empty($fetal_death_condition) && empty($fetal_death_explanation)) {
                 $errors_empty_explanation[] = new FormError(
                     $fetal_death_condition,
                     $stillbirth_labels[$fetal_death_condition],
                     "Since the option was checked, its explanation is required."
                 );
+            } else {
+                // Add the explanation to the array
+                $fetal_death_explanations[$fetal_death_condition] = $fetal_death_explanation;
             }
         }
     }
+
     handleErrors($errors_empty_explanation, "Missing explanation");
 
+
+    if (empty($errors_required_fields) && empty($errors_selection_fields) && empty($errors_maxlength) && empty($errors_phone_fields) && empty($errors_number_fields) && empty($errors_father_required_fields) && empty($errors_empty_explanation)) {
+        try {
+            // Concatenate the names
+            $mother_full_name = $_POST['mother_first_name'] . ' ' . $_POST['mother_middle_name'] . ' ' . $_POST['mother_last_name'];
+            $father_full_name = $_POST['father_first_name'] . ' ' . $_POST['father_middle_name'] . ' ' . $_POST['father_last_name'];
+            $child_full_name = $_POST['child_first_name'] . ' ' . $_POST['child_middle_name'] . ' ' . $_POST['child_last_name'];
+            $reporter_full_name = $_POST['reporter_first_name'] . ' ' . $_POST['reporter_middle_name'] . ' ' . $_POST['reporter_last_name'];
+
+            // Get the user ID from the session
+            $rgstrnt_user = $_SESSION['user_id'];
+
+            // Convert arrays to JSON strings
+            $fetal_death_conditions_json = json_encode($_POST['fetal_death_conditions'] ?? []);
+            $fetal_death_explanation_json = json_encode($fetal_death_explanations);
+
+
+            // Prepare the SQL insert statement
+            $sql = "INSERT INTO StillbirthRegistrations (
+                child_full_name, child_sex, child_gestational_age_wks, 
+                mother_full_name, mother_dob, mother_marital_status, mother_residence, mother_citizenship, mother_phone, 
+                father_full_name, father_dob, father_marital_status, father_residence, father_citizenship, father_phone, 
+                delivery_date, delivery_place, pregnancy_plurality, pregnancy_duration, birth_order, 
+                fetal_death_conditions, fetal_death_explanation, 
+                reporter_full_name, reporter_sex, reporter_residence, reporter_phone, rgstrnt_user
+            ) VALUES (
+                :child_full_name, :child_sex, :child_gestational_age_wks, 
+                :mother_full_name, :mother_dob, :mother_marital_status, :mother_residence, :mother_citizenship, :mother_phone, 
+                :father_full_name, :father_dob, :father_marital_status, :father_residence, :father_citizenship, :father_phone, 
+                :delivery_date, :delivery_place, :pregnancy_plurality, :pregnancy_duration, :birth_order, 
+                :fetal_death_conditions, :fetal_death_explanation, 
+                :reporter_full_name, :reporter_sex, :reporter_residence, :reporter_phone, :rgstrnt_user
+            )";
+
+            // Prepare the statement
+            $stmt = $pdo->prepare($sql);
+
+            // Bind the parameters
+            $stmt->bindParam(':child_full_name', $child_full_name);
+            $stmt->bindParam(':child_sex', $_POST['child_sex']);
+            $stmt->bindParam(':child_gestational_age_wks', $_POST['child_gestational_age_wks']);
+            $stmt->bindParam(':mother_full_name', $mother_full_name);
+            $stmt->bindParam(':mother_dob', $_POST['mother_dob']);
+            $stmt->bindParam(':mother_marital_status', $_POST['mother_marital_status']);
+            $stmt->bindParam(':mother_residence', $_POST['mother_residence']);
+            $stmt->bindParam(':mother_citizenship', $_POST['mother_citizenship']);
+            $stmt->bindParam(':mother_phone', $_POST['mother_phone']);
+            $stmt->bindParam(':father_full_name', $father_full_name);
+            $stmt->bindParam(':father_dob', $_POST['father_dob']);
+            $stmt->bindParam(':father_marital_status', $_POST['father_marital_status']);
+            $stmt->bindParam(':father_residence', $_POST['father_residence']);
+            $stmt->bindParam(':father_citizenship', $_POST['father_citizenship']);
+            $stmt->bindParam(':father_phone', $_POST['father_phone']);
+            $stmt->bindParam(':delivery_date', $_POST['delivery_date']);
+            $stmt->bindParam(':delivery_place', $_POST['delivery_place']);
+            $stmt->bindParam(':pregnancy_plurality', $_POST['pregnancy_plurality']);
+            $stmt->bindParam(':pregnancy_duration', $_POST['pregnancy_duration']);
+            $stmt->bindParam(':birth_order', $_POST['birth_order']);
+            $stmt->bindParam(':fetal_death_conditions', $fetal_death_conditions_json);
+            $stmt->bindParam(':fetal_death_explanation', $fetal_death_explanation_json);
+            $stmt->bindParam(':reporter_full_name', $reporter_full_name);
+            $stmt->bindParam(':reporter_sex', $_POST['reporter_sex']);
+            $stmt->bindParam(':reporter_residence', $_POST['reporter_residence']);
+            $stmt->bindParam(':reporter_phone', $_POST['reporter_phone']);
+            $stmt->bindParam(':rgstrnt_user', $rgstrnt_user);
+
+            // Execute the statement
+            $stmt->execute();
+        } catch (PDOException $e) {
+            die("Database error: " . $e->getMessage());
+        }
+    }
+} else {
+    header("Location: ../src/forms/stillbirth.php");
 }
