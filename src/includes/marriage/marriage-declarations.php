@@ -12,7 +12,7 @@ $marriage_labels = [
     'spouse1_dob' => 'First spouse - Date of Birth',
     'spouse1_place_of_birth' => 'First spouse - Place of Birth',
     'spouse1_citizenship' => 'First spouse - Country of citizenship',
-    'spouse1_previous_martial' => 'First spouse - Previous martial status',
+    'spouse1_previous_marital' => 'First spouse - Previous marital status',
     'spouse1_phone' => 'First spouse - Phone',
     'spouse1_residence' => 'First spouse - Principal Residence',
 
@@ -24,12 +24,12 @@ $marriage_labels = [
     'spouse2_dob' => 'Second spouse - Date of Birth',
     'spouse2_place_of_birth' => 'Second spouse - Place of Birth',
     'spouse2_citizenship' => 'Second spouse - Country of citizenship',
-    'spouse2_previous_martial' => 'Second spouse - Previous martial status',
+    'spouse2_previous_marital' => 'Second spouse - Previous marital status',
     'spouse2_phone' => 'Second spouse - Phone',
     'spouse2_residence' => 'Second spouse - Principal Residence',
 
     // Witness 1 information fields
-    'witness1' => 'Witness 1 - First name',
+    'witness1_first_name' => 'Witness 1 - First name',
     'witness1_middle_name' => 'Witness 1 - Middle name',
     'witness1_last_name' => 'Witness 1 - Last name',
     'witness1_sex' => 'Witness 1 - Sex',
@@ -39,7 +39,7 @@ $marriage_labels = [
     'witness1_residence' => 'Witness 1 - Principal Residence',
 
     // Witness 2 information fields
-    'witness2' => 'Witness 2 - First name',
+    'witness2_first_name' => 'Witness 2 - First name',
     'witness2_middle_name' => 'Witness 2 - Middle name',
     'witness2_last_name' => 'Witness 2 - Last name',
     'witness2_sex' => 'Witness 2 - Sex',
@@ -65,7 +65,7 @@ $required_fields = [
         'spouse1_dob',
         'spouse1_place_of_birth',
         'spouse1_citizenship',
-        'spouse1_previous_martial',
+        'spouse1_previous_marital',
         'spouse1_phone',
         'spouse1_residence',
     ],
@@ -77,12 +77,12 @@ $required_fields = [
         'spouse2_dob',
         'spouse2_place_of_birth',
         'spouse2_citizenship',
-        'spouse2_previous_martial',
+        'spouse2_previous_marital',
         'spouse2_phone',
         'spouse2_residence',
     ],
     'witness1' => [
-        'witness1',
+        'witness1_first_name',
         'witness1_middle_name',
         'witness1_last_name',
         'witness1_sex',
@@ -92,7 +92,7 @@ $required_fields = [
         'witness1_residence',
     ],
     'witness2' => [
-        'witness2',
+        'witness2_first_name',
         'witness2_middle_name',
         'witness2_last_name',
         'witness2_sex',
@@ -111,12 +111,12 @@ $required_fields = [
  * @var array Uses an associative array to relate each dropdown, radio button or checkbox of marriage form to a list of its allowed values.
  */
 $selection_controls = [
-    'spouse1_sex' => ['Male', 'Female'],
-    'spouse1_previous_martial' => ['single', 'divorced', 'widowed'],
-    'spouse2_sex' => ['Male', 'Female'],
-    'spouse2_previous_martial' => ['single', 'divorced', 'widowed'],
-    'witness1_sex' => ['Male', 'Female'],
-    'witness2_sex' => ['Male', 'Female'],
+    'spouse1_sex' => ['M', 'F'],
+    'spouse1_previous_marital' => ['single', 'divorced', 'widowed'],
+    'spouse2_sex' => ['M', 'F'],
+    'spouse2_previous_marital' => ['single', 'divorced', 'widowed'],
+    'witness1_sex' => ['M', 'F'],
+    'witness2_sex' => ['M', 'F'],
 ];
 
 /**

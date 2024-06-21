@@ -21,15 +21,15 @@ session_start();
 <body>
     <a href="index.php">Home</a>
     <nav-bar page-title="Vital Event Registration">
-        <a href="/src/forms/adoption.php" rel="noopener noreferrer">Adoption</a>
-        <a href="/src/forms/birth.php" rel="noopener noreferrer">Live birth</a>
-        <a href="/src/forms/marriage.php" rel="noopener noreferrer">Marriage</a>
-        <a href="/src/forms/separation.php" rel="noopener noreferrer">Legal separation</a>
-        <a href="/src/forms/annulment.php" rel="noopener noreferrer">Annulment</a>
-        <a href="/src/forms/death.php" rel="noopener noreferrer">Death</a>
-        <a href="/src/forms/recognition.php" rel="noopener noreferrer">Parental recognition</a>
-        <a href="/src/forms/stillbirth.php" rel="noopener noreferrer">Stillbirth</a>
-        <a href="/src/forms/divorce.php" rel="noopener noreferrer">Divorce</a>
+        <a href="/web-dev-project/src/forms/adoption.php" rel="noopener noreferrer">Adoption</a>
+        <a href="/web-dev-project/src/forms/birth.php" rel="noopener noreferrer">Live birth</a>
+        <a href="/web-dev-project/src/forms/marriage.php" rel="noopener noreferrer">Marriage</a>
+        <a href="/web-dev-project/src/forms/separation.php" rel="noopener noreferrer">Legal separation</a>
+        <a href="/web-dev-project/src/forms/annulment.php" rel="noopener noreferrer">Annulment</a>
+        <a href="/web-dev-project/src/forms/death.php" rel="noopener noreferrer">Death</a>
+        <a href="/web-dev-project/src/forms/recognition.php" rel="noopener noreferrer">Parental recognition</a>
+        <a href="/web-dev-project/src/forms/stillbirth.php" rel="noopener noreferrer">Stillbirth</a>
+        <a href="/web-dev-project/src/forms/divorce.php" rel="noopener noreferrer">Divorce</a>
         <a href="./report.php" rel="noopener noreferrer">Report</a>
     </nav-bar>
     <h1>Birth Registration Form</h1>
@@ -126,10 +126,10 @@ session_start();
             <label for="father_marital_status">Marital Status:</label>
             <select name="father_marital_status" id="father_marital_status" required>
                 <option value="" selected>Select</option>
-                <option value="Married">Married</option>
-                <option value="Single">Single</option>
-                <option value="Widowed">Widowed</option>
-                <option value="Divorced">Divorced</option>
+                <option value="married">Married</option>
+                <option value="single">Single</option>
+                <option value="widowed">Widowed</option>
+                <option value="divorced">Divorced</option>
             </select>
             <label for="father_citizenship">Country of citizenship:</label>
             <input type="text" name="father_citizenship" id="father_citizenship" required

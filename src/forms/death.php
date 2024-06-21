@@ -16,7 +16,7 @@ session_start();
     <h1>Death Registration Form</h1>
     <?php if (!empty($_SESSION["user_id"])): ?>
     <!-- REMOVE Remove novalidate when done with debugging -->
-    <form action="/src/includes/death/death-formhandler.php" method="post" enctype='multipart/form-data'>
+    <form action="/web-dev-project/src/includes/death/death-formhandler.php" method="post" enctype='multipart/form-data'>
         <input type="hidden" name="MAX_FILE_SIZE" value="<?=MAX_UPLOAD_FILE_SIZE;?>" />
         <h2>Deceased Information</h2>
         <ul>

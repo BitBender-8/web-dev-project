@@ -1,6 +1,6 @@
 const avatarHtml = `
 <div id="login-avatar">
-    <link rel="stylesheet" href="/src/public/styles/avatar.css">
+    <link rel="stylesheet" href="/web-dev-project/src/public/styles/avatar.css">
     <a class="container" href="#" rel="noopener noreferrer">
         <span id="logged-in" class="icon">
             <svg width="24px" height="24px" viewBox="0 0 1024 1024"
@@ -97,7 +97,7 @@ window.customElements.define('login-avatar', class LoginAvatar extends HTMLEleme
 
 
 const navBarHtml = `
-<link rel="stylesheet" href="/src/public/styles/navbar.css">
+<link rel="stylesheet" href="/web-dev-project/src/public/styles/navbar.css">
 
 <div class="navbar">
     <h2 class="page-title">Page Title</h2>
@@ -112,13 +112,13 @@ const navBarHtml = `
     </button>
 </div>
 <div id="sidebar">
-    <a href="/src/index.html" rel="noopener noreferrer" class="home">Vital Events</a>
+    <a href="/web-dev-project/src/index.html" rel="noopener noreferrer" class="home">Vital Events</a>
     <div class="navitem-container">
         <slot></slot>
     </div>
     <div class="menu-container">
         <login-avatar></login-avatar>
-        <a class="report-icon" href="/src/report.php">
+        <a class="report-icon" href="/web-dev-project/src/report.php">
             <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
             viewBox="0 0 48 48"><defs><mask id="ipSTableReport0"><g fill="none"
                         stroke-linejoin="round" stroke-width="4"><path
@@ -191,11 +191,11 @@ window.customElements.define('nav-bar', class NavBar extends HTMLElement {
 
 
 const siteFooterHtml = `
-<link href="/src/public/styles/fontawesome/css/fontawesome.min.css"
+<link href="/web-dev-project/src/public/styles/fontawesome/css/fontawesome.min.css"
             rel="stylesheet">
-<link href="/src/public/styles/fontawesome/css/all.min.css"
+<link href="/web-dev-project/src/public/styles/fontawesome/css/all.min.css"
             rel="stylesheet">
-<link href="/src/public/styles/site-footer.css" rel="stylesheet">
+<link href="/web-dev-project/src/public/styles/site-footer.css" rel="stylesheet">
 <footer>
     <div class="info-container">
         <div class="other-info">

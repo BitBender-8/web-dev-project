@@ -1,5 +1,5 @@
 <?php
-
+session_start(); // Ensure the session is started
 // Include all files in the includes folder
 $includes = glob("../*.php");
 foreach ($includes as $file) {
@@ -7,9 +7,9 @@ foreach ($includes as $file) {
 }
 require_once "./recgn-declarations.php";
 
-//  TODO Enter the data into the database
-//      - NOTE The only check you need to make before entering into the database is to make sure that
-//        the fields are not empty and that there are no errors.
+// TODO Enter the data into the database
+// - NOTE The only check you need to make before entering into the database is to make sure that
+//   the fields are not empty and that there are no errors.
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -35,30 +35,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             );
         }
     }
-
     handleErrors($errors_maxlength, 'Maximum allowed length for text field(s) exceeded');
 
     // Check whether all dropdowns, radio buttons, checkboxes and multiple
     // option fields are submitting data that is allowed.
     $errors_selection_fields = [];
     foreach ($selection_controls as $field_name => $allowed_values) {
-        $errors_selection_fields[] = checkAllowedValues(
-            $field_name,
-            $recgn_labels[$field_name],
-            array_merge($selection_controls[$field_name])
-        );
+        $error = checkAllowedValues($field_name, $recgn_labels[$field_name], $allowed_values);
+        if ($error !== null) {
+            $errors_selection_fields[] = $error;
+        }
     }
     handleErrors($errors_selection_fields, 'Invalid option submitted');
 
     // Checking phone number(s)
     $errors_phone_fields = [];
     foreach ($phone_fields as $field_name) {
-        $errors_phone_fields[] = checkNumberFormat(
+        $error = checkNumberFormat(
             $field_name,
             $recgn_labels[$field_name],
             PHONE_REGEX,
             PHONE_ERR_MSG
         );
+        if ($error !== null) {
+            $errors_phone_fields[] = $error;
+        }
     }
     handleErrors($errors_phone_fields, 'Invalid phone format');
 
@@ -71,4 +72,72 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (count($errors_parent2_required_fields) !== count($optionally_required_fields)) {
         handleErrors($errors_parent2_required_fields, 'Missing fields: Submit either no fields or all required fields under Parent 2 and Marriage information');
     }
+
+    if (empty($errors_required_fields) && empty($errors_selection_fields) && empty($errors_maxlength) && empty($errors_phone_fields) && empty($errors_parent2_required_fields)) {
+        try {
+            // Concatenate the names
+            $child_full_name = $_POST['child_first_name'] . ';' . $_POST['child_middle_name'] . ';' . $_POST['child_last_name'];
+            $parent1_full_name = $_POST['parent1_first_name'] . ';' . $_POST['parent1_middle_name'] . ';' . $_POST['parent1_last_name'];
+            $parent2_full_name = $_POST['parent2_first_name'] . ';' . $_POST['parent2_middle_name'] . ';' . $_POST['parent2_last_name'];
+            
+            // Get the user ID from the session
+            $rgstrnt_user = $_SESSION['user_id'];
+
+            // Prepare the SQL insert statement
+            $sql = "INSERT INTO PaternityRecognitions (
+                child_full_name, child_dob, child_birthplace, child_sex,
+                parent1_full_name, parent1_dob, parent1_sex, parent1_birthplace,
+                parent1_citizenship, parent1_occupation, parent1_residence, parent1_phone,
+                parent2_full_name, parent2_dob, parent2_sex, parent2_birthplace,
+                parent2_citizenship, parent2_occupation, parent2_residence, parent2_phone,
+                parents_married_at_birth, parents_married_at_rgstrn, rgstrnt_user
+            ) VALUES (
+                :child_full_name, :child_dob, :child_birthplace, :child_sex,
+                :parent1_full_name, :parent1_dob, :parent1_sex, :parent1_birthplace,
+                :parent1_citizenship, :parent1_occupation, :parent1_residence, :parent1_phone,
+                :parent2_full_name, :parent2_dob, :parent2_sex, :parent2_birthplace,
+                :parent2_citizenship, :parent2_occupation, :parent2_residence, :parent2_phone,
+                :parents_married_at_birth, :parents_married_at_rgstrn, :rgstrnt_user
+            )";
+
+            // Prepare the statement
+            $stmt = $pdo->prepare($sql);
+
+            // Bind the parameters
+            $stmt->bindParam(':child_full_name', $child_full_name);
+            $stmt->bindParam(':child_dob', $_POST['child_dob']);
+            $stmt->bindParam(':child_birthplace', $_POST['child_birthplace']);
+            $stmt->bindParam(':child_sex', $_POST['child_sex']);
+            $stmt->bindParam(':parent1_full_name', $parent1_full_name);
+            $stmt->bindParam(':parent1_dob', $_POST['parent1_dob']);
+            $stmt->bindParam(':parent1_sex', $_POST['parent1_sex']);
+            $stmt->bindParam(':parent1_birthplace', $_POST['parent1_birthplace']);
+            $stmt->bindParam(':parent1_citizenship', $_POST['parent1_citizenship']);
+            $stmt->bindParam(':parent1_occupation', $_POST['parent1_occupation']);
+            $stmt->bindParam(':parent1_residence', $_POST['parent1_residence']);
+            $stmt->bindParam(':parent1_phone', $_POST['parent1_phone']);
+            $stmt->bindParam(':parent2_full_name', $parent2_full_name);
+            $stmt->bindParam(':parent2_dob', $_POST['parent2_dob']);
+            $stmt->bindParam(':parent2_sex', $_POST['parent2_sex']);
+            $stmt->bindParam(':parent2_birthplace', $_POST['parent2_birthplace']);
+            $stmt->bindParam(':parent2_citizenship', $_POST['parent2_citizenship']);
+            $stmt->bindParam(':parent2_occupation', $_POST['parent2_occupation']);
+            $stmt->bindParam(':parent2_residence', $_POST['parent2_residence']);
+            $stmt->bindParam(':parent2_phone', $_POST['parent2_phone']);
+            $stmt->bindParam(':parents_married_at_birth', $_POST['parents_married_at_birth']);
+            $stmt->bindParam(':parents_married_at_rgstrn', $_POST['parents_rlnshp_at_rgstrn']);
+            $stmt->bindParam(':rgstrnt_user', $rgstrnt_user);
+
+            // Execute the statement
+            $stmt->execute();
+
+            // Redirect or show a success message
+            echo "<p>Paternity recognition registration successful!</p>";
+        } catch (PDOException $e) {
+            echo "<p>Error: " . $e->getMessage() . "</p>";
+        }
+    }
+} else {
+    header("Location: .././src/forms/recognition.php");
 }
+?>
