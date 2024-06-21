@@ -1,15 +1,15 @@
 <?php
-session_start();
+// session_start();
 // Include all files in includes folder
-$includes = glob("../*.php");
+
+$includes = glob("{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/*.php");
 foreach ($includes as $file) {
     require_once $file;
 }
-require_once "./death-declarations.php";
-require_once "./death-sql.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/death/death-declarations.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/death/death-sql.php";
 
 // TODO (Client) Enable 'Other' input field in declarant information section if 'I know about the death' is selected.
-// TODO Redirect to page which says that form was inserted successfully
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -113,69 +113,68 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors_declarant_relation_other_text
     );
 
-    if (!empty(array_filter($errors))) {
-        exit;
-    }
+    if (empty(array_filter($errors))) {
 
-    // Save file to directory
-    $result = [];
-    foreach ($file_fields as $file_field) {
-        $result[] = saveFileUpload(
-            $file_field,
-            $death_labels[$file_field],
-            UPLOAD_DIRECTORY
-        );
-    }
-
-    // If something goes wrong while saving then exit the script
-    $errors_file_save = array_filter($result, function ($value) {
-        return $value instanceof FormError;
-    });
-
-    if (!empty($errors_file_save)) {
-        handleErrors($errors_file_save, 'Something went wrong when saving the file');
-        exit;
-    }
-
-    // The filters [field_name, destination_directory] pairs for all the file fields
-    $temp = array_filter($result, function ($value) {
-        return is_array($value);
-    });
-
-    // Combines the pairs into a single array
-    $fields_to_dest_dirs = [];
-    foreach ($temp as $field_to_dest_dir) {
-        $fields_to_dest_dirs[$field_to_dest_dir[0]] = $field_to_dest_dir[1];
-    }
-
-    // Enter data into database
-    if ($pdo) {
-        try {
-            $pdo->prepare($insert_sql)->execute([
-                $_POST['deceased_first_name'] . ';' . $_POST['deceased_middle_name'] . ';' . $_POST['deceased_last_name'],
-                $_POST['deceased_title'],
-                $_POST['deceased_sex'],
-                $_POST['deceased_age'],
-                $_POST['deceased_citizenship'],
-                $_POST['death_date'],
-                $_POST['death_place'],
-                $_POST['death_cause'],
-                $fields_to_dest_dirs['death_evidence'],
-                $_POST['declarant_first_name'] . ';' . $_POST['declarant_middle_name'] . ';' . $_POST['declarant_last_name'],
-                $_POST['declarant_sex'],
-                $_POST['declarant_phone'],
-                $_POST['declarant_residence'],
-                $_POST['declarant_relation'],
-                $_POST['declarant_relation_other_text'] ?? null, // This is an optional field
-                $_SESSION['user_id'],
-            ]);
-        } catch (PDOException $e) {
-            die($e->getMessage());
+        // Save file to directory
+        $result = [];
+        foreach ($file_fields as $file_field) {
+            $result[] = saveFileUpload(
+                $file_field,
+                $death_labels[$file_field],
+                UPLOAD_DIRECTORY
+            );
         }
-    } else {
-        die('<div class="err-box">Something went wrong with the database connection.</div>');
-    }
 
+        // If something goes wrong while saving then exit the script
+        $errors_file_save = array_filter($result, function ($value) {
+            return $value instanceof FormError;
+        });
+
+        if (!empty($errors_file_save)) {
+            handleErrors($errors_file_save, 'Something went wrong when saving the file');
+            exit;
+        }
+
+        // The filters [field_name, destination_directory] pairs for all the file fields
+        $temp = array_filter($result, function ($value) {
+            return is_array($value);
+        });
+
+        // Combines the pairs into a single array
+        $fields_to_dest_dirs = [];
+        foreach ($temp as $field_to_dest_dir) {
+            $fields_to_dest_dirs[$field_to_dest_dir[0]] = $field_to_dest_dir[1];
+        }
+
+        // Enter data into database
+        if ($pdo) {
+            try {
+                $pdo->prepare($insert_sql)->execute([
+                    $_POST['deceased_first_name'] . ';' . $_POST['deceased_middle_name'] . ';' . $_POST['deceased_last_name'],
+                    $_POST['deceased_title'],
+                    $_POST['deceased_sex'],
+                    $_POST['deceased_age'],
+                    $_POST['deceased_citizenship'],
+                    $_POST['death_date'],
+                    $_POST['death_place'],
+                    $_POST['death_cause'],
+                    $fields_to_dest_dirs['death_evidence'],
+                    $_POST['declarant_first_name'] . ';' . $_POST['declarant_middle_name'] . ';' . $_POST['declarant_last_name'],
+                    $_POST['declarant_sex'],
+                    $_POST['declarant_phone'],
+                    $_POST['declarant_residence'],
+                    $_POST['declarant_relation'],
+                    $_POST['declarant_relation_other_text'] ?? null, // This is an optional field
+                    $_SESSION['user_id'],
+                ]);
+                header("Location: " . PROJECT_ROOT . "src/success.php");
+            } catch (PDOException $e) {
+                die($e->getMessage());
+            }
+        } else {
+            die('<div class="err-box">Something went wrong with the database connection.</div>');
+        }
+    }
 } else {
     header("Location: /src/forms/death.php");
     exit;

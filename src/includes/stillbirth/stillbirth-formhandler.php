@@ -1,17 +1,19 @@
 <?php
-session_start(); // Ensure the session is started
+// session_start(); // Ensure the session is started
 // Include all files in includes folder
-$includes = glob("../*.php");
+$includes = glob("{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/*.php");
 foreach ($includes as $file) {
     require_once $file;
 }
-require_once "./stillbirth-declarations.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/stillbirth/stillbirth-declarations.php";
 
 //  TODO Enter the data into the database
 //      - NOTE The only check you need to make before entering into the database is to make sure that
 //        the fields are not empty and that there are no errors.
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $errors = [];
+
     // Check whether universally required fields were submitted correctly
     $errors_required_fields = checkFieldPresence(
         array_merge(
@@ -114,8 +116,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     handleErrors($errors_empty_explanation, "Missing explanation");
 
+    // TODO Check that you didn't miss any special validations
+    $errors = array_merge(
+        $errors_required_fields, 
+    $errors_selection_fields, 
+    $errors_maxlength, 
+    $errors_phone_fields, 
+    $errors_number_fields, 
+    $errors_father_required_fields,
+    $errors_empty_explanation);
 
-    if (empty($errors_required_fields) && empty($errors_selection_fields) && empty($errors_maxlength) && empty($errors_phone_fields) && empty($errors_number_fields) && empty($errors_father_required_fields) && empty($errors_empty_explanation)) {
+    if (empty(array_filter())) {
         try {
             // Concatenate the names
             $mother_full_name = $_POST['mother_first_name'] . ' ' . $_POST['mother_middle_name'] . ' ' . $_POST['mother_last_name'];

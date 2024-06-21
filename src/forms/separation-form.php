@@ -1,5 +1,5 @@
 <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post"
-    enctype="multipart/form-data">
+    enctype="multipart/form-data" novalidate>
     <input type="hidden" name="MAX_FILE_SIZE"
         value="<?=MAX_UPLOAD_FILE_SIZE;?>">
 

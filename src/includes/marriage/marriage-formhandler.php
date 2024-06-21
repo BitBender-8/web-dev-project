@@ -1,15 +1,11 @@
 <?php
-session_start(); // Ensure the session is started
+// session_start(); // Ensure the session is started
 // Include all files in includes folder
-$includes = glob("../*.php");
+$includes = glob("{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/*.php");
 foreach ($includes as $file) {
     require_once $file;
 }
-require_once "./marriage-declarations.php";
-
-//  TODO Enter the data into the database
-//      - NOTE The only check you need to make before entering into the database is to make sure that
-//        the fields are not empty and that there are no errors.
+require_once "{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/marriage/marriage-declarations.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -44,10 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // option fields are submitting data that is allowed.
     $errors_selection_fields = [];
     foreach ($selection_controls as $field_name => $allowed_values) {
-        $error = checkAllowedValues($field_name, $marriage_labels[$field_name], $allowed_values);
-        if ($error !== null) {
-            $errors_selection_fields[] = $error;
-        }
+        $errors_selection_fields[] = checkAllowedValues($field_name, $marriage_labels[$field_name], $allowed_values);
     }
     handleErrors($errors_selection_fields, 'Invalid option submitted');
 
@@ -66,7 +59,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     handleErrors($errors_phone_fields, 'Invalid phone format');
 
-    if (empty($errors_required_fields) && empty($errors_maxlength) && empty($errors_selection_fields) && empty($errors_phone_fields)) {
+    $errors = array_merge(
+        $errors_required_fields,
+        $errors_maxlength,
+        $errors_selection_fields,
+        $errors_phone_fields
+    );
+
+    if (empty(array_filter($errors))) {
         try {
             // Concatenate the names
             $spouse1_full_name = $_POST['spouse1_first_name'] . ';' . $_POST['spouse1_middle_name'] . ';' . $_POST['spouse1_last_name'];
@@ -79,23 +79,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             // Prepare the SQL insert statement
             $sql = "INSERT INTO MarriageRegistrations (
-                spouse1_full_name, spouse1_sex, spouse1_dob, spouse1_place_of_birth, 
+                spouse1_full_name, spouse1_sex, spouse1_dob, spouse1_place_of_birth,
                 spouse1_citizenship, spouse1_previous_marital, spouse1_phone, spouse1_residence,
-                spouse2_full_name, spouse2_sex, spouse2_dob, spouse2_place_of_birth, 
+                spouse2_full_name, spouse2_sex, spouse2_dob, spouse2_place_of_birth,
                 spouse2_citizenship, spouse2_previous_marital, spouse2_phone, spouse2_residence,
-                witness1_full_name, witness1_sex, witness1_dob, witness1_citizenship, 
+                witness1_full_name, witness1_sex, witness1_dob, witness1_citizenship,
                 witness1_phone, witness1_residence,
-                witness2_full_name, witness2_sex, witness2_dob, witness2_citizenship, 
+                witness2_full_name, witness2_sex, witness2_dob, witness2_citizenship,
                 witness2_phone, witness2_residence,
                 marriage_date, marriage_place, rgstrnt_user
             ) VALUES (
-                :spouse1_full_name, :spouse1_sex, :spouse1_dob, :spouse1_place_of_birth, 
+                :spouse1_full_name, :spouse1_sex, :spouse1_dob, :spouse1_place_of_birth,
                 :spouse1_citizenship, :spouse1_previous_marital, :spouse1_phone, :spouse1_residence,
-                :spouse2_full_name, :spouse2_sex, :spouse2_dob, :spouse2_place_of_birth, 
+                :spouse2_full_name, :spouse2_sex, :spouse2_dob, :spouse2_place_of_birth,
                 :spouse2_citizenship, :spouse2_previous_marital, :spouse2_phone, :spouse2_residence,
-                :witness1_full_name, :witness1_sex, :witness1_dob, :witness1_citizenship, 
+                :witness1_full_name, :witness1_sex, :witness1_dob, :witness1_citizenship,
                 :witness1_phone, :witness1_residence,
-                :witness2_full_name, :witness2_sex, :witness2_dob, :witness2_citizenship, 
+                :witness2_full_name, :witness2_sex, :witness2_dob, :witness2_citizenship,
                 :witness2_phone, :witness2_residence,
                 :marriage_date, :marriage_place, :rgstrnt_user
             )";
@@ -140,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->execute();
 
             // Redirect or show a success message
-            echo "<p>Marriage registration successful!</p>";
+            header("Location: " . PROJECT_ROOT . "src/success.php");
         } catch (PDOException $e) {
             echo "<p>Error: " . $e->getMessage() . "</p>";
         }

@@ -5,13 +5,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Ensures the form is centered vertically */
-    background-color: #f0f0f0;
-    /* Optional: Background color for the content area */
 }
 
 .login-form {
-    background-color: #ffffff;
+    background-color: var(--color-neutral-2);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -23,7 +20,7 @@
 .login-form h1 {
     margin-bottom: 20px;
     font-size: 2rem;
-    color: #333333;
+    color: var(--color-primary);
 }
 
 .login-form form {
@@ -46,7 +43,7 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #555555;
+    color: var(--color-primary);
 }
 
 .login-form form input[type="text"],
@@ -84,18 +81,12 @@
 }
 
 .login-form form button[type="submit"] {
-    background-color: #007bff;
-    color: #ffffff;
     border: none;
     padding: 10px 20px;
     font-size: 1rem;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
-}
-
-.login-form form button[type="submit"]:hover {
-    background-color: #0056b3;
 }
 
 .login-form form p {
@@ -105,7 +96,7 @@
 }
 
 .login-form form p a {
-    color: #007bff;
+    color: var(--color-primary);
     text-decoration: none;
     font-weight: bold;
 }

@@ -1,7 +1,7 @@
-<!-- <?php
-require_once "../includes/declarations.php";
+<?php
 session_start();
-?> -->
+require_once "../includes/declarations.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +40,15 @@ session_start();
 <?php
 // REMOVE 'true'
 if (true || !empty($_SESSION["user_id"])) {
+
+    if ($_SERVER['REQUEST_METHOD'] === "POST") {
+        // Prevents premature header sends
+        ob_start();
+        require_once "../includes/death/death-formhandler.php";
+        $output = ob_get_clean();
+        echo $output;
+    }
+
     require_once "./death-form.php";
 } else {
     echo "You must log in first.";

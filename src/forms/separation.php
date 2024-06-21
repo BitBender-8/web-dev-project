@@ -40,6 +40,15 @@ session_start();
 <?php
 // REMOVE 'true'
 if (true || !empty($_SESSION["user_id"])) {
+
+    if ($_SERVER['REQUEST_METHOD'] === "POST") {
+        // Prevents premature header sends
+        ob_start();
+        require_once "../includes/separation/separation-formhandler.php";
+        $output = ob_get_clean();
+        echo $output;
+    }
+
     require_once "./separation-form.php";
 } else {
     echo "You must log in first.";

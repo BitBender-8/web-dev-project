@@ -40,8 +40,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/src/includes/declarations.php";
                 <h1>Welcome to Our Service</h1>
                 <p>Our platform provides a secure and straightforward way to register vital events. Whether it's the birth of a child, marriage, divorce, or recognition, we ensure accurate and reliable records.</p>
                 <?php if (empty($_SESSION['user_id'])) {?>
-                <a href="/web-dev-project/src/auth/login.php" class="btn btn-log-in">Login</a>
-                <a href="/web-dev-project/src/auth/signup.php" class="btn btn-register">Register</a>
+                <a href="<?= PROJECT_ROOT ?>src/auth/login.php" class="btn btn-log-in">Login</a>
+                <a href="<?= PROJECT_ROOT ?>src/auth/signup.php" class="btn btn-register">Register</a>
                 <?php }?>
             </div>
         </div>

@@ -77,7 +77,7 @@ require_once "../includes/declarations.php"
                     <label for="password_confirm" name="password">Confirm Password</label>
                     <input type="password" id="password_confirm" name="password_confirm" required>
                 </div>
-                <button type="submit">Sign up</button>
+                <button class="btn" type="submit">Sign up</button>
                 <p>Already have an account? <a href="login.php">Login</a></p>
             </form>
         </div>

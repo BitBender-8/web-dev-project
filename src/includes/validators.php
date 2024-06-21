@@ -168,7 +168,7 @@ function saveFileUpload(string $field_name, string $human_readable_name, string 
 
     // Get the base name of the uploaded file and sanitize it
     $base_name = basename($_FILES[$field_name]['name']);
-    $sanitized_base_name = preg_replace('/[^\w.-]/', '_', $base_name); // Replace non-word characters with underscores
+    $sanitized_base_name = preg_replace('/[^\w.-]/', '_', $base_name);
 
     // Specify the destination path and filename for the uploaded file
     $destination_filename = $upload_directory . $sanitized_base_name;

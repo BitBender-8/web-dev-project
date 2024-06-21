@@ -1,18 +1,14 @@
 <?php
-session_start(); // Ensure the session is started
+// session_start(); // Ensure the session is started
 // Include all files in the includes folder
-$includes = glob("../*.php");
+$includes = glob("{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/*.php");
 foreach ($includes as $file) {
     require_once $file;
 }
-require_once "./recgn-declarations.php";
-
-// TODO Enter the data into the database
-// - NOTE The only check you need to make before entering into the database is to make sure that
-//   the fields are not empty and that there are no errors.
+require_once "{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/recognition/recgn-declarations.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
+    $errors = [];
     // Check whether universally required fields were submitted correctly
     $errors_required_fields = checkFieldPresence(
         array_merge(
@@ -70,18 +66,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     );
     $errors_parent2_required_fields = checkFieldPresence($optionally_required_fields, $recgn_labels);
     if (count($errors_parent2_required_fields) !== count($optionally_required_fields)) {
+        $errors[] = $errors_parent2_required_fields;
         handleErrors($errors_parent2_required_fields, 'Missing fields: Submit either no fields or all required fields under Parent 2 and Marriage information');
     }
 
-    if (empty($errors_required_fields) && empty($errors_selection_fields) && empty($errors_maxlength) && empty($errors_phone_fields) && empty($errors_parent2_required_fields)) {
+    $errors = array_merge(
+        $errors_required_fields,
+        $errors_selection_fields,
+        $errors_maxlength,
+        $errors_phone_fields,
+        $errors
+    );
+
+    if (empty(array_filter($errors))) {
         try {
             // Concatenate the names
             $child_full_name = $_POST['child_first_name'] . ';' . $_POST['child_middle_name'] . ';' . $_POST['child_last_name'];
             $parent1_full_name = $_POST['parent1_first_name'] . ';' . $_POST['parent1_middle_name'] . ';' . $_POST['parent1_last_name'];
             $parent2_full_name = $_POST['parent2_first_name'] . ';' . $_POST['parent2_middle_name'] . ';' . $_POST['parent2_last_name'];
-            
+
             // Get the user ID from the session
-            $rgstrnt_user = $_SESSION['user_id'];
+            $rgstrnt_user = $_SESSION['user_id'] ?? 8;
 
             // Prepare the SQL insert statement
             $sql = "INSERT INTO PaternityRecognitions (
@@ -132,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->execute();
 
             // Redirect or show a success message
-            echo "<p>Paternity recognition registration successful!</p>";
+            header("Location: " . PROJECT_ROOT . "src/success.php");
         } catch (PDOException $e) {
             echo "<p>Error: " . $e->getMessage() . "</p>";
         }
@@ -140,4 +145,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 } else {
     header("Location: .././src/forms/recognition.php");
 }
-?>

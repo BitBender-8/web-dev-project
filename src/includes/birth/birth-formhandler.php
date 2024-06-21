@@ -8,6 +8,7 @@ foreach ($includes as $file) {
 require_once "{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/birth/birth-declarations.php";
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    $errors = [];
     // Check whether universally required fields were submitted correctly
     $errors_required_fields = checkFieldPresence(
         array_merge(
@@ -61,10 +62,19 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     // Make sure that either all of the declarant's required fields are submitted or none of them are
     $errors_declarant_required_fields = checkFieldPresence($required_fields['declarant'], $birth_labels);
     if (count($errors_declarant_required_fields) !== count($required_fields['declarant'])) {
+        $errors[] = $errors_declarant_required_fields;
         handleErrors($errors_declarant_required_fields, 'Missing fields for Declarant: Submit either no fields or all required fields');
     }
 
-    if (empty($errors_required_fields) && empty($errors_selection_fields) && empty($errors_maxlength) && empty($errors_phone_fields) && empty($errors_declarant_required_fields)) {
+    $errors = array_merge(
+        $errors_required_fields,
+        $errors_selection_fields,
+        $errors_maxlength,
+        $errors_phone_fields,
+        $errors // Already contains declarant errors
+    );
+
+    if (empty(array_filter($errors))) {
         try {
             // Concatenate the names
             $mother_full_name = $_POST['mother_first_name'] . ';' . $_POST['mother_middle_name'] . ';' . $_POST['mother_last_name'];
@@ -72,7 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $child_full_name = $_POST['child_first_name'] . ';' . $_POST['child_middle_name'] . ';' . $_POST['child_last_name'];
 
             // Get the user ID from the session
-            $rgstrnt_user = $_SESSION['user_id'];
+            // REMOVE id
+            $rgstrnt_user = $_SESSION['user_id'] ?? 7;
 
             // Prepare the SQL insert statement
             $sql = "INSERT INTO LiveBirthRegistrations (
@@ -130,8 +141,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
             $stmt->bindParam(':declarant_full_name', $declarant_full_name);
             $stmt->bindParam(':declarant_relation_to_child', $_POST['declarant_relation_to_child']);
-            $stmt->bindParam(':declarant_sex', $_POST['declarant_sex']);
-            $stmt->bindParam(':declarant_dob', $_POST['declarant_dob']);
+            // Determine the value for declarant_sex
+            $tempSex = !empty($_POST['declarant_sex']) ? $_POST['declarant_sex'] : null;
+            $stmt->bindParam(':declarant_sex', $tempSex, PDO::PARAM_STR);
+
+            // Determine the value for declarant_dob
+            $tempDate = !empty($_POST['declarant_dob']) ? $_POST['declarant_dob'] : null;
+            $stmt->bindParam(':declarant_dob', $tempDate, PDO::PARAM_STR);
             $stmt->bindParam(':declarant_place_of_birth', $_POST['declarant_place_of_birth']);
             $stmt->bindParam(':declarant_residence', $_POST['declarant_residence']);
             $stmt->bindParam(':declarant_phone', $_POST['declarant_phone']);
@@ -147,5 +163,5 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
     }
 } else {
-    header("Location: .././src/forms/birth.php");
+    header("Location: ../src/forms/birth.php");
 }
