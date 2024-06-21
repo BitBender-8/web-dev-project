@@ -10,7 +10,7 @@ footer {
     align-items: center;
     background-color: var(--color-background);
     color: var(--color-foreground);
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     text-decoration: none;
     font-weight: bold;
 }

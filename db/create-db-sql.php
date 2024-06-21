@@ -2,6 +2,7 @@
 
 // The names of people have been combined into a single field that will be delimited by a semicolon
 // Use MariaDB for your database since MYSQL needs to be configured to allow our large columns
+
 $db_sql =
     "CREATE DATABASE vital_event_registration;
 USE vital_event_registration;

@@ -1,0 +1,187 @@
+/* Homepage styles */
+.banner {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    padding: 50px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    /* Hide overflow to prevent content from overflowing */
+    border-radius: var(--border-radius);
+}
+
+.banner h1 {
+    font-size: 3.5rem;
+    /* Larger font size for title */
+    margin-bottom: 20px;
+    /* Increased margin for spacing */
+    animation: fadeInDown 1s ease-out;
+    /* Fade in animation */
+}
+
+.banner p {
+    font-size: 1.3rem;
+    /* Larger font size for paragraph */
+    line-height: 1.8;
+    animation: slideInUp 1s ease-out 0.5s;
+    /* Slide up animation */
+}
+
+.btn.btn-log-in,
+.btn.btn-register {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 24px 16px;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border: var(--border-size) solid var(--color-primary);
+}
+
+.btn.btn-log-in:hover,
+.btn.btn-register:hover {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border: var(--border-size) solid var(--color-secondary);
+}
+
+h2 {
+    font-size: 2.5rem;
+    /* Larger font size for section headers */
+    color: #333;
+    /* Dark text color */
+    margin-top: 40px;
+    /* Increased top margin for separation */
+    animation: fadeIn 1s ease-out;
+    /* Fade in animation */
+}
+
+p {
+    font-size: 1.1rem;
+    /* Normal font size for paragraphs */
+    line-height: 1.6;
+    color: #666;
+    /* Slightly dark text color */
+    animation: fadeIn 1s ease-out;
+    /* Fade in animation */
+}
+
+dl {
+    margin-top: 20px;
+    /* Increased top margin for separation */
+    padding: 20px;
+    background-color: #f0f0f0;
+    /* Light gray background */
+    border-radius: var(--border-radius);
+    /* Border radius */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* Shadow for depth */
+    overflow: hidden;
+    /* Hide overflow to prevent content from overflowing */
+}
+
+dt {
+    font-weight: bold;
+    /* Bold font for definition term */
+    font-size: 1.2rem;
+    /* Larger font size */
+    color: #333;
+    /* Dark text color */
+    margin-top: 10px;
+    /* Increased top margin for separation */
+    animation: fadeIn 1s ease-out;
+    /* Fade in animation */
+}
+
+dd {
+    margin-left: 0;
+    /* Reset left margin */
+    margin-bottom: 10px;
+    /* Increased bottom margin for separation */
+    padding-left: 20px;
+    /* Left padding for definition descriptions */
+    position: relative;
+    /* Relative positioning for marker */
+}
+
+dd:before {
+    content: "\2022";
+    /* Bullet point as content */
+    position: absolute;
+    /* Absolute positioning */
+    left: 0;
+    /* Align left */
+    top: 0;
+    /* Align to top */
+    color: var(--color-primary);
+    /* Primary color */
+    font-size: 1.2rem;
+    /* Larger font size */
+    line-height: 1.2;
+    /* Adjust line height */
+}
+
+.important-notes,
+.additional-info {
+    margin-bottom: 40px;
+    /* Increased bottom margin for separation */
+}
+
+.important-notes h2,
+.additional-info h2 {
+    font-size: 2rem;
+    /* Slightly smaller font size for section headers */
+    margin-bottom: 20px;
+    /* Increased bottom margin for separation */
+    animation: fadeIn 1s ease-out;
+    /* Fade in animation */
+}
+
+.important-notes p,
+.additional-info p {
+    font-size: 1.1rem;
+    /* Normal font size for paragraphs */
+    line-height: 1.6;
+    color: #333;
+    /* Dark text color */
+    animation: fadeIn 1s ease-out;
+    /* Fade in animation */
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+        /* Start above */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        /* End at normal position */
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+        /* Start below */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        /* End at normal position */
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

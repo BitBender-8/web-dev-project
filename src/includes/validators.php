@@ -166,10 +166,13 @@ function saveFileUpload(string $field_name, string $human_readable_name, string 
     // Get the temporary filename of the uploaded file
     $temp_file = $_FILES[$field_name]['tmp_name'];
 
-    // Specify the destination path and filename for the uploaded file
-    // TODO Use preg_replace to ewplace special characters with _
+    // Get the base name of the uploaded file and sanitize it
     $base_name = basename($_FILES[$field_name]['name']);
-    $destination_filename = $upload_directory . $base_name;
+    $sanitized_base_name = preg_replace('/[^\w.-]/', '_', $base_name); // Replace non-word characters with underscores
+
+    // Specify the destination path and filename for the uploaded file
+    $destination_filename = $upload_directory . $sanitized_base_name;
+
 
     // Check if the file already exists
     while (file_exists($destination_filename)) {
@@ -247,16 +250,15 @@ function handleErrors(array $errors, string $error_heading): void
     $errors = array_filter($errors);
 
     if (!empty($errors)) {
-        echo "<h2>$error_heading</h2>";
+        // echo "<h2>$error_heading</h2>";
 
-        // TODO Style your error messages
+        // Output JavaScript function call for each error
         foreach ($errors as $error) {
-            echo "<div class=\"error\"><b style=\"color: red;\">Form Error:</b>
-                    <ul>
-                        <li><b>Field:</b> {$error->getFieldLabel()} </li>
-                        <li><b>Message:</b> {$error->getErrorMsg()} </li>
-                    </ul>
-                  </div>";
+            $field = htmlspecialchars($error->getFieldLabel()); // Sanitize field label
+            $message = htmlspecialchars($error->getErrorMsg()); // Sanitize error message
+
+            // Output JavaScript to call showError function
+            echo "<script>showError('$field', '$message');</script>";
         }
     }
 }

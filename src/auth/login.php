@@ -1,7 +1,8 @@
 <?php
-require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php";
-require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/validators.php";
-require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/db.php";
+require_once "../includes/declarations.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/declarations.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/validators.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/db.php";
 
 $errors_required_fields = [];
 $errors_credentials = [];
@@ -65,11 +66,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vital Event Registration - Signup</title>
-    <script defer src="/src/public/js/webComponents.js"></script>
+    <script defer src="/src/public/js/web-components.js"></script>
     <link href="/src/public/styles/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="/src/public/styles/fontawesome/css/all.min.css" rel="stylesheet">
-    <link href="/src/public/styles/main.css" rel="stylesheet">
-    <link href="/src/public/styles/login.css" rel="stylesheet">
+    <link href="/src/public/styles/site.css" rel="stylesheet">
+    <link href="/src/public/styles/auth-styles/login.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <title>Login</title>
@@ -96,21 +97,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <h1>Login</h1>
             <!-- REMOVE Remove novalidate-->
             <form method="post" novalidate>
-                <div>
+                <div class="input">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" value="<?=htmlspecialchars($_POST['email'] ?? '')?>"
                         required>
-                </div>
+                </div class="input">
                 <div>
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" required>
                 </div>
-                <button type="submit">Log in</button>
+                <button class="btn" type="submit">Log in</button>
                 <p>Don't have an account? <a href="signup.php">Sign up</a></p>
             </form>
         </div>
         <div>
-            <?php
+<?php
 handleErrors($errors_required_fields, 'Required fields missing');
 handleErrors($errors_credentials, 'Invalid credentials');
 ?>

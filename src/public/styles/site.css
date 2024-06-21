@@ -1,0 +1,102 @@
+/* Site wide styles */
+
+:root {
+    /* CSS variables*/
+    --color-primary: rgb(20, 19, 19);
+    --color-secondary: white;
+    --color-tertiary: rgb(178, 178, 178);
+    --color-neutral-1: rgb(237, 237, 237);
+    --color-neutral-2: white;
+    --error-color-primary: red;
+    --error-color-secondary: rgb(245, 109, 109);
+    --max-width: 900px;
+    --border-radius: 6px;
+    --border-size: 1px;
+
+    /* Document root rules */
+    overscroll-behavior: none;
+}
+
+body {
+    margin: 0;
+    font-weight: normal;
+    font-family: "Poppins", sans-serif;
+    height: 100%;
+    background-color: var(--color-tertiary);
+    padding: 8px;
+}
+
+/* Main content styling */
+.content {
+    max-width: var(--max-width);
+    margin: 70px auto 8px auto;
+    min-height: 85vh;
+    padding: 32px;
+    background-color: var(--color-neutral-1);
+    border-radius: var(--border-radius);
+}
+
+.content p {
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.content .btn,
+input[type="file"]::file-selector-button {
+    display: inline-block;
+    margin: 12px;
+    padding: 12px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    font-size: 14pt;
+    text-decoration: none;
+    border: var(--border-size) solid var(--color-secondary);
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+}
+
+.content .btn:hover,
+input[type="file"]::file-selector-button:hover {
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
+    border: var(--border-size) solid var(--color-primary);
+}
+
+/* Other styles */
+#err-container {
+    position: fixed;
+    top: 78px;
+    right: 8px;
+    border-radius: var(--border-radius);
+    padding: 4px;
+
+    width: 256px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: scroll;
+    scroll-behavior: auto;
+}
+
+.err-box {
+    font-size: small;
+    color: var(--color-secondary);
+    background-color: var(--error-color-secondary);
+
+    border: var(--border-size) solid var(--error-color-primary);
+    border-radius: var(--border-radius);
+    min-width: 216px;
+    max-width: 216px;
+    padding: 16px;
+    margin: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 3000;
+}
+
+.notice {
+    color: var(--color-primary);
+    font-weight: bold;
+}

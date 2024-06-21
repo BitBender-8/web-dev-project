@@ -1,28 +1,24 @@
 /* Styles for the nav-bar custom component */
-:host {
-    --navbar-color-foreground: white;
-    --navbar-color-background: #141313;
-}
-
 svg {
     display: inline-block;
     vertical-align: middle
 }
 
 h2 {
-    margin: 0px;
+    margin-left: 12px;
 }
 
 .navbar {
+    z-index: 1000;
     position: fixed;
     top: 8px;
     left: 8px;
     right: 8px;
-    background-color: var(--navbar-color-background);
-    color: var(--navbar-color-foreground);
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
     padding: 12px;
     height: 36px;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,36 +26,36 @@ h2 {
 
 .hamburger {
     background-color: transparent;
-    color: var(--navbar-color-foreground);
-    border: 1px solid transparent;
-    border-radius: 4px;
+    color: var(--color-secondary);
+    border: transparent;
     cursor: pointer;
 }
 
 .hamburger:hover {
-    border: 1px solid var(--navbar-color-foreground);
-    border-radius: 4px;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border-radius: var(--border-radius);
 }
 
 #sidebar {
     position: fixed;
     top: 0px;
     bottom: 0px;
-    left: -314px;
+    left: -316px;
     width: 308px;
     margin: 8px;
-    border-radius: 4px;
-    background-color: var(--navbar-color-background);
-    color: var(--navbar-color-foreground);
+    border-radius: var(--border-radius);
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
     padding-top: 60px;
     transition: left 0.3s ease;
-    z-index: 100;
+    z-index: 2000;
 }
 
 .navitem {
     display: block;
     width: 100%;
-    border-bottom: 2px solid var(--navbar-color-foreground);
+    border-bottom: 2px solid var(--color-primary)
 }
 
 .home {
@@ -70,11 +66,11 @@ h2 {
     font-size: 18pt;
     font-weight: bold;
     text-decoration: none;
-    color: var(--navbar-color-foreground);
+    color: var(--color-secondary);
 }
 
 .home:hover {
-    border-bottom: 2px solid var(--navbar-color-foreground);
+    border-bottom: 2px solid var(--color-secondary);
     transition: border-bottom 0.3s ease;
 }
 
@@ -87,15 +83,16 @@ h2 {
 }
 
 .navitem-container ::slotted(a) {
-    color: var(--navbar-color-foreground);
-    border-radius: 4px;
+    color: var(--color-secondary);
+    text-decoration: none;
+    border-radius: var(--border-radius);
     margin: 8px 12px;
     padding: 8px 12px;
 }
 
 .navitem-container ::slotted(a:hover) {
-    background: var(--navbar-color-foreground);
-    color: var(--navbar-color-background);
+    background: var(--color-secondary);
+    color: var(--color-primary);
     transition: background-color 0.3s ease;
     transition: color 0.3s ease;
 }
@@ -113,14 +110,14 @@ h2 {
 
 .menu-container>* {
     padding: 8px;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
 }
 
 .report-icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--navbar-color-foreground);
+    color: var(--color-secondary);
     text-decoration: none;
 }
 

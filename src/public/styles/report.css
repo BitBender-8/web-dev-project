@@ -1,0 +1,53 @@
+/* Container for the entire report table */
+.report-table-container {
+    margin: 20px 0;
+    padding: 10px;
+    border: var(--border-size) solid var(--color-neutral-2);
+    border-radius: var(--border-radius);
+    background-color: var(--color-neutral-1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title of the report table */
+.table-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+/* Table styling */
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: var(--border-size) solid var(--color-secondary);
+    border-radius: var(--border-radius);
+    margin-top: 10px;
+}
+
+.report-table thead {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border: var(--border-size) solid var(--color-secondary);
+    border-radius: var(--border-radius);
+}
+
+.report-table th,
+.report-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: var(--border-size) solid var(--color-neutral-2);
+    border-radius: var(--border-radius);
+}
+
+/* Alternate row background color */
+.report-table tbody tr:nth-child(even) {
+    background-color: var(--color-neutral-2);
+}
+
+/* No records message */
+.no-records-message {
+    font-style: italic;
+    color: var(--color-tertiary);
+    margin-top: 10px;
+}

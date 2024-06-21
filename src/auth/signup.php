@@ -1,5 +1,5 @@
 <?php
-require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php"
+require_once "../includes/declarations.php"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,11 +8,11 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/src/includes/declarations.php"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vital Event Registration - Signup</title>
-    <script defer src="/src/public/js/webComponents.js"></script>
+    <script defer src="/src/public/js/web-components.js"></script>
     <link href="/src/public/styles/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="/src/public/styles/fontawesome/css/all.min.css" rel="stylesheet">
-    <link href="/src/public/styles/main.css" rel="stylesheet">
-    <link href="/src/public/styles/signup.css" rel="stylesheet">
+    <link href="/src/public/styles/site.css" rel="stylesheet">
+    <link href="/src/public/styles/auth-styles/signup.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>

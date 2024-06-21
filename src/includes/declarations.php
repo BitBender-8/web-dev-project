@@ -23,8 +23,10 @@ const ALLOWED_UPLOAD_FILE_TYPES = ['image/jpeg', 'image/png', 'image/pjpeg', 'im
 
 // Number of bytes in a Kilobyte
 const BYTES_IN_KB = 1024;
+// Location of the document root - Change this when you want it to work on your PC
+define('PROJECT_ROOT', "/");
 // Directory to save uploads in
-define('UPLOAD_DIRECTORY', "{$_SERVER['DOCUMENT_ROOT']}/web-dev-project/Uploads/");
+define('UPLOAD_DIRECTORY', "{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "uploads/");
 
 /**
  * Represents an error message. Its fields are immutable once created.

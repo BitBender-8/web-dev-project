@@ -1,0 +1,98 @@
+fieldset {
+    border-color: var(--color-primary);
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+legend {
+    font-size: larger;
+    font-weight: bold;
+}
+
+textarea {
+    box-sizing: border-box;
+    min-width: 280px;
+    min-height: 120px;
+    border: var(--border-size) solid var(--color-tertiary);
+    border-radius: var(--border-radius);
+    background-color: var(--color-neutral-2);
+    color: var(--color-primary);
+    font-size: 14px;
+    padding: 8px;
+    margin-bottom: 8px;
+    resize: vertical;
+}
+
+textarea:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+label {
+    display: block;
+    margin-top: 8px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: inherit;
+    font-size: inherit;
+}
+
+input, textarea {
+    text-align: inherit; 
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    font-size: inherit;
+    font-family: inherit;
+    padding-left: 6px;
+}
+
+
+.inline-label {
+    display: inline;
+}
+
+.radio-fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.input input:not([type="radio"], [type="checkbox"]),
+.input select {
+    box-sizing: border-box;
+    min-width: 280px;
+    max-width: 300px;
+    min-height: 40px;
+    max-height: 50px;
+    border: var(--border-size) solid var(--color-tertiary);
+    border-radius: var(--border-radius);
+    background-color: var(--color-neutral-2);
+}
+
+form input[type="file"]::file-selector-button {
+    font-family: inherit;
+    margin: 8px 4px;
+    padding: 4px 8px;
+    font-size: 12pt;
+}
+
+form input[type="date"] {
+    font-family: inherit;
+}
+
+.input select {
+    font-family: inherit;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.input select option {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 8px;
+}
+
+.btn[type="submit"] {
+    margin-left: 0;
+}
