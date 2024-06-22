@@ -27,7 +27,7 @@
         </li>
         <div class="input">
             <label for="adopter1_dob">Date of Birth:</label>
-            <input type="date" id="adopter1_dob" name="adopter1_dob" required>
+            <input type="date" id="adopter1_dob" name="adopter1_dob" max="<?= date('Y-m-d'); ?>" required>
         </li>
         <div class="input">
             <label for="adopter1_sex">Sex</label>
@@ -110,7 +110,7 @@
         </li>
         <div class="input">
             <label for="adopter2_dob">Date of Birth:</label>
-            <input type="date" id="adopter2_dob" name="adopter2_dob" required>
+            <input type="date" id="adopter2_dob" name="adopter2_dob" max="<?= date('Y-m-d'); ?>" required>
         </li>
         <div class="input">
             <label for="adopter2_sex">Sex</label>
@@ -223,7 +223,7 @@
         </li>
         <div class="input">
             <label for="child_dob">Date of Birth:</label>
-            <input type="date" id="child_dob" name="child_dob" required>
+            <input type="date" id="child_dob" name="child_dob" max="<?= date('Y-m-d'); ?>" required>
         </li>
         <div class="input">
             <label for="child_birthplace">Place of Birth:</label>
@@ -268,7 +268,7 @@
     <fieldset>
         <div class="input">
             <label for="adoption_date">Date of Adoption:</label>
-            <input type="date" id="adoption_date" name="adoption_date" required>
+            <input type="date" id="adoption_date" name="adoption_date" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <fieldset class="radio-fieldset" style="margin-top: 16px;">
             <legend>Adoption type</legend>

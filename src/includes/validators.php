@@ -14,23 +14,18 @@ function checkFieldPresence(array $field_names, array $field_labels): array
     $errors = [];
     // Check if any required fields are missing and add Error objects to the $errors array
     foreach ($field_names as $field_name) {
-        if (empty($_POST[$field_name])) {
-            $err_msg = "Missing field.";
+        $err_msg = "Missing field.";
 
-            if (is_array($_POST[$field_name])) {
-                $field_values = $_POST[$field_name] ?? [];
-                $all_empty = true;
+        $field_value = $_POST[$field_name];
 
-                // This ensures that at least one value of the array is not an empty string
-                foreach ($field_values ?? [] as $field_value) {
-                    if (!empty($field_value)) {
-                        $all_empty = false;
-                    }
-                }
+        if (is_array($field_value)) {
+            // Filters out empty elements from array
+            $field_value = array_filter($field_value);
+        }
 
-                if ($all_empty) {
-                    $err_msg .= ' At least one value must be submitted for this field.';
-                }
+        if (empty($field_value)) {
+            if (is_array($field_value)) {
+                $err_msg .= ' At least one value must be submitted for this field.';
             }
             $errors[] = new FormError($field_name, $field_labels[$field_name], $err_msg);
         }
@@ -172,7 +167,6 @@ function saveFileUpload(string $field_name, string $human_readable_name, string 
 
     // Specify the destination path and filename for the uploaded file
     $destination_filename = $upload_directory . $sanitized_base_name;
-
 
     // Check if the file already exists
     while (file_exists($destination_filename)) {

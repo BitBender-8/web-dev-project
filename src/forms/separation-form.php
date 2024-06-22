@@ -31,7 +31,7 @@
         </div>
         <div class="input">
             <label for="petitioner_dob">Date of Birth:</label>
-            <input type="date" id="petitioner_dob" name="petitioner_dob"
+            <input type="date" id="petitioner_dob" name="petitioner_dob" max="<?= date('Y-m-d'); ?>"
                 required>
         </div>
         <div class="input">
@@ -86,7 +86,7 @@
         </div>
         <div class="input">
             <label for="respondent_dob">Date of Birth:</label>
-            <input type="date" id="respondent_dob" name="respondent_dob"
+            <input type="date" id="respondent_dob" name="respondent_dob" max="<?= date('Y-m-d'); ?>"
                 required>
         </div>
         <div class="input">
@@ -118,7 +118,7 @@
         <legend>Marriage Information</legend>
         <div class="input">
             <label for="marriage_date">Date of Marriage:</label>
-            <input type="date" id="marriage_date" name="marriage_date" required>
+            <input type="date" id="marriage_date" name="marriage_date" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="marriage_place">Place of Marriage:</label>
@@ -146,7 +146,7 @@
         <div class="input">
             <label for="separation_date">Date of Separation:</label>
             <input type="date" id="separation_date" name="separation_date"
-                required>
+                max="<?= date('Y-m-d'); ?>" required>
         </div>
     </fieldset>
     <button class="btn" type="submit">Submit Registration</button>

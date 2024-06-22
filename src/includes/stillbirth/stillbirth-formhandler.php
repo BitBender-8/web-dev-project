@@ -7,13 +7,8 @@ foreach ($includes as $file) {
 }
 require_once "{$_SERVER['DOCUMENT_ROOT']}" . PROJECT_ROOT . "src/includes/stillbirth/stillbirth-declarations.php";
 
-//  TODO Enter the data into the database
-//      - NOTE The only check you need to make before entering into the database is to make sure that
-//        the fields are not empty and that there are no errors.
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $errors = [];
-
     // Check whether universally required fields were submitted correctly
     $errors_required_fields = checkFieldPresence(
         array_merge(
@@ -81,9 +76,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     handleErrors($errors_number_fields, 'Invalid number format');
 
-    // Father is optional so this makes sure that either all fields of father are submitted or none of them are
+    // Father is optional so this makes sure that either all required fields of father are submitted or none of them are
     $errors_father_required_fields = checkFieldPresence($required_fields['father'], $stillbirth_labels);
     if (count($errors_father_required_fields) !== count($required_fields['father'])) {
+        $errors[] = $errors_father_required_fields;
         handleErrors(
             $errors_father_required_fields,
             'Missing fields: Submit either no fields or all required fields under "Father" heading.'
@@ -118,15 +114,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // TODO Check that you didn't miss any special validations
     $errors = array_merge(
-        $errors_required_fields, 
-    $errors_selection_fields, 
-    $errors_maxlength, 
-    $errors_phone_fields, 
-    $errors_number_fields, 
-    $errors_father_required_fields,
-    $errors_empty_explanation);
+        $errors_required_fields,
+        $errors_selection_fields,
+        $errors_maxlength,
+        $errors_phone_fields,
+        $errors_number_fields,
+        $errors, // Father fields errors added beforehand
+        $errors_empty_explanation);
 
-    if (empty(array_filter())) {
+    if (empty(array_filter($errors))) {
         try {
             // Concatenate the names
             $mother_full_name = $_POST['mother_first_name'] . ' ' . $_POST['mother_middle_name'] . ' ' . $_POST['mother_last_name'];
@@ -141,21 +137,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $fetal_death_conditions_json = json_encode($_POST['fetal_death_conditions'] ?? []);
             $fetal_death_explanation_json = json_encode($fetal_death_explanations);
 
-
             // Prepare the SQL insert statement
             $sql = "INSERT INTO StillbirthRegistrations (
-                child_full_name, child_sex, child_gestational_age_wks, 
-                mother_full_name, mother_dob, mother_marital_status, mother_residence, mother_citizenship, mother_phone, 
-                father_full_name, father_dob, father_marital_status, father_residence, father_citizenship, father_phone, 
-                delivery_date, delivery_place, pregnancy_plurality, pregnancy_duration, birth_order, 
-                fetal_death_conditions, fetal_death_explanation, 
+                child_full_name, child_sex, child_gestational_age_wks,
+                mother_full_name, mother_dob, mother_marital_status, mother_residence, mother_citizenship, mother_phone,
+                father_full_name, father_dob, father_marital_status, father_residence, father_citizenship, father_phone,
+                delivery_date, delivery_place, pregnancy_plurality, pregnancy_duration, birth_order,
+                fetal_death_conditions, fetal_death_explanation,
                 reporter_full_name, reporter_sex, reporter_residence, reporter_phone, rgstrnt_user
             ) VALUES (
-                :child_full_name, :child_sex, :child_gestational_age_wks, 
-                :mother_full_name, :mother_dob, :mother_marital_status, :mother_residence, :mother_citizenship, :mother_phone, 
-                :father_full_name, :father_dob, :father_marital_status, :father_residence, :father_citizenship, :father_phone, 
-                :delivery_date, :delivery_place, :pregnancy_plurality, :pregnancy_duration, :birth_order, 
-                :fetal_death_conditions, :fetal_death_explanation, 
+                :child_full_name, :child_sex, :child_gestational_age_wks,
+                :mother_full_name, :mother_dob, :mother_marital_status, :mother_residence, :mother_citizenship, :mother_phone,
+                :father_full_name, :father_dob, :father_marital_status, :father_residence, :father_citizenship, :father_phone,
+                :delivery_date, :delivery_place, :pregnancy_plurality, :pregnancy_duration, :birth_order,
+                :fetal_death_conditions, :fetal_death_explanation,
                 :reporter_full_name, :reporter_sex, :reporter_residence, :reporter_phone, :rgstrnt_user
             )";
 
@@ -173,8 +168,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->bindParam(':mother_citizenship', $_POST['mother_citizenship']);
             $stmt->bindParam(':mother_phone', $_POST['mother_phone']);
             $stmt->bindParam(':father_full_name', $father_full_name);
-            $stmt->bindParam(':father_dob', $_POST['father_dob']);
-            $stmt->bindParam(':father_marital_status', $_POST['father_marital_status']);
+            $tempDate = !empty($_POST['father_dob']) ? $_POST['father_dob'] : null;
+            $stmt->bindParam(':father_dob', $_POST[$tempDate], PDO::PARAM_STR);
+            $tempMartialStatus = !empty($_POST['father_marital_status']) ? $_POST['father_marital_status'] : null;
+            $stmt->bindParam(':father_marital_status', $tempMartialStatus, PDO::PARAM_STR);
             $stmt->bindParam(':father_residence', $_POST['father_residence']);
             $stmt->bindParam(':father_citizenship', $_POST['father_citizenship']);
             $stmt->bindParam(':father_phone', $_POST['father_phone']);
@@ -183,7 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->bindParam(':pregnancy_plurality', $_POST['pregnancy_plurality']);
             $stmt->bindParam(':pregnancy_duration', $_POST['pregnancy_duration']);
             $stmt->bindParam(':birth_order', $_POST['birth_order']);
-            $stmt->bindParam(':fetal_death_conditions', $fetal_death_conditions_json);
+            $stmt->bindParam(':fetal_death_conditions', $fetal_death_conditions_json, PDO::PARAM_STR);
             $stmt->bindParam(':fetal_death_explanation', $fetal_death_explanation_json);
             $stmt->bindParam(':reporter_full_name', $reporter_full_name);
             $stmt->bindParam(':reporter_sex', $_POST['reporter_sex']);
@@ -193,6 +190,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             // Execute the statement
             $stmt->execute();
+
+            // Redirect to show a success message
+            header("Location: " . PROJECT_ROOT . "src/success.php");
         } catch (PDOException $e) {
             die("Database error: " . $e->getMessage());
         }

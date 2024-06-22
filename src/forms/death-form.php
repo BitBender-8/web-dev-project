@@ -56,7 +56,7 @@
         <legend>Death Information</legend>
         <div class="input">
             <label for="death_date">Date of Death:</label>
-            <input type="date" id="death_date" name="death_date" required>
+            <input type="date" id="death_date" name="death_date" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="death_place">Place of Death:</label>

@@ -32,7 +32,7 @@
         </div>
         <div class="input">
             <label for="spouse1_dob">Date of Birth:</label>
-            <input type="date" name="spouse1_dob" id="spouse1_dob" required>
+            <input type="date" name="spouse1_dob" id="spouse1_dob" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="spouse1_place_of_birth">Place of Birth:</label>
@@ -102,7 +102,7 @@
         </div>
         <div class="input">
             <label for="spouse2_dob">Date of Birth:</label>
-            <input type="date" name="spouse2_dob" id="spouse2_dob" required>
+            <input type="date" name="spouse2_dob" id="spouse2_dob" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="spouse2_place_of_birth">Place of Birth:</label>
@@ -173,7 +173,7 @@
         </div>
         <div class="input">
             <label for="witness1_dob">Date of Birth:</label>
-            <input type="date" name="witness1_dob" id="witness1_dob" required>
+            <input type="date" name="witness1_dob" id="witness1_dob" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="witness1_citizenship">Country of citizenship:</label>
@@ -226,7 +226,7 @@
         </div>
         <div class="input">
             <label for="witness2_dob">Date of Birth:</label>
-            <input type="date" name="witness2_dob" id="witness2_dob" required>
+            <input type="date" name="witness2_dob" id="witness2_dob" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="witness2_citizenship">Country of citizenship:</label>
@@ -252,7 +252,7 @@
         <legend>Marriage Information</legend>
         <div class="input">
             <label for="marriage_date">Date of Marriage:</label>
-            <input type="date" name="marriage_date" id="marriage_date" required>
+            <input type="date" name="marriage_date" id="marriage_date" max="<?= date('Y-m-d'); ?>" required>
 
         </div>
         <div class="input">

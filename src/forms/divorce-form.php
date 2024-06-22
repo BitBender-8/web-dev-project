@@ -26,7 +26,7 @@
         </div>
         <div class="input">
             <label for="spouse1_dob">Date of Birth:</label>
-            <input type="date" id="spouse1_dob" name="spouse1_dob" required>
+            <input type="date" id="spouse1_dob" name="spouse1_dob" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="spouse1_sex">Sex:</label>
@@ -81,7 +81,7 @@
         </div>
         <div class="input">
             <label for="spouse2_dob">Date of Birth:</label>
-            <input type="date" id="spouse2_dob" name="spouse2_dob" required>
+            <input type="date" id="spouse2_dob" name="spouse2_dob" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="spouse2_sex">Sex:</label>
@@ -119,7 +119,7 @@
         <legend>Marraige Information</legend>
         <div class="input">
             <label for="marriage_date">Date of Conclusion of Marriage:</label>
-            <input type="date" id="marriage_date" name="marriage_date" required>
+            <input type="date" id="marriage_date" name="marriage_date" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="marriage_place">Place of Conclusion of Marriage:</label>
@@ -132,7 +132,7 @@
         <legend>Divorce Information</legend>
         <div class="input">
             <label for="divorce_date">Date of Divorce:</label>
-            <input type="date" id="divorce_date" name="divorce_date" required>
+            <input type="date" id="divorce_date" name="divorce_date" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="divorce_reference">

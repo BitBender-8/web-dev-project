@@ -39,7 +39,7 @@ session_start();
         <h1>Marriage registration form</h1>
 <?php
 // REMOVE 'true'
-if (true || !empty($_SESSION["user_id"])) {
+if (!empty($_SESSION["user_id"])) {
 
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
         // Prevents premature header sends

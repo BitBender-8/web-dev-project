@@ -54,7 +54,7 @@
         <div class="input">
             <label for="mother_dob">Date of birth</label>
             <input type="date" id="mother_dob" name="mother_dob" min="0"
-                required>
+                max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="mother_marital_status">Marital status:</label>
@@ -101,7 +101,7 @@
         </div>
         <div class="input">
             <label for="father_dob">Date of birth</label>
-            <input type="date" id="father_dob" name="father_dob" min="0">
+            <input type="date" id="father_dob" name="father_dob" max="<?= date('Y-m-d'); ?>">
         </div>
         <div class="input">
             <label for="father_marital_status">Marital status:</label>
@@ -135,7 +135,7 @@
         <legend>Pregnancy Information</legend>
         <div class="input">
             <label for="delivery_date">Date of Delivery:</label>
-            <input type="date" id="delivery_date" name="delivery_date" required>
+            <input type="date" id="delivery_date" name="delivery_date" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="delivery_place">Place of Delivery:</label>
@@ -169,7 +169,7 @@
     <h2>Conditions Contributing to Fetal Death</h2>
     <p class="notice">
         Check all that apply and provide details in the explanation box.
-        At least one checkbox must be checked but explainations are optional for
+        At least one checkbox must be checked and explainations are optional for
         each condition chosen
         chosen.
     </p>
@@ -177,6 +177,8 @@
         <legend>
             Fetal death conditions
         </legend>
+        <input type="checbox" id="reason_default"
+                name="fetal_death_conditions[]" style="display: none;" value="" required>
         <div class="input">
             <input type="checkbox" id="reason_maternal_conditions"
                 name="fetal_death_conditions[]"

@@ -87,17 +87,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     handleErrors($errors_password_validation, 'Password error');
 
-    // Kill the script if errors are found
-    if (!empty(array_merge(
-        $errors_password_validation,
-        $errors_email_validation,
-        $errors_required_fields
-    ))) {
-        exit;
+    // Date of Birth (dob) validation
+    $errors_dob_validation = [];
+    $dob = $_POST['dob'];
+    $currentDate = date('Y-m-d');
+
+    // Check if dob is in the future
+    if ($dob > $currentDate) {
+        $errors_dob_validation[] = new FormError(
+            'dob',
+            $signup_labels['dob'],
+            'Date of birth cannot be in the future'
+        );
     }
 
-    // Enter the data into the database
-    $sql = 'INSERT INTO Users (
+    // Check minimum age requirement
+    $minAgeDate = date('Y-m-d', strtotime("-" . MIN_AGE . " years", strtotime($currentDate)));
+    if ($dob > $minAgeDate) {
+        $errors_dob_validation[] = new FormError(
+            'dob',
+            $signup_labels['dob'],
+            'You must be at least ' . MIN_AGE . ' years old'
+        );
+    }
+
+    handleErrors($errors_dob_validation, 'Date of birth error');
+
+    $errors = array_filter(array_merge(
+        $errors_password_validation,
+        $errors_email_validation,
+        $errors_required_fields,
+        $errors_dob_validation
+    ));
+    // var_dump($errors);
+    if (empty($errors)) {
+
+        // Enter the data into the database
+        $sql = 'INSERT INTO Users (
                 email,
                 password_hash,
                 full_name,
@@ -106,35 +132,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 citizenship
             ) VALUES (?, ?, ?, ?, ?, ?);';
 
-    try {
-        if (!empty($pdo)) {
-            $pdo->prepare($sql)->execute([
-                $_POST['email'],
-                password_hash($_POST['password'], PASSWORD_DEFAULT), // Hash the password
-                $_POST['first_name'] . $_POST['middle_name'] . $_POST['last_name'],
-                $_POST['dob'],
-                $_POST['principal_residence'],
-                $_POST['citizenship'],
-            ]);
-            header('Location: login.php');
-            exit;
-        } else {
-            die('<p>Something went wrong with the db connection<p>');
-        }
-    } catch (PDOException $e) {
-        // Get the SQLSTATE error code
-        $errorCode = $e->getCode();
+        try {
+            if (!empty($pdo)) {
+                $pdo->prepare($sql)->execute([
+                    $_POST['email'],
+                    password_hash($_POST['password'], PASSWORD_DEFAULT), // Hash the password
+                    $_POST['first_name'] . ';' . $_POST['middle_name'] . ';' . $_POST['last_name'],
+                    $_POST['dob'],
+                    $_POST['principal_residence'],
+                    $_POST['citizenship'],
+                ]);
+                header('Location: login.php');
+                exit;
+            } else {
+                die('<p>Something went wrong with the db connection<p>');
+            }
+        } catch (PDOException $e) {
+            // Get the SQLSTATE error code
+            $errorCode = $e->getCode();
 
-        // Check if the error code indicates a duplicate entry (unique constraint violation)
-        if ($errorCode == '1061') {
-            // Handle duplicate key violation
-            echo "<p>Account with given email already exists.</p>";
-        } else {
-            // Handle other PDO exceptions
-            echo "<p>Error code: $errorCode</p>";
+            // Check if the error code indicates a duplicate entry (unique constraint violation)
+            if ($errorCode == '23000') {
+                // Handle duplicate key violation
+                $error_duplicate_email = [];
+                $error_duplicate_email[] = new FormError(
+                    'email',
+                    $signup_labels['email'],
+                    'Account with submitted email already exists'
+                );
+                handleErrors($error_duplicate_email, 'Duplicate email');
+            } else {
+                // Handle other PDO exceptions
+                $error_unknown_error = [];
+                $error_unknown_error[] = new FormError(
+                    'Server Error',
+                    'Error Code: {$e->getMessage()}',
+                    "Something went wrong. Error Message: {$e->getMessage()}"
+                );
+                handleErrors($error_unknown_error, "Server Error");
+            }
         }
     }
-
 } else {
     header('Location: ./signup.php');
     exit;

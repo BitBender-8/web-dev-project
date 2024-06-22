@@ -92,11 +92,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/src/includes/declarations.php";
                         <div class="input"><label for="start_date">Registration
                                 start Date (optional):</label>
                             <input type="date" id="start_date"
-                                name="start_date">
+                                name="start_date" max="<?= date('Y-m-d'); ?>">
                         </div>
                         <div class="input"><label for="end_date">
                                 Registration end Date (optional):</label>
-                            <input type="date" id="end_date" name="end_date">
+                            <input type="date" id="end_date" name="end_date" max="<?= date('Y-m-d'); ?>">
                         </div>
                     </fieldset>
                     <button class="btn" type="submit">Generate

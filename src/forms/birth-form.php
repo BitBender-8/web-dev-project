@@ -31,7 +31,7 @@
         </div>
         <div class="input">
             <label for="child_dob">Date of Birth:</label>
-            <input type="date" name="child_dob" id="child_dob" required>
+            <input type="date" name="child_dob" id="child_dob" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="child_place_of_birth">Place of Birth:</label>
@@ -87,7 +87,7 @@
         </div>
         <div class="input">
             <label for="mother_dob">Date of Birth:</label>
-            <input type="date" name="mother_dob" id="mother_dob" required>
+            <input type="date" name="mother_dob" id="mother_dob" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="mother_place_of_birth">Place of Birth:</label>
@@ -149,7 +149,7 @@
         </div>
         <div class="input">
             <label for="father_dob">Date of Birth:</label>
-            <input type="date" name="father_dob" id="father_dob" required>
+            <input type="date" name="father_dob" id="father_dob" max="<?= date('Y-m-d'); ?>" required>
         </div>
         <div class="input">
             <label for="father_place_of_birth">Place of Birth:</label>
@@ -232,7 +232,7 @@
         </div>
         <div class="input">
             <label for="declarant_dob">Date of Birth:</label>
-            <input type="date" name="declarant_dob" id="declarant_dob">
+            <input type="date" name="declarant_dob" id="declarant_dob" max="<?= date('Y-m-d'); ?>">
         </div>
         <div class="input">
             <label for="declarant_place_of_birth">Place of Birth:</label>

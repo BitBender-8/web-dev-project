@@ -161,10 +161,7 @@ CREATE TABLE StillbirthRegistrations (
     pregnancy_plurality INT NOT NULL,
     pregnancy_duration INT NOT NULL,
     birth_order INT,
-    fetal_death_conditions ENUM(
-        'maternal_conditions', 'placenta_complications', 'other_obstetrical_complications',
-        'fetal_anomaly', 'fetal_injury', 'fetal_infection', 'other_fetal_conditions'
-    ) NOT NULL,
+    fetal_death_conditions TEXT NOT NULL,
     fetal_death_explanation TEXT DEFAULT NULL,
     reporter_full_name VARCHAR(255) NOT NULL,
     reporter_sex ENUM('M', 'F') NOT NULL,

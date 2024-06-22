@@ -38,8 +38,8 @@ require_once "../includes/declarations.php";
     <div id="err-container"></div><div class="content">
         <h1>Death registration form</h1>
 <?php
-// REMOVE 'true'
-if (true || !empty($_SESSION["user_id"])) {
+
+if (!empty($_SESSION["user_id"])) {
 
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
         // Prevents premature header sends

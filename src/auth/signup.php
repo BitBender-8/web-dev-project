@@ -7,14 +7,19 @@ require_once "../includes/declarations.php"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vital Event Registration - Signup</title>
-    <script defer src="/src/public/js/web-components.js"></script>
-    <link href="/src/public/styles/fontawesome/css/fontawesome.min.css" rel="stylesheet">
-    <link href="/src/public/styles/fontawesome/css/all.min.css" rel="stylesheet">
-    <link href="/src/public/styles/site.css" rel="stylesheet">
-    <link href="/src/public/styles/auth-styles/signup.css" rel="stylesheet">
+    <!-- Scripts and custom components -->
+    <script src="<?=PROJECT_ROOT?>src/public/js/site.js"></script>
+    <script defer src="<?=PROJECT_ROOT?>src/public/js/web-components.js"></script>
+    <!-- Styles -->
+    <link href="<?=PROJECT_ROOT?>src/public/styles/site.css" rel="stylesheet">
+    <link href="<?=PROJECT_ROOT?>src/public/styles/auth-styles/signup.css" rel="stylesheet">
+    <!-- Icons -->
+    <link href="<?=PROJECT_ROOT?>src/public/styles/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="<?=PROJECT_ROOT?>src/public/styles/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Vital Event Registration - Signup</title>
 </head>
 
 <body>
@@ -32,11 +37,12 @@ require_once "../includes/declarations.php"
         <a href="/src/forms/stillbirth.php" rel="noopener noreferrer">Stillbirth</a>
         <a href="/src/forms/divorce.php" rel="noopener noreferrer">Divorce</a>
     </nav-bar>
+    <div id="err-container"></div>
     <div class="content">
         <div class="sign-up-form">
             <h1>Sign up</h1>
             <!-- REMOVE remove novalidate when done with debugging -->
-            <form action="process-signup.php" method="post" novalidate>
+            <form action="<?=htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" novalidate>
                 <div>
                     <label for="first_name">First Name</label>
                     <input type="text" id="email" name="first_name" required maxlength="<?=INPUT_MAXLENGTH_DEFAULT?>">
@@ -53,7 +59,7 @@ require_once "../includes/declarations.php"
                 </div>
                 <div>
                     <label for="dob">Date of birth</label>
-                    <input type="date" id="dob" name="dob" required>
+                    <input type="date" id="dob" name="dob" max="<?=date('Y-m-d');?>" required>
                 </div>
                 <div>
                     <label for="principal_residence">Principal residence</label>
@@ -81,6 +87,15 @@ require_once "../includes/declarations.php"
                 <p>Already have an account? <a href="login.php">Login</a></p>
             </form>
         </div>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    // Prevents premature header sends
+    ob_start();
+    require_once "process-signup.php";
+    $output = ob_get_clean();
+    echo $output;
+}
+?>
     </div>
     <site-footer></site-footer>
 </body>

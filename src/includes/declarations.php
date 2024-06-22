@@ -21,6 +21,8 @@ const MIN_PASSWORD_LENGTH = 8;
 // List of allowed file types
 const ALLOWED_UPLOAD_FILE_TYPES = ['image/jpeg', 'image/png', 'image/pjpeg', 'image/apng', 'application/pdf'];
 
+// Minimum age for a user to sign up
+const MIN_AGE = 18;
 // Number of bytes in a Kilobyte
 const BYTES_IN_KB = 1024;
 // Location of the document root - Change this when you want it to work on your PC
