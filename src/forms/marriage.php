@@ -38,7 +38,6 @@ session_start();
     <div id="err-container"></div><div class="content">
         <h1>Marriage registration form</h1>
 <?php
-// REMOVE 'true'
 if (!empty($_SESSION["user_id"])) {
 
     if ($_SERVER['REQUEST_METHOD'] === "POST") {

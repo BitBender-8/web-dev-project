@@ -144,11 +144,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $_POST['divorce_date'],
                     $fields_to_dest_dirs['divorce_reference'],
                     $_POST['divorce_reason'] ?? null, // This is an optional field
-                    $_SESSION['user_id'] ?? 4, // REMOVE
+                    $_SESSION['user_id'],
                 ]);
                 header("Location: " . PROJECT_ROOT . "src/success.php");
             } catch (PDOException $e) {
-                die($e->getMessage());
+                // Handle other PDO exceptions
+                $error_unknown_error = [];
+                $error_unknown_error[] = new FormError(
+                    'Server Error',
+                    "Error Code: {$e->getCode()}",
+                    "Something went wrong. Error Message: {$e->getMessage()}"
+                );
+                handleErrors($error_unknown_error, "Server Error");
             }
         } else {
             die('Something went wrong with the database connection.');

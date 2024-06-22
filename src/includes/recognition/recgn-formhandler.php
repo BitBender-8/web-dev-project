@@ -139,7 +139,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Redirect or show a success message
             header("Location: " . PROJECT_ROOT . "src/success.php");
         } catch (PDOException $e) {
-            echo "<p>Error: " . $e->getMessage() . "</p>";
+            // Handle other PDO exceptions
+            $error_unknown_error = [];
+            $error_unknown_error[] = new FormError(
+                'Server Error',
+                "Error Code: {$e->getCode()}",
+                "Something went wrong. Error Message: {$e->getMessage()}"
+            );
+            handleErrors($error_unknown_error, "Server Error");
         }
     }
 } else {

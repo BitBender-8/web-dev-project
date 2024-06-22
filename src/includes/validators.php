@@ -278,3 +278,38 @@ function checkNumberFormat(string $phone_field, string $phone_field_label, strin
     }
     return $error;
 }
+
+/**
+ * Validate date fields in $_POST[] and return an array of FormError objects if validation fails.
+ * Otherwise, return an empty array.
+ *
+ * @param string $field_name The name of the date field to validate.
+ * @param string $human_readable_name A human-readable label for the date field.
+ * @return FormError[]|array An array of FormError objects if validation fails, or an empty array if validation succeeds.
+ */
+function validateDateField(string $field_name, string $human_readable_name): array
+{
+    $errors = [];
+
+    if (empty($_POST[$field_name])) {
+        $errors[] = new FormError($field_name, $human_readable_name, "Date field not found in form submission.");
+        return $errors;
+    }
+
+    $date_string = $_POST[$field_name];
+    $date_format = 'Y-m-d';
+
+    $date_obj = DateTime::createFromFormat($date_format, $date_string);
+    if ($date_obj === false) {
+        $errors[] = new FormError($field_name, $human_readable_name, "Invalid date format. Expected format: $date_format");
+    } else {
+        // Additional validation rules can be applied here if needed
+        // Example: Check if the date is in the future
+        $today = new DateTime();
+        if ($date_obj > $today) {
+            $errors[] = new FormError($field_name, $human_readable_name, "Date cannot be in the future.");
+        }
+    }
+
+    return $errors;
+}

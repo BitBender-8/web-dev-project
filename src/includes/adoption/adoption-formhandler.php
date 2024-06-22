@@ -63,7 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
     handleErrors($errors_phone_fields, 'Invalid phone format');
 
-    // TODO Other way around validation
     // Make sure that either all of adopter2's required fields are submitted or none of them are
     $errors_parent2_required_fields = checkFieldPresence($required_fields['adopter2'], $adoption_labels);
     if (count($errors_parent2_required_fields) !== count($required_fields['adopter2'])) {
@@ -72,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
 
     // Making sure that fields which require both adopters in 'Category of adopters' are not
-    // submitted without having both adopters.
+    // submitted without having both adopters. Didn't do other way around because the server will just assume that the first two options of adopter category refer to adopter 1
     $errors_adopter_category = [];
     // adopter2's required fields have not all been filled and adopter_category is either married couple or cohabitants
     if (!empty($errors_parent2_required_fields) && in_array($_POST['adopter_category'], ['couple', 'cohabitants'])) {
@@ -114,8 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             }
             $child_full_name = $_POST['child_first_name'] . ';' . $_POST['child_middle_name'] . ';' . $_POST['child_last_name'];
 
-            // REMOVE Get the user ID from the session
-            $rgstrnt_user = $_SESSION['user_id'] ?? 2;
+            // Get the user ID from the session
+            $rgstrnt_user = $_SESSION['user_id'];
 
             // Prepare the SQL insert statement
             $sql = "INSERT INTO AdoptionRegistrations (
@@ -186,7 +185,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             // Redirect to show a success message
             header("Location: " . PROJECT_ROOT . "src/success.php");
         } catch (PDOException $e) {
-            echo "<p>Error: " . $e->getMessage() . "</p>";
+            // Handle other PDO exceptions
+            $error_unknown_error = [];
+            $error_unknown_error[] = new FormError(
+                'Server Error',
+                "Error Code: {$e->getCode()}",
+                "Something went wrong. Error Message: {$e->getMessage()}"
+            );
+            handleErrors($error_unknown_error, "Server Error");
         }
     }
 } else {

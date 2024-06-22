@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error_unknown_error = [];
                 $error_unknown_error[] = new FormError(
                     'Server Error',
-                    'Error Code: {$e->getMessage()}',
+                    "Error Code: {$e->getCode()}",
                     "Something went wrong. Error Message: {$e->getMessage()}"
                 );
                 handleErrors($error_unknown_error, "Server Error");

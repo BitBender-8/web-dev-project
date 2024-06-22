@@ -82,8 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $child_full_name = $_POST['child_first_name'] . ';' . $_POST['child_middle_name'] . ';' . $_POST['child_last_name'];
 
             // Get the user ID from the session
-            // REMOVE id
-            $rgstrnt_user = $_SESSION['user_id'] ?? 7;
+            $rgstrnt_user = $_SESSION['user_id'];
 
             // Prepare the SQL insert statement
             $sql = "INSERT INTO LiveBirthRegistrations (
@@ -159,7 +158,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             // Redirect or show a success message
             header("Location: " . PROJECT_ROOT . "src/success.php");
         } catch (PDOException $e) {
-            echo "<p>Error: " . $e->getMessage() . "</p>";
+            // Handle other PDO exceptions
+            $error_unknown_error = [];
+            $error_unknown_error[] = new FormError(
+                'Server Error',
+                "Error Code: {$e->getCode()}",
+                "Something went wrong. Error Message: {$e->getMessage()}"
+            );
+            handleErrors($error_unknown_error, "Server Error");
         }
     }
 } else {
